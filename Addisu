@@ -1,0 +1,18 @@
+Key needs and features:
+  add items in different category 
+  stock update when items are added, removed or sold.
+  item price update, including discount
+  product rating feature
+  create customer account
+  item selection and collection (add to cart, including save for later retrieval)
+  Online ordering and delivery 
+        - Secure payment system
+        - End to end delivery system, including tracking 
+        - product return and refund 
+        
+List of Stakeholders 
+        - Consumers (could be individual, organizations, other big companies)
+        - Suppliers, those companies which would like to sell their product on the e-shop platform 
+        - Courier/logistic service providers (for product delivery and product loading) 
+        - Other e-shop service providers, which would like to work in collaboration with (this is  optional but there could be scenarios that it may work well)
+
