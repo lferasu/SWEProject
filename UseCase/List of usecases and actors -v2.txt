@@ -1,0 +1,19 @@
+*****************List of usecases and actors***
+
+Usecase (actor)
+*******************************************
+Create Account (Customer, Admin, Supplier)
+Block Account (Admin)
+Unblock Account (Admin)
+Login (Customer, Admin, Supplier, Manager)
+Search Book by title (Customer)
+Search Book by author (Customer)
+Register Book (Supplier)
+Approve Product (Manager)
+Update Inventory (Supplier)
+Add to Cart (Customer)
+Place Order (Customer)
+Send Delivery Request (System)
+Notify Delivery Initiation (System)
+Subscribe for Product Info (Customer)
+Generate Sales/Inventory Report (Manager, Supplier)

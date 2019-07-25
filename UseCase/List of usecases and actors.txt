@@ -1,5 +1,5 @@
 
-*****************List of usecases and actors********************8
+*****************List of usecases and actors********************
 
 Usecase (actor)
 *******************************************
@@ -21,4 +21,6 @@ login (admin, user, supplier, manager)
 update inventory (supplier)
 update product info (suplier)
 generate sales report (supplier)
+
+
 
