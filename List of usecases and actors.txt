@@ -1,0 +1,24 @@
+
+*****************List of usecases and actors********************8
+
+Usecase (actor)
+*******************************************
+book registration (supplier)
+searching by text (user)
+searching by catagory (user)
+add to shoping cart (user)
+place order (user)
+send delivery request (System)
+delivery initiation notification (System)
+product information change notification (System)
+subscribe for product info  (user)
+create account (user, admin, supplier)
+block account (admin)
+unblock account (admin)
+product approval/disaproval (manager)
+generate sales/inventory report (manager)
+login (admin, user, supplier, manager)
+update inventory (supplier)
+update product info (suplier)
+generate sales report (supplier)
+
