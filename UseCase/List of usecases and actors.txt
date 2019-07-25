@@ -21,9 +21,4 @@ login (admin, user, supplier, manager)
 update inventory (supplier)
 update product info (suplier)
 generate sales report (supplier)
-.................................................................
-Register Book (Supplier)
-Search Book by product name (Customer)
-Serach Book by category name (Customer)
-
 
