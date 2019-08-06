@@ -9,11 +9,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
-import org.hibernate.annotations.ManyToAny;
+import org.springframework.web.multipart.MultipartFile;
 
 import eShop.model.user.Author;
 import eShop.model.user.Supplier;
@@ -24,10 +24,14 @@ public class Book {
 	@Id@GeneratedValue
 	private Integer id;
 	private String title;
+	private String description;	
 	private String isbn;
 	private Double price;
 	private Integer copiesNumber;
 	private Boolean isApproved;
+	
+	@Transient
+    private MultipartFile bookImage;
 	
 	@OneToOne //uni
 	@JoinColumn(name = "book_supplier_id")
@@ -48,72 +52,110 @@ public class Book {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Book(String title, String isbn, Double price, Integer copiesNumber, Boolean isApproved, Supplier supplier,
-			List<Author> authors, List<Category> categories) {
+	
+	public Book(String title, String description, String isbn, Double price, Integer copiesNumber, Boolean isApproved,
+			MultipartFile bookImage, Supplier supplier, List<Author> authors, List<Category> categories) {
 		super();
 		this.title = title;
+		this.description = description;
 		this.isbn = isbn;
 		this.price = price;
 		this.copiesNumber = copiesNumber;
 		this.isApproved = isApproved;
+		this.bookImage = bookImage;
 		this.supplier = supplier;
 		this.authors = authors;
 		this.categories = categories;
 	}
+
 	public Integer getId() {
 		return id;
 	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
+
 	public String getTitle() {
 		return title;
 	}
+
 	public void setTitle(String title) {
 		this.title = title;
 	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public String getIsbn() {
 		return isbn;
 	}
+
 	public void setIsbn(String isbn) {
 		this.isbn = isbn;
 	}
+
 	public Double getPrice() {
 		return price;
 	}
+
 	public void setPrice(Double price) {
 		this.price = price;
 	}
+
 	public Integer getCopiesNumber() {
 		return copiesNumber;
 	}
+
 	public void setCopiesNumber(Integer copiesNumber) {
 		this.copiesNumber = copiesNumber;
 	}
+
 	public Boolean getIsApproved() {
 		return isApproved;
 	}
+
 	public void setIsApproved(Boolean isApproved) {
 		this.isApproved = isApproved;
 	}
+
+	public MultipartFile getBookImage() {
+		return bookImage;
+	}
+
+	public void setBookImage(MultipartFile bookImage) {
+		this.bookImage = bookImage;
+	}
+
 	public Supplier getSupplier() {
 		return supplier;
 	}
+
 	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
+
 	public List<Author> getAuthors() {
 		return authors;
 	}
+
 	public void setAuthors(List<Author> authors) {
 		this.authors = authors;
 	}
+
 	public List<Category> getCategories() {
 		return categories;
 	}
+
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
+
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", isbn=" + isbn + ", price=" + price + ", copiesNumber="
