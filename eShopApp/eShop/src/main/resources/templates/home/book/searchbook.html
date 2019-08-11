@@ -100,15 +100,10 @@
                     <td th:text="${book.authors}"></td>
                     <td th:text="${book.categories}"></td>
                     <td th:text="${book.supplier}"></td>
-                    <td><a th:href="@{'/eshop/book/update/?bookId='+${book.id}}">Add to Cart</a></td>
-                    <!-- <td><a data-toggle="modal"
-                           data-target="#confirmDeleteBookModal"
-                           th:href="@{'/eRegistrar/student/delete/?studentId='+${student.id}}">Delete</a>
-                    </td> -->
-                    <!-- <td><a
-                        th:href="@{/eregistrar/student/edit/{studentId} (studentId=${students.studentId})}">Edit</a></td>
+                  <!--<td><a th:href="@{'/eshop/book/update/?bookId='+${book.id}}">Add to Cart</a></td> -->
                     <td><a
-                        th:href="@{/eregistrar/student/delete/{studentId} (studentId=${students.studentId})}">Delete</a></td> -->
+                        th:href="@{/eshop/book/addToCart/{bookId} (bookId=${book.bookId})}">Add to Cart </a></td>
+
                 </tr>
                 </tbody>
             </table>
