@@ -8,6 +8,8 @@ import eShop.model.Book;
 import eShop.repository.BookRepository;
 import eShop.service.BookService;
 
+import java.util.List;
+
 @Service
 public class BookServiceImpl implements BookService{
 	
@@ -45,9 +47,14 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public Page<Book> getSearchedBooks(int pageNo, Book book) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Book> getAllBooksQuickSearch(String searchString) {
+return repository.findAllByIsbnContainsOrTitleContainsOrAuthorsContainsOrCategoriesContainsOrSupplierContainsOrderByTitle(searchString,searchString,searchString,searchString,searchString);
 	}
+
+//	@Override
+//	public Page<Book> getSearchedBooks(int pageNo, Book book) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

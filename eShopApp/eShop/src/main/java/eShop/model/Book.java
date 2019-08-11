@@ -120,7 +120,5 @@ public class Book {
 				+ copiesNumber + ", isApproved=" + isApproved + ", supplier=" + supplier + ", authors=" + authors
 				+ ", categories=" + categories + "]";
 	}
-	
-	
 
 }
