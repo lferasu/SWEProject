@@ -1,13 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>eShopping</title>
-</head>
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="master-layout :: header" />
 <body>
-	<div>
-		<a href=/home> click to home </a>
-	</div>
+<nav th:replace="master-layout :: navbar-top" />
+
+<div class="container">
+
+
+    <div class="starter-template">
+        <h1>This is a home page for eShop</h1>
+        <h3>The page is under construction</h3>
+        <h3>So give us a break!</h3>
+
+
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="master-layout :: footer"/>
 
 </body>
 </html>

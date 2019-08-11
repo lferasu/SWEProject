@@ -1,0 +1,29 @@
+Group of UseCases
+
+Group 1 (Must have):
+1. Create Account ---- Sod
+2. Register Book ----- Surafel
+3. Add to Cart ----- Addisu
+4. Login   ----- Sod
+5. Place Order ------ Getaneh
+6. Search Book ----- Addisu
+7. Send Delivery Request ---- Surafel 
+8. Show Home Page ------ Getaneh
+
+
+
+Group 2 (Nice to have):
+Notify Delivery Information
+Send Delivery Information
+Update Book information
+Approve Book
+Generate Report
+Send Summary Sales Report
+Subscribe for new Book
+Rate Book
+
+
+
+Group 3:(Optional):
+Block Account
+Unblock Account
