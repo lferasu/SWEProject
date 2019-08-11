@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/master-layout}">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/customer/customer.css}"/>
+    <title>MidWesTen Bank - Customer Registration Form</title>
+</head>
+<body> <!--onload="document.querySelector('#customerNumber').focus();"-->
+<th:block layout:fragment="content">
+    <form id="customerRegistrationForm" method="post" action="/registerProduct" th:object="${product}">
+        <fieldset>
+            <legend>Product Registration Form</legend>
+            <!--                        Product Name -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="productName">Product name:</label>
+                        <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="productName" name="productName" type="text" class="form-control" th:value="${product.productName}"/>
+                    </div>
+                </div>
+                <!--   Product Name -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="productNumber">Product Number:</label>
+                        <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productNumber}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="productNumber" name="productNumber" type="text" class="form-control" th:value="${product.productNumber}"/>
+                    </div>
+                </div>
+
+                <!--                    Unice Price-->
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="unitPrice">Unit Price:</label>
+                        <span th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="unitPrice" name="unitPrice" type="text" class="form-control" th:value="${product.unitPrice}"/>
+                    </div>
+                </div>
+            </div>
+            <!-- First row is over-->
+
+            <!--            Second Row -->
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="quantityInStock">Quantity In Stock:</label>
+                        <span th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="quantityInStock" name="quantityInStock" type="text" class="form-control" th:value="${product.quantityInStock}"/>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="date">Date Supplied:</label>
+                        <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="date" name="date" type="date" class="form-control" th:value="${product.date}"/>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="supplier">Supplier:</label>
+                        <span th:if="${#fields.hasErrors('supplier')}" th:errors="*{supplier}"
+                              class="alert alert-danger"></span>
+                        <select name="supplier" id="supplier" class="form-control" required="required">
+                            <option value="">Select a supplier</option>
+                            <option th:each="supplier : ${suppliers}" th:value="${supplier.id}" th:text="${supplier.supplierName}"></option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>&nbsp;</div>
+                </div>
+                <div class="col-md-6">
+                    <div style="text-align: right;">
+                        <button tabindex="8" id="btnReset" type="reset" class="btn btn-outline-info" style="margin-right: 2em;">Reset</button>
+                        <a tabindex="9" href="product/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                        <button tabindex="10" id="btnSubmit" type="submit" class="btn btn-outline-primary">Register product</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</th:block>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/master-layout}">
+<head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/customer/customer.css}"/>
+    <title>MidWesTen Bank - Customer Registration Form</title>
+</head>
+<body> <!--onload="document.querySelector('#customerNumber').focus();"-->
+<th:block layout:fragment="content">
+    <form id="customerRegistrationForm" method="post" action="/registerProduct" th:object="${product}">
+        <fieldset>
+            <legend>Product Registration Form</legend>
+            <!--                        Product Name -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="productName">Product name:</label>
+                        <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productName}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="productName" name="productName" type="text" class="form-control" th:value="${product.productName}"/>
+                    </div>
+                </div>
+                <!--   Product Name -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="productNumber">Product Number:</label>
+                        <span th:if="${#fields.hasErrors('productName')}" th:errors="*{productNumber}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="productNumber" name="productNumber" type="text" class="form-control" th:value="${product.productNumber}"/>
+                    </div>
+                </div>
+
+                <!--                    Unice Price-->
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="unitPrice">Unit Price:</label>
+                        <span th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="unitPrice" name="unitPrice" type="text" class="form-control" th:value="${product.unitPrice}"/>
+                    </div>
+                </div>
+            </div>
+            <!-- First row is over-->
+
+            <!--            Second Row -->
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="quantityInStock">Quantity In Stock:</label>
+                        <span th:if="${#fields.hasErrors('quantityInStock')}" th:errors="*{quantityInStock}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="quantityInStock" name="quantityInStock" type="text" class="form-control" th:value="${product.quantityInStock}"/>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="date">Date Supplied:</label>
+                        <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"
+                              class="alert alert-danger"></span>
+                        <input tabindex="2" id="date" name="date" type="date" class="form-control" th:value="${product.date}"/>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="supplier">Supplier:</label>
+                        <span th:if="${#fields.hasErrors('supplier')}" th:errors="*{supplier}"
+                              class="alert alert-danger"></span>
+                        <select name="supplier" id="supplier" class="form-control" required="required">
+                            <option value="">Select a supplier</option>
+                            <option th:each="supplier : ${suppliers}" th:value="${supplier.id}" th:text="${supplier.supplierName}"></option>
+                        </select>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div>&nbsp;</div>
+                </div>
+                <div class="col-md-6">
+                    <div style="text-align: right;">
+                        <button tabindex="8" id="btnReset" type="reset" class="btn btn-outline-info" style="margin-right: 2em;">Reset</button>
+                        <a tabindex="9" href="product/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                        <button tabindex="10" id="btnSubmit" type="submit" class="btn btn-outline-primary">Register product</button>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+</th:block>
+
+<th:block layout:fragment="footer"></th:block>
+
+</body>
+</html>

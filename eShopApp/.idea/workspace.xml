@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebe4a3cc-8f52-4c50-bbf1-b5b188393a22" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/controller/BookController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/eShop/src/main/resources/templates/template.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eShop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eShop/src/main/java/eShop/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/controller/HomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eShop/src/main/java/eShop/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/repository/BookRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eShop/src/main/java/eShop/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/service/BookService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eShop/src/main/java/eShop/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/service/impl/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eShop/src/main/resources/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/resources/templates/home/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eShop/src/main/resources/templates/Book/new.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,12 +11,21 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1P0czcOeoGvsIhwguMEzr5WsB7H" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
