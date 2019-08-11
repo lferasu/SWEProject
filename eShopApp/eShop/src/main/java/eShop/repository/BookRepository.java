@@ -10,6 +10,6 @@ import eShop.model.Book;
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer>{
 	public List<Book> findBookByIsbn(String isbn);
-	//public List<Book> findAllByTitleContainsAndIsbnContainsAndPublisherContains(String title, String Isbn, String author);
+	public List<Book> findAllByTitleContainsOrDescriptionContainsOrIsbnContains(String title, String desc, String isbn);
 
 }

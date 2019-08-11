@@ -2,8 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ebe4a3cc-8f52-4c50-bbf1-b5b188393a22" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/eShop/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/controller/BookController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/eShop/src/main/resources/templates/template.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eShop/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eShop/src/main/java/eShop/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eShop/src/main/java/eShop/repository/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/repository/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eShop/src/main/java/eShop/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eShop/src/main/java/eShop/service/impl/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/java/eShop/service/impl/BookServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/eShop/src/main/resources/templates/home/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/eShop/src/main/resources/templates/home/index.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -20,7 +26,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/eShop" />
     <property name="settings.editor.selected.configurable" value="vcs.Git" />
   </component>
   <component name="RunDashboard">
@@ -48,6 +54,7 @@
       <workItem from="1565014718630" duration="2177000" />
       <workItem from="1565020187347" duration="307000" />
       <workItem from="1565020518651" duration="473000" />
+      <workItem from="1565484960370" duration="150000" />
     </task>
     <servers />
   </component>
