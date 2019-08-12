@@ -30,10 +30,12 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+
     @GetMapping(value = {"book/"})
     public String home() {
         return "book/index";
     }
+
     // SEARCH Use-Case
     @GetMapping(value = { "eshop/book/search" })
     public ModelAndView searchStudent(@RequestParam String search, Model model) {
@@ -79,7 +81,7 @@ public class BookController {
         model.addAttribute("book", new Book());
          model.addAttribute("authors", authorService.getAllAuthors() );
         model.addAttribute("now", LocalDate.now());
-        return "Book/new";
+        return "book/new";
     }
 
 
