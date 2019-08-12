@@ -123,9 +123,18 @@ img {
     height: 350px;
     padding: 0;
     margin: 0;
-    background: url(images/templatemo_header_bg.jpg) no-repeat;
+    background: url(images/templatemo_header_bg_blank2.jpg) no-repeat;
     background-repeat: no-repeat;
     background-size: auto;
+}
+#headerbgimage h1 {
+    float: left;
+    font-size:44px;
+    text-align: center;
+    color: #fcf88e;
+    margin-top: 95px;
+    margin-left: 150px;
+    width: 180px;
 }
 
 #templatemo_header a,a:hover {
@@ -135,8 +144,9 @@ img {
 #templatemo_header #templatemo_special_offers {
     float: left;
     font-size: 14px;
+    color: #fcf88e;
     margin-top: 95px;
-    margin-left: 490px;
+    margin-left: 290px;
     width: 180px;
 }
 
@@ -161,6 +171,7 @@ img {
 #templatemo_new_books ul {
     margin: 0 0 10px 0;
     padding: 0 0 0 20px;
+    color: #fcf88e;
 }
 
 #templatemo_new_books li {
