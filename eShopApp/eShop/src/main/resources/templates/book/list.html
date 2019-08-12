@@ -4,36 +4,19 @@
 <head th:replace="layouts/master-layout :: header" />
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top" />
+<div th:replace="layouts/master-layout :: search" />
 
 <!-- End of Navigation bar -->
 <div class="container">
-
     <div style="padding-top: 1em;" class="container">
-        <div>
-            <div class="form" id="navbarSupportedContent"
-                 style="width: 40%; float: left;">
-
-                <!-- -form for searching values -->
-                <form class="form-inline mr-auto" method="get"
-                      action="/eshop/Book/search">
-                    <input class="form-control" type="text" placeholder="Search"
-                           name="search" aria-label="Search">
-                    <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2"
-                            type="submit">Search Books</button>
-                </form>
-            </div>
-            <!--<span style="float: right;"> <a
-                class="btn btn-outline-success btn-lg"
-                href="/eRegistrar/student/edit"> Add New Student</a>
-            </span>  -->
         </div>
         <p>&nbsp;</p>
         <div style="font-size: 1em">
             <table class="table table-striped">
                 <thead>
                 <tr>
-                    <th scope="col">#This is table search menu</th>
-                    <th scope="col">Book Title</th>
+                    <th scope="col"> # </th>
+                    <th scope="col"> Book Title</th>
                     <th scope="col">Isbn</th>
                     <th scope="col">Price</th>
                     <th scope="col">Author</th>
@@ -44,7 +27,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="book,iterStat : ${book}">
+                <tr th:each="book,iterStat : ${books}">
                     <th scope="row" th:text="${iterStat.count}"></th>
                     <td th:text="${book.title}"></td>
                     <td th:text="${book.isbn}"></td>
@@ -52,7 +35,7 @@
                     <td th:text="${book.authors}"></td>
                     <td th:text="${book.categories}"></td>
                     <td th:text="${book.supplier}"></td>
-                    <td><a th:href="@{/eshop/book/addToCart/{bookId} (bookId=${book.id})}">Add to Cart </a></td>
+                    <td><a th:href="@{/eshop/book/addToCart/{id} (id=${book.id})}">Add to Cart </a></td>
                 </tr>
                 </tbody>
             </table>

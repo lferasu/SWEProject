@@ -23,18 +23,16 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-
-
     @GetMapping(value = {"book/"})
     public String home() {
         return "book/index";
     }
     // SEARCH Use-Case
-    @GetMapping(value = { "eshop/Book/search" })
+    @GetMapping(value = { "eshop/book/search" })
     public ModelAndView searchStudent(@RequestParam String search, Model model) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("book", bookService.getAllBooksQuickSearch(search));
-        modelAndView.setViewName("Book/search");
+        modelAndView.addObject("books", bookService.getAllBooksQuickSearch(search));
+        modelAndView.setViewName("book/list");
         return modelAndView;
     }
 
