@@ -1,7 +1,9 @@
 package eShop.controller;
 
 import eShop.model.Book;
+import eShop.service.AuthorService;
 import eShop.service.BookService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -15,7 +17,12 @@ import java.time.LocalDate;
 @Controller
 public class BookController {
 
+    @Autowired
     BookService bookService;
+
+    @Autowired
+    AuthorService authorService;
+
 
     @GetMapping(value = {"book/"})
     public String home() {
@@ -44,7 +51,7 @@ public class BookController {
     @GetMapping(value={"/showBookForm"})
     public String newCustomerForm(Model model) {
         model.addAttribute("book", new Book());
-        // model.addAttribute("suppliers", supplierService.getAllSuppliers());
+         model.addAttribute("authors", authorService.getAllAuthors() );
         model.addAttribute("now", LocalDate.now());
         return "Book/new";
     }
