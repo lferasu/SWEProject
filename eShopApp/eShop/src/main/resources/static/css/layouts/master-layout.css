@@ -6,7 +6,7 @@ body {
     font-family: Verdana, Arial, san-serif;
     font-size: 11px;
     color: #000000;
-    background: #ffffff;
+    background: #575757;
 }
 
 a:link, a:visited { color: #e6e154; text-decoration: none; font-weight: bold;}
@@ -86,7 +86,7 @@ img {
     width: 1260px;
     height: 100px;
     background: url(images/master_layout_menu_bg.jpg) no-repeat;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
 }
 
 #templatemo_menu ul {
@@ -120,10 +120,12 @@ img {
 #templatemo_header {
     clear: both;
     width: 1260px;
-    height: 285px;
+    height: 350px;
     padding: 0;
     margin: 0;
     background: url(images/templatemo_header_bg.jpg) no-repeat;
+    background-repeat: no-repeat;
+    background-size: auto;
 }
 
 #templatemo_header a,a:hover {
