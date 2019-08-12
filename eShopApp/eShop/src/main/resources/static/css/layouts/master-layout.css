@@ -23,14 +23,7 @@ html {
 /*    cursor: pointer;*/
 /*}*/
 /* ------------------------------------------------------- */
-/*
-CSS Credit: http://www.templatemo.com/
-*/
 
-/*
-Book Store Template
-http://www.templatemo.com/preview/templatemo_086_book_store
-*/
 body {
     margin: 0;
     padding: 0;
@@ -104,7 +97,7 @@ img {
 }
 
 #templatemo_container{
-    width: 960px;
+    width: 1260px;
     margin: 0 auto;
     padding: 0 10px;
     background: #1c1c1b url(images/templatemo_bg.jpg) repeat-y;
@@ -115,7 +108,7 @@ img {
 
 #templatemo_menu {
     clear: both;
-    width: 960px;
+    width: 1260px;
     height: 45px;
     background: url(images/templatemo_menu_bg.jpg) no-repeat;
 }
