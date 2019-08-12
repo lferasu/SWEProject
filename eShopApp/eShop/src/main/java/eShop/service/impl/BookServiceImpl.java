@@ -10,42 +10,49 @@ import eShop.model.Book;
 import eShop.repository.BookRepository;
 import eShop.service.BookService;
 
+import java.util.List;
+
 @Service
 public class BookServiceImpl implements BookService {
-
     @Autowired
     private BookRepository bookRepository;
-
     @Override
     public Iterable<Book> getAllBooks() {
-        return bookRepository.findAll(Sort.by("title"));
+        return null;
     }
-
     @Override
     public Page<Book> getAllBooksPaged(int pageNo) {
-        return bookRepository.findAll(PageRequest.of(pageNo, 5, Sort.by("title")));
+        return null;
     }
 
     @Override
     public Book saveBook(Book book) {
-        return bookRepository.save(book);
+        return null;
     }
 
     @Override
     public Book getBookById(Integer bookId) {
-        return bookRepository.getOne(bookId);
+        return null;
     }
 
     @Override
     public void deleteBookById(Integer bookId) {
-        bookRepository.deleteById(bookId);
+
     }
 
     @Override
-    public Page<Book> getQuickSearchBooks(int pageNo, String searchText) {
-        List<Book> foundBooks = bookRepository.findAllByTitleContainsOrDescriptionContainsOrIsbnContains(searchText,searchText,searchText);
-        return new PageImpl<Book>(foundBooks,PageRequest.of(pageNo, 4, Sort.by("title")), foundBooks.size());
+    public List<Book> getAllBooksQuickSearch(String searchString) {
+        return bookRepository.findAllByIsbnContainsOrTitleContainsOrAuthorsContainsOrCategoriesContainsOrSupplierContainsOrderByTitle(searchString,
+                searchString,searchString,searchString,searchString);
     }
 
+
+
+
+//	@Override
+//	public Page<Book> getSearchedBooks(int pageNo, Book book) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 }

@@ -1,21 +1,26 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th = "http://www.thymeleaf.org">
-<head th:replace="template :: header" />
+<head th:replace="layouts/master-layout :: header" />
+
 <body>
-<nav th:replace="template :: navbar-top" />
+<nav th:replace="layouts/master-layout :: navbar-top" />
 
 <div class="container">
 
 
     <div class="starter-template">
-        dslfjaldjfadf
+        <h1>This is a home page for eShop</h1>
+        <hr>
+        <h4>The page is under construction</h4>
+        <h5>So give us a break!</h5>
+
 
     </div>
 
 </div>
 <!-- /.container -->
 
-<div th:replace="template :: footer"/>
+<div th:replace="layouts/master-layout :: footer"></div>
 
 </body>
 </html>
