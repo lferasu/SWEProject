@@ -18,7 +18,7 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
     @Override
     public Iterable<Book> getAllBooks() {
-        return null;
+        return  bookRepository.findAll();
     }
     @Override
     public Page<Book> getAllBooksPaged(int pageNo) {

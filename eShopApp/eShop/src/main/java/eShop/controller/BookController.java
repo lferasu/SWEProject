@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Controller
@@ -56,9 +57,21 @@ public class BookController {
             return "Book/new";
         }
         bookService.saveBook(book);
-        return "redirect:/listProduct";
+        return "redirect:/listBook";
     }
 
+    @GetMapping(value = { "/listBook" })
+    public ModelAndView showAllBooks( @Valid
+                                          @ModelAttribute("book")
+                                                  Book book,
+                                      BindingResult bindingResult,
+                                      Model model) {
+        ModelAndView modelAndView = new ModelAndView();
+        Iterable<Book> listOfBooks = bookService.getAllBooks();
+        modelAndView.addObject("books", bookService.getAllBooks());
+        modelAndView.setViewName("book/list");
+        return modelAndView;
+    }
 
     // show Registration Form
     @GetMapping(value={"/showBookForm"})
