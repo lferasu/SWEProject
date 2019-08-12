@@ -11,9 +11,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.Transient;
-
-import org.springframework.web.multipart.MultipartFile;
 
 import eShop.model.user.Author;
 import eShop.model.user.Supplier;
@@ -27,12 +24,10 @@ public class Book {
 	private String description;	
 	private String isbn;
 	private Double price;
-	private Integer copiesNumber;
+	private Integer numberOfCopies;
 	private Boolean isApproved;
-	
-	@Transient
-    private MultipartFile bookImage;
-	
+	private String image;
+
 	@OneToOne //uni
 	@JoinColumn(name = "book_supplier_id")
 	private Supplier supplier;
@@ -45,7 +40,7 @@ public class Book {
 	private List<Author> authors = new ArrayList<Author>();
 	
 	@OneToMany
-	@JoinColumn(name="fk_book")
+	@JoinColumn(name="catagories_id")
 	private List<Category> categories = new ArrayList<Category>();
 	
 	public Book() {
@@ -54,15 +49,15 @@ public class Book {
 	}
 	
 	public Book(String title, String description, String isbn, Double price, Integer copiesNumber, Boolean isApproved,
-			MultipartFile bookImage, Supplier supplier, List<Author> authors, List<Category> categories) {
+			String image, Supplier supplier, List<Author> authors, List<Category> categories) {
 		super();
 		this.title = title;
 		this.description = description;
 		this.isbn = isbn;
 		this.price = price;
-		this.copiesNumber = copiesNumber;
+		this.numberOfCopies = copiesNumber;
 		this.isApproved = isApproved;
-		this.bookImage = bookImage;
+		this.image = image;
 		this.supplier = supplier;
 		this.authors = authors;
 		this.categories = categories;
@@ -108,12 +103,12 @@ public class Book {
 		this.price = price;
 	}
 
-	public Integer getCopiesNumber() {
-		return copiesNumber;
+	public Integer getNumberOfCopies() {
+		return numberOfCopies;
 	}
 
-	public void setCopiesNumber(Integer copiesNumber) {
-		this.copiesNumber = copiesNumber;
+	public void setNumberOfCopies(Integer numberOfCopies) {
+		this.numberOfCopies = numberOfCopies;
 	}
 
 	public Boolean getIsApproved() {
@@ -124,12 +119,12 @@ public class Book {
 		this.isApproved = isApproved;
 	}
 
-	public MultipartFile getBookImage() {
-		return bookImage;
+	public String getBookImage() {
+		return image;
 	}
 
-	public void setBookImage(MultipartFile bookImage) {
-		this.bookImage = bookImage;
+	public void setBookImage(String image) {
+		this.image = image;
 	}
 
 	public Supplier getSupplier() {
@@ -159,7 +154,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", isbn=" + isbn + ", price=" + price + ", copiesNumber="
-				+ copiesNumber + ", isApproved=" + isApproved + ", supplier=" + supplier + ", authors=" + authors
+				+ numberOfCopies + ", isApproved=" + isApproved + ", supplier=" + supplier + ", authors=" + authors
 				+ ", categories=" + categories + "]";
 	}
 	
