@@ -15,6 +15,11 @@
 </head>
 
 <body>
+<nav th:fragment="navbar-top">
+    <div id="templatemo_container">
+        <div id="templatemo_menu">
+=======
+
 <div class = "container">
 
 <nav th:fragment="navbar-top" class = "container">
@@ -29,11 +34,12 @@
                 <li><a th:href="@{/home}">New Releases</a></li>
 
             </ul>
+
+
         </div>
     </div>
 
 </nav>
-
 
 <div  th:fragment="search" class="container">
     <form class="form-inline mr-auto" method="get"
@@ -44,6 +50,8 @@
                 type="submit">Search Books</button>
     </form>
 </div>
+
+
 
 <div th:fragment="footer" class="container" >
     <div class="row">
