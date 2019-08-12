@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/master-layout :: header" />
+<body>
+<nav th:replace="layouts/master-layout :: navbar-top" />
+<!-- End of Navigation bar -->
+<div class="container">
+    <div style="padding-top: 1em;" class="container">
+        <div>
+            <div class="form" id="navbarSupportedContent"
+                 style="width: 40%; float: left;">
+
+                <!-- -form for searching values -->
+                <form class="form-inline mr-auto" method="get"
+                      action="/eshop/book/search">
+                    <input class="form-control" type="text" placeholder="Search"
+                           name="search" aria-label="Search">
+                    <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2"
+                            type="submit">Search Books</button>
+                </form>
+            </div>
+            <!--<span style="float: right;"> <a
+                class="btn btn-outline-success btn-lg"
+                href="/eRegistrar/student/edit"> Add New Student</a>
+            </span>  -->
+        </div>
+        <p>&nbsp;</p>
+<!--        <div style="font-size: 1em">-->
+<!--            <table class="table table-striped">-->
+<!--                <thead>-->
+<!--                <tr>-->
+<!--                    <th scope="col"> # </th>-->
+<!--                    <th scope="col"> Book Title</th>-->
+<!--                    <th scope="col">Isbn</th>-->
+<!--                    <th scope="col">Price</th>-->
+<!--                    <th scope="col">Author</th>-->
+<!--                    <th scope="col">Category</th>-->
+<!--                    <th scope="col">Supplier</th>-->
+<!--                    <th scope="col">&nbsp;</th>-->
+<!--                    <th scope="col">&nbsp;</th>-->
+<!--                </tr>-->
+<!--                </thead>-->
+<!--                <tbody>-->
+<!--                <tr th:each="book,iterStat : ${books}">-->
+<!--                    <th scope="row" th:text="${iterStat.count}"></th>-->
+<!--                    <td th:text="${book.title}"></td>-->
+<!--                    <td th:text="${book.isbn}"></td>-->
+<!--                    <td th:text="${book.price}"></td>-->
+<!--                    <td th:text="${book.authors}"></td>-->
+<!--                    <td th:text="${book.categories}"></td>-->
+<!--                    <td th:text="${book.supplier}"></td>-->
+<!--                    <td><a th:href="@{/eshop/book/addToCart/{id} (id=${book.id})}">Add to Cart </a></td>-->
+<!--                </tr>-->
+<!--                </tbody>-->
+<!--            </table>-->
+<!--        </div>-->
+    </div>
+</div>
+<div th:replace="layouts/master-layout :: footer"></div>
+</body>
+</html>

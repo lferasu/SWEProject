@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
 
 <head th:fragment="header">
     <meta charset="UTF-8">
@@ -14,21 +14,42 @@
 
 </head>
 
-<body class = "container">
+<body>
+<nav th:fragment="navbar-top">
+    <div id="templatemo_container">
+        <div id="templatemo_menu">
+=======
+
+<div class = "container">
 
 <nav th:fragment="navbar-top" class = "container">
     <div id="templatemo_container" class = "container">
         <div id="templatemo_menu" class = "container">
+
             <ul>
+
                 <li><a th:href="@{/home}" class="current">Home</a></li>
                 <li><a th:href="@{/showBookForm}">Books</a></li>
                 <li><a th:href="@{/home}">Categories</a></li>
                 <li><a th:href="@{/home}">New Releases</a></li>
 
             </ul>
+
+
         </div>
-    </div><!-- end of menu -->
+    </div>
+
 </nav>
+
+<div  th:fragment="search" class="container">
+    <form class="form-inline mr-auto" method="get"
+          action="/eshop/book/search">
+        <input class="form-control" type="text" placeholder="Search"
+               name="search" aria-label="Search">
+        <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2"
+                type="submit">Search Books</button>
+    </form>
+</div>
 
 
 
@@ -45,12 +66,11 @@
     <h6>Copyright &copy; Addisu, Getaneh, Sod and Surafel</h6>
     </div>
 
-
+</div>
 <!-- https://getbootstrap.com -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 </div>
-
 </body>
 </html>

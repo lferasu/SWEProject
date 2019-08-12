@@ -9,5 +9,5 @@ import eShop.model.Book;
 
 @Repository
 public interface BookRepository extends JpaRepository<Book, Integer>{
-	public List<Book> findAllByIsbnContainsOrTitleContainsOrAuthorsContainsOrCategoriesContainsOrSupplierContainsOrderByTitle(String isbn, String title, String author, String category, String supplier);
+	public List<Book> findAllByIsbnContainsOrTitleContainsOrderByTitle(String isbn, String title);
 }
