@@ -304,12 +304,20 @@ img {
 /* footer */
 #templatemo_footer {
     clear: both;
-    width: 960px;
-    padding: 20px 0px 20px 0;
+    width: 1130px;
+    padding: 20px 0px 20px 0px;
     text-align: center;
     border-top: 1px solid #25211e;
-    color: #999;
-    background-color: #111110;
+    color: #ffffff;
+    background-color: #8b040e;
+    margin-left: -15px;
+}
+#footerbgimage {
+    width: 600px;
+    height: 300px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    background: url(images/EW_1358_Tadias_cover.jpg);
 }
 
 #templatemo_footer a{
