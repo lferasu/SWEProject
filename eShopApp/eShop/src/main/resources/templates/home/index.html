@@ -1,9 +1,13 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head lang="en" xmlns:th = "http://www.thymeleaf.org">
 <head th:replace="layouts/master-layout :: header" />
 
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top" />
+<!--<div th:replace="layouts/master-layout::search">-->
+<!--    <p>Abebe Beso Bela</p>-->
+<!--</div>-->
+
 
 <div class="container">
 
@@ -21,6 +25,7 @@
 <!-- /.container -->
 
 <div th:replace="layouts/master-layout :: footer"></div>
+
 
 </body>
 </html>
