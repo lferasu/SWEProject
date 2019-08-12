@@ -5,10 +5,7 @@ import eShop.repository.BookRepository;
 import eShop.model.Book;
 import eShop.service.AuthorService;
 import eShop.service.BookService;
-<<<<<<< HEAD
-=======
 import org.springframework.validation.BindingResult;
->>>>>>> e41923be3629420e3494f7f6d775f19577d157b2
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
