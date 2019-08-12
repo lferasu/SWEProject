@@ -116,19 +116,4 @@ public class User {
 		this.active = active;
 	}
 
-	public List<String> getRoleList(){
-		if(this.role != null){
-			List<String> ls = new ArrayList<String>();
-			ls.add(role.toString());
-			System.out.println(role.toString());
-			return ls;
-		}
-		return new ArrayList<>();
-	}
-	public List<String> getPermissionList(){
-		if(this.permissions.length() > 0){
-			return Arrays.asList(this.permissions.split(","));
-		}
-		return new ArrayList<>();
-	}
 }

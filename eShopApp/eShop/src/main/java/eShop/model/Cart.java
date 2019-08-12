@@ -20,7 +20,6 @@ public class Cart {
 	@OneToOne //uni
 	@JoinColumn(name = "cart_customer_id")
 	private Customer customer;
-	
 	@OneToMany
 	@JoinColumn(name="fk_book")
 	private List<Book> books;
@@ -35,7 +34,6 @@ public class Cart {
 		this.customer = customer;
 		this.books = books;
 	}
-
 	public Integer getId() {
 		return id;
 	}

@@ -42,11 +42,9 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getAllBooksQuickSearch(String searchString) {
-        return bookRepository.findAllByIsbnContainsOrTitleContainsOrAuthorsContainsOrCategoriesContainsOrSupplierContainsOrderByTitle(searchString,
-                searchString,searchString,searchString,searchString);
+        return bookRepository.findAllByIsbnContainsOrTitleContainsOrderByTitle(searchString, searchString);
+
     }
-
-
 
 
 //	@Override

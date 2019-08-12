@@ -6,7 +6,7 @@ body {
     font-family: Verdana, Arial, san-serif;
     font-size: 11px;
     color: #000000;
-    background: #ffffff;
+    background: #575757;
 }
 
 a:link, a:visited { color: #e6e154; text-decoration: none; font-weight: bold;}
@@ -120,10 +120,21 @@ img {
 #templatemo_header {
     clear: both;
     width: 1260px;
-    height: 285px;
+    height: 350px;
     padding: 0;
     margin: 0;
-    background: url(images/templatemo_header_bg.jpg) no-repeat;
+    background: url(images/templatemo_header_bg_blank2.jpg) no-repeat;
+    background-repeat: no-repeat;
+    background-size: auto;
+}
+#headerbgimage h1 {
+    float: left;
+    font-size:44px;
+    text-align: center;
+    color: #fcf88e;
+    margin-top: 95px;
+    margin-left: 150px;
+    width: 180px;
 }
 
 #templatemo_header a,a:hover {
@@ -133,8 +144,9 @@ img {
 #templatemo_header #templatemo_special_offers {
     float: left;
     font-size: 14px;
+    color: #fcf88e;
     margin-top: 95px;
-    margin-left: 490px;
+    margin-left: 290px;
     width: 180px;
 }
 
@@ -159,6 +171,7 @@ img {
 #templatemo_new_books ul {
     margin: 0 0 10px 0;
     padding: 0 0 0 20px;
+    color: #fcf88e;
 }
 
 #templatemo_new_books li {
@@ -304,12 +317,20 @@ img {
 /* footer */
 #templatemo_footer {
     clear: both;
-    width: 960px;
-    padding: 20px 0px 20px 0;
+    width: 1130px;
+    padding: 20px 0px 20px 0px;
     text-align: center;
     border-top: 1px solid #25211e;
-    color: #999;
-    background-color: #111110;
+    color: #ffffff;
+    background-color: #8b040e;
+    margin-left: -15px;
+}
+#footerbgimage {
+    width: 600px;
+    height: 300px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    background: url(images/Ethiopianbook1.jpg);
 }
 
 #templatemo_footer a{
