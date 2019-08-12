@@ -8,6 +8,7 @@ public class HomeController {
 
     @GetMapping(value = {"/", "/eshop", "/eshop/home", "/home"})
     public String showHomePage() {
+
         return "home/index";
     }
 
