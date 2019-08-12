@@ -30,8 +30,8 @@ public class BookController {
     }
 
     // Actually Register a Book
-    @PostMapping(value = {"/registerBook"})
-    public String registerNewCustomer(
+    @PostMapping(value = "/registerBook")
+    public String registerNewBook(
             @Valid
             @ModelAttribute("book")
                     Book book,
