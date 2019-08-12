@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/master-layout}">
-<head>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/customer/customer.css}"/>
-    <title>eShop - Book Registration Form</title>
-</head>
-<body> <!--onload="document.querySelector('#customerNumber').focus();"-->
-<th:block layout:fragment="content">
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="layouts/master-layout :: header" />
+<body>
+<nav th:replace="layouts/master-layout :: navbar-top" />
     <form id="bookRegistrationForm" method="post" action="/registerBook" th:object="${book}">
         <fieldset>
             <legend>Product Registration Form</legend>
@@ -26,7 +21,7 @@
                 <div class="col-md-5">
                     <div class="form-group">
                         <label for="isbn">ISBN:</label>
-                        <span th:if="${#fields.hasErrors('productName')}" th:errors="*{isbn}"
+                        <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"
                               class="alert alert-danger"></span>
                         <input tabindex="2" id="isbn" name="isbn" type="text" class="form-control" th:value="${book.isbn}"/>
                     </div>
@@ -62,10 +57,10 @@
                 <!--Date published-->
                 <div class="col-md-4">
                     <div class="form-group">
-                        <label for="date">Date Published:</label>
-                        <span th:if="${#fields.hasErrors('date')}" th:errors="*{date}"
+                        <label for="datePublished">Date Published:</label>
+                        <span th:if="${#fields.hasErrors('datePublished')}" th:errors="*{date}"
                               class="alert alert-danger"></span>
-                        <input tabindex="2" id="date" name="date" type="date" class="form-control" th:value="${product.date}"/>
+                        <input tabindex="2" id="datePublished" name="datePublished" type="date" class="form-control" th:value="${book.datePublished}"/>
                     </div>
                 </div>
 
@@ -82,17 +77,17 @@
                     <!-- Second Row is over-->
             <div class="row">
                     <!--Author-->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="author">Supplier:</label>
-                        <span th:if="${#fields.hasErrors('supplier')}" th:errors="*{supplier}"
-                              class="alert alert-danger"></span>
-                        <select name="author" id="author" class="form-control" required="required">
-                            <option value="">Select Author</option>
-                            <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName}"></option>
-                        </select>
-                    </div>
-                </div>
+<!--                <div class="col-md-6">-->
+<!--                    <div class="form-group">-->
+<!--                        <label for="author">Supplier:</label>-->
+<!--                        <span th:if="${#fields.hasErrors('author')}" th:errors="*{supplier}"-->
+<!--                              class="alert alert-danger"></span>-->
+<!--                        <select name="author" id="author" class="form-control" required="required">-->
+<!--                            <option value="">Select Author</option>-->
+<!--                            <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName}"></option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+<!--                </div>-->
 
                     <!--Description-->
                 <div class="col-md-6">
@@ -119,7 +114,6 @@
             </div>
         </fieldset>
     </form>
-</th:block>
-<th:block layout:fragment="footer"></th:block>
+<div th:replace="layouts/master-layout :: footer"></div>
 </body>
 </html>

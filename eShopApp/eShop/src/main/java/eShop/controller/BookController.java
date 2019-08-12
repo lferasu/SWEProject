@@ -23,7 +23,7 @@ public class BookController {
     }
 
     // Actually Register a Book
-    @PostMapping(value = {"/registerProduct"})
+    @PostMapping(value = {"/registerBook"})
     public String registerNewCustomer(
             @Valid
             @ModelAttribute("book")

@@ -1,5 +1,6 @@
 package eShop.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,7 @@ import javax.persistence.OneToOne;
 
 import eShop.model.user.Author;
 import eShop.model.user.Supplier;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Book {
@@ -27,6 +29,9 @@ public class Book {
 	private Integer numberOfCopies;
 	private Boolean isApproved;
 	private String image;
+
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	private LocalDate datePublished;
 
 	@OneToOne //uni
 	@JoinColumn(name = "book_supplier_id")
@@ -49,7 +54,7 @@ public class Book {
 	}
 	
 	public Book(String title, String description, String isbn, Double price, Integer copiesNumber, Boolean isApproved,
-			String image, Supplier supplier, List<Author> authors, List<Category> categories) {
+				String image, LocalDate datePublished, Supplier supplier, List<Author> authors, List<Category> categories) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -58,6 +63,7 @@ public class Book {
 		this.numberOfCopies = copiesNumber;
 		this.isApproved = isApproved;
 		this.image = image;
+		this.datePublished = datePublished;
 		this.supplier = supplier;
 		this.authors = authors;
 		this.categories = categories;
@@ -149,6 +155,30 @@ public class Book {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+
+	public Boolean getApproved() {
+		return isApproved;
+	}
+
+	public void setApproved(Boolean approved) {
+		isApproved = approved;
+	}
+
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
+
+	public LocalDate getDatePublished() {
+		return datePublished;
+	}
+
+	public void setDatePublished(LocalDate datePublished) {
+		this.datePublished = datePublished;
 	}
 
 	@Override
