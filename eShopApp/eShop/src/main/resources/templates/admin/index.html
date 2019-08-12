@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="layouts/master-layout :: header" />
+
 <body>
-$END$
+<nav th:replace="layouts/master-layout :: navbar-top" />
+<div class="container">
+    <p class="alert">Admin is logged in. </p>
+    <span class="container" style="align-content: center">
+        Here, Admin Home Page
+    </span>
+</div>
 </body>
+
+<div th:replace="layouts/master-layout :: footer"></div>
 </html>
