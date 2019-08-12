@@ -3,6 +3,7 @@
 <head th:replace="layouts/master-layout :: header" />
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top" />
+<div class="container">
     <form id="bookRegistrationForm" method="post" action="/registerBook" th:object="${book}">
         <fieldset>
             <legend>Product Registration Form</legend>
@@ -114,6 +115,7 @@
             </div>
         </fieldset>
     </form>
+</div>
 <div th:replace="layouts/master-layout :: footer"></div>
 </body>
 </html>
