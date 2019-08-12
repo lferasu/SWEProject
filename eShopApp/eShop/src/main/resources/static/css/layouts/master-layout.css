@@ -1,19 +1,12 @@
-/*
-CSS Credit: http://www.templatemo.com/
-*/
 
-/* 
-Book Store Template 
-http://www.templatemo.com/preview/templatemo_086_book_store 
-*/
 body {
     margin: 0;
     padding: 0;
     line-height: 1.5em;
     font-family: Verdana, Arial, san-serif;
     font-size: 11px;
-    color: #ffffff;
-    background: #4b4743;
+    color: #000000;
+    background: #ffffff;
 }
 
 a:link, a:visited { color: #e6e154; text-decoration: none; font-weight: bold;}
@@ -91,8 +84,9 @@ img {
 #templatemo_menu {
     clear: both;
     width: 1260px;
-    height: 45px;
-    background: url(images/templatemo_menu_bg.jpg) no-repeat;
+    height: 100px;
+    background: url(images/master_layout_menu_bg.jpg) no-repeat;
+    margin-bottom: 30px;
 }
 
 #templatemo_menu ul {
@@ -108,11 +102,12 @@ img {
 #templatemo_menu ul li a{
     float: left;
     padding: 0 20px;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
     text-decoration: none;
-    color: #969547;
+    color: #ffffff;
+    margin-top: 30px;
 }
 
 #templatemo_menu li a:hover, #templatemo_menu li .current{
@@ -309,12 +304,20 @@ img {
 /* footer */
 #templatemo_footer {
     clear: both;
-    width: 960px;
-    padding: 20px 0px 20px 0;
+    width: 1130px;
+    padding: 20px 0px 20px 0px;
     text-align: center;
     border-top: 1px solid #25211e;
-    color: #999;
-    background-color: #111110;
+    color: #ffffff;
+    background-color: #8b040e;
+    margin-left: -15px;
+}
+#footerbgimage {
+    width: 600px;
+    height: 300px;
+    margin-top: 30px;
+    margin-bottom: 0;
+    background: url(images/EW_1358_Tadias_cover.jpg);
 }
 
 #templatemo_footer a{
