@@ -43,10 +43,10 @@ public class BookController {
     // show Registration Form
     @GetMapping(value={"/showBookForm"})
     public String newCustomerForm(Model model) {
-        model.addAttribute("product", new Book());
+        model.addAttribute("book", new Book());
         // model.addAttribute("suppliers", supplierService.getAllSuppliers());
         model.addAttribute("now", LocalDate.now());
-        return "product/new";
+        return "Book/new";
     }
 
 
