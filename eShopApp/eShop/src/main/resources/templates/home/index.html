@@ -1,16 +1,17 @@
 <!DOCTYPE HTML>
 <html lang="en" xmlns:th = "http://www.thymeleaf.org">
-<head th:replace="master-layout :: header" />
+<head th:replace="layouts/master-layout :: header" />
 <body>
-<nav th:replace="master-layout :: navbar-top" />
+<nav th:replace="layouts/master-layout :: navbar-top" />
 
 <div class="container">
 
 
     <div class="starter-template">
         <h1>This is a home page for eShop</h1>
-        <h3>The page is under construction</h3>
-        <h3>So give us a break!</h3>
+        <hr>
+        <h4>The page is under construction</h4>
+        <h5>So give us a break!</h5>
 
 
     </div>
@@ -18,7 +19,7 @@
 </div>
 <!-- /.container -->
 
-<div th:replace="master-layout :: footer"/>
+<div th:replace="master-layout :: footer"></div>
 
 </body>
 </html>
