@@ -3,12 +3,16 @@ package eShop.controller;
 import eShop.model.BillingInfo;
 import eShop.model.Book;
 import eShop.model.Cart;
-import eShop.model.DeliveryRequest;
 import eShop.model.user.Address;
+import eShop.model.user.Supplier;
+import eShop.model.user.User;
 import eShop.service.AuthorService;
 import eShop.service.BillingInfoService;
 import eShop.service.BookService;
+import eShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -33,7 +37,10 @@ public class BookController {
     private BillingInfoService billingInfoService;
 
     @Autowired
-    private  DeliveryRequestController deliveryRequestController;
+
+
+    private  UserService userService;
+
     @GetMapping(value = {"book/"})
     public String home() {
         return "book/index";
@@ -60,15 +67,16 @@ public class BookController {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "Book/new";
         }
+
+        User activeUser = getActiveUser();
+        Supplier supplier = new Supplier();
+
+        supplier.setId(activeUser.getId());
+        supplier.setEmail(activeUser.getEmail());
+
+        book.setSupplier(supplier);
         Book savedBook = bookService.saveBook(book);
 
-       // EmailCfg emailCfg = new EmailCfg();
-        DeliveryRequest deliveryRequest = new DeliveryRequest();
-        deliveryRequest.setEmail("ouremail@email.com");
-        deliveryRequest.setName("supplier");
-        deliveryRequest.setRequestContent("The Book" + savedBook.getTitle() );
-
-        deliveryRequestController.sendDeliveryRequest(deliveryRequest);
         return "redirect:/listBook";
     }
 
@@ -92,6 +100,23 @@ public class BookController {
         return "book/new";
     }
 
+    public User getActiveUser()
+    {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String username;
+        if(principal instanceof UserDetails)
+        {
+            username =((UserDetails) principal).getUsername();
+        }
+        else
+        {
+            username = principal.toString();
+        }
+        System.out.println("hello");
+        return userService.findByUsername(username);
+    }
+
     //accept place order
     @GetMapping("book/placeorder")
     public String showPlaceOrder(){
@@ -113,12 +138,13 @@ public class BookController {
             }
 
         Double totalPrice = bookService.calculateTotalPrice(cart.getBooks());
-        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
+//        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
+        Address billingAddress = new Address();
         Address shippingAddress = new Address();
 
         model.addAttribute("books", cart.getBooks());
         model.addAttribute("totalPrice", totalPrice);
-        model.addAttribute("billingAddresses", billingAddresses);
+        model.addAttribute("billingAddress", billingAddress);
         model.addAttribute("shippingAddress", shippingAddress);
         return "book/placeorder";
     }

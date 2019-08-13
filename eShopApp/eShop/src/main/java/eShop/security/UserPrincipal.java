@@ -23,6 +23,7 @@ public class UserPrincipal implements UserDetails {
             GrantedAuthority authority = new SimpleGrantedAuthority(p);
             authorities.add(authority);
         });
+
         // Extract list of roles (ROLE_name)
         this.user.getRoleList().forEach(r -> {
             GrantedAuthority authority = new SimpleGrantedAuthority("ROLE_" + r);
@@ -41,6 +42,11 @@ public class UserPrincipal implements UserDetails {
     @Override
     public String getUsername() {
         return this.user.getUsername();
+    }
+
+    public User getUser()
+    {
+        return this.user;
     }
 
     @Override
