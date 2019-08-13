@@ -19,7 +19,9 @@ public class BookServiceImpl implements BookService {
     @Override
     public Iterable<Book> getAllBooks() {
 
+
         return bookRepository.findAll();
+
     }
     @Override
     public Page<Book> getAllBooksPaged(int pageNo) {
@@ -28,7 +30,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public Book saveBook(Book book) {
-        return null;
+       return bookRepository.save(book);
     }
 
     @Override
@@ -59,7 +61,7 @@ public class BookServiceImpl implements BookService {
 
 //	@Override
 //	public Page<Book> getSearchedBooks(int pageNo, Book book) {
-//		// TODO Auto-generated method stub
+//
 //		return null;
 //	}
 

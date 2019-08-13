@@ -8,54 +8,54 @@ import javax.persistence.OneToOne;
 
 @Entity
 public class Supplier extends User{
-	
-	@Id@GeneratedValue
-	private Integer id;
-	private String companyName;
-	
-	@OneToOne
-	@JoinColumn(name = "supplier_address_id")
-	private Address address;
 
-	public Supplier() {
-	}
+    @Id@GeneratedValue
+    private Integer id;
+    private String companyName;
 
-	public Supplier(String companyName, Address address) {
-		super();
-		this.companyName = companyName;
-		this.address = address;
-	}
+    @OneToOne
+    @JoinColumn(name = "supplier_address_id")
+    private Address address;
 
-	public Integer getId() {
-		return id;
-	}
+    public Supplier() {
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public Supplier(String companyName, Address address) {
+        super();
+        this.companyName = companyName;
+        this.address = address;
+    }
 
-	public String getCompanyName() {
-		return companyName;
-	}
+    public Integer getId() {
+        return id;
+    }
 
-	public void setCompanyName(String companyName) {
-		this.companyName = companyName;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public Address getAddress() {
-		return address;
-	}
+    public String getCompanyName() {
+        return companyName;
+    }
 
-	public void setAddress(Address address) {
-		this.address = address;
-	}
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
 
-	@Override
-	public String toString() {
-		return "Supplier [id=" + id + ", companyName=" + companyName + ", address=" + address + "]";
-	}
-	
-	
-	
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    @Override
+    public String toString() {
+        return "Supplier [id=" + id + ", companyName=" + companyName + ", address=" + address + "]";
+    }
+
+
+
 
 }

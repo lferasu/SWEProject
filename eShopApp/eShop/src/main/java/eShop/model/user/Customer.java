@@ -3,39 +3,38 @@ package eShop.model.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import eShop.model.BillingInfo;
 import eShop.model.Subscription;
 
 @Entity
-@Table(name = "customer")
 public class Customer extends User{
 	@Id@GeneratedValue
 	private Integer id;
-	@OneToOne //uni
-	@JoinColumn(name="shipping_address_id")  //FK
-	private Address shippingAddress;
-	
+	private String billingAddress;
+	private String shippingAddress;
+
 	@OneToMany
 	@JoinColumn(name="fk_customer")
 	private List<BillingInfo> billingInfos = new ArrayList<BillingInfo>();
-	
+
 	@OneToMany
 	@JoinColumn(name="fk_customer")
 	private List<Subscription> subscriptions = new ArrayList<Subscription>();
-	
+
 	public Customer() {
-
+		super();
 	}
-	public Customer(String username, String password, String firstName, String lastName, String email,
-			Boolean isValid) {
-		super(username, password, firstName, lastName, email, isValid);
-
-	}
-	public Customer(Address shippingAddress, List<BillingInfo> billingInfos,
-			List<Subscription> subscriptions) {
-
+	public Customer(String billingAddress, String shippingAddress, List<BillingInfo> billingInfos,
+					List<Subscription> subscriptions) {
+		super();
+		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;
 		this.billingInfos = billingInfos;
 		this.subscriptions = subscriptions;
@@ -46,10 +45,16 @@ public class Customer extends User{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Address getShippingAddress() {
+	public String getBillingAddress() {
+		return billingAddress;
+	}
+	public void setBillingAddress(String billingAddress) {
+		this.billingAddress = billingAddress;
+	}
+	public String getShippingAddress() {
 		return shippingAddress;
 	}
-	public void setShippingAddress(Address shippingAddress) {
+	public void setShippingAddress(String shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 	public List<BillingInfo> getBillingInfos() {
@@ -66,10 +71,10 @@ public class Customer extends User{
 	}
 	@Override
 	public String toString() {
-		return "Customer [id=" + id  + ", shippingAddress=" + shippingAddress
+		return "Customer [id=" + id + ", billingAddress=" + billingAddress + ", shippingAddress=" + shippingAddress
 				+ ", billingInfos=" + billingInfos + ", subscriptions=" + subscriptions + "]";
 	}
-	
-	
-	
+
+
+
 }
