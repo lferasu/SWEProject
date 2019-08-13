@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 import eShop.model.user.Author;
 import eShop.model.user.Supplier;
+import eShop.model.user.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -28,9 +29,9 @@ public class Book {
 
 	@OneToOne //uni
 	@JoinColumn(name = "book_supplier_id")
-	private Supplier supplier;
+	private User supplier;
+	
 
-	//Many to many books <-> authors
 	@ManyToMany
 	@JoinTable(name = "book_author",
 			joinColumns = { @JoinColumn(name = "book_id") },
@@ -126,11 +127,11 @@ public class Book {
 		this.image = image;
 	}
 
-	public Supplier getSupplier() {
+	public User getSupplier() {
 		return supplier;
 	}
 
-	public void setSupplier(Supplier supplier) {
+	public void setSupplier(User supplier) {
 		this.supplier = supplier;
 	}
 
