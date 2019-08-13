@@ -13,11 +13,11 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class Book {
-	
+
 	@Id@GeneratedValue
 	private Integer id;
 	private String title;
-	private String description;	
+	private String description;
 	private String isbn;
 	private Double price;
 	private Integer numberOfCopies;
@@ -31,22 +31,22 @@ public class Book {
 	@JoinColumn(name = "book_supplier_id")
 	private User supplier;
 	
-	//Many to many books <-> authors	
+
 	@ManyToMany
-    @JoinTable(name = "book_author", 
-        joinColumns = { @JoinColumn(name = "book_id") }, 
-        inverseJoinColumns = { @JoinColumn(name = "author_id") })
+	@JoinTable(name = "book_author",
+			joinColumns = { @JoinColumn(name = "book_id") },
+			inverseJoinColumns = { @JoinColumn(name = "author_id") })
 	private List<Author> authors = new ArrayList<Author>();
-	
+
 	@OneToMany
 	@JoinColumn(name="catagories_id")
 	private List<Category> categories = new ArrayList<Category>();
-	
+
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public Book(String title, String description, String isbn, Double price, Integer copiesNumber, Boolean isApproved,
 				String image, LocalDate datePublished, Supplier supplier, List<Author> authors, List<Category> categories) {
 		super();

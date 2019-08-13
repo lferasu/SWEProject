@@ -56,8 +56,5 @@ public class Supplier extends User{
 	public String toString() {
 		return "Supplier [companyName=" + companyName + ", address=" + address + "]";
 	}
-	
-	
-	
-
 }
+

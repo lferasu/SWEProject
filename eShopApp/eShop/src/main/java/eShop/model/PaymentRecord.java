@@ -1,7 +1,6 @@
 package eShop.model;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,10 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 import eShop.model.user.Customer;
 import eShop.model.user.Supplier;
@@ -48,12 +45,11 @@ public class PaymentRecord {
 	
 	
 	public PaymentRecord() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public PaymentRecord(Customer customer, Supplier supplier, LocalDate paymentDate, BillingInfo billInfo,
 			List<Book> books, Order order, Double amount) {
-		super();
+
 		this.customer = customer;
 		this.supplier = supplier;
 		this.paymentDate = paymentDate;

@@ -16,18 +16,19 @@ public class Customer extends User{
 	private Address billingAddress;
 	@OneToOne
 	private Address shippingAddress;
-	
+
 	@OneToMany
 	@JoinColumn(name="fk_customer")
 	private List<BillingInfo> billingInfos = new ArrayList<BillingInfo>();
-	
+
 	@OneToMany
 	@JoinColumn(name="fk_customer")
 	private List<Subscription> subscriptions = new ArrayList<Subscription>();
-	
+
 	public Customer() {
 		super();
 	}
+
 	public Customer(Address billingAddress, Address shippingAddress, List<BillingInfo> billingInfos,
 			List<Subscription> subscriptions) {
 		super();
@@ -71,7 +72,7 @@ public class Customer extends User{
 		return "Customer [id=" + id + ", billingAddress=" + billingAddress + ", shippingAddress=" + shippingAddress
 				+ ", billingInfos=" + billingInfos + ", subscriptions=" + subscriptions + "]";
 	}
-	
-	
-	
+
+
+
 }

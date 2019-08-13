@@ -15,12 +15,16 @@
 </head>
 <body>
 
+
+<div class = "container">
+
 <nav th:fragment="navbar-top" class = "container">
     <div id="templatemo_container" class = "container">
         <div id="templatemo_menu" class = "container">
             <ul>
                 <li><a th:href="@{/home}" class="current">Home</a></li>
                 <li><a th:href="@{/showBookForm}">Books</a></li>
+                <li><a th:href="@{/book/placeorder}">Place Order</a></li>
                 <li><a th:href="@{/home}">Categories</a></li>
                 <li><a th:href="@{/home}">New Releases</a></li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">
@@ -51,11 +55,11 @@
 </div>
 <div th:fragment="footer" class="container" >
     <div class="row">
-        <div id="footerbgimage" class="col-md-8">
+        <div id="footerbgimage" class="col-md-6">
 
         </div>
 
-        <div id="footerbgimage" class="col-md-4">
+        <div id="footerbgimage" class="col-md-6">
         </div>
     </div>
     <div id = "templatemo_footer" class="container">
