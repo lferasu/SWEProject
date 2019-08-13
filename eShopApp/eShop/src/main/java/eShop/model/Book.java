@@ -182,8 +182,7 @@ public class Book {
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", isbn=" + isbn + ", price=" + price + ", copiesNumber="
-				+ numberOfCopies + ", isApproved=" + isApproved + ", supplier=" + supplier + ", authors=" + authors
-				+ ", categories=" + categories + "]";
+				+ numberOfCopies + ", isApproved=" + isApproved + ", supplier=" + supplier + ", categories=" + categories + "]";
 	}
 
 }

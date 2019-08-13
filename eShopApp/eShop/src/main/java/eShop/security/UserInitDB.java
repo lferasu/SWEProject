@@ -22,12 +22,13 @@ public UserInitDB(UserRepository userRepository, PasswordEncoder passwordEncoder
 
 
 
-        if(!userRepository.findByUsername("admin").getActive()) {
+
+        if(userRepository.count() == 0) {
 
             //create users
-            User user = new User("user", passwordEncoder.encode("user"), Role.CUSTOMER, "", "User's FirstName", "User's LastName", "ssdd@mum.edu", true);
-            User admin = new User("admin", passwordEncoder.encode("admin"), Role.ADMIN, "", "Admin's FirstName", "Admin's LastName", "ssdd@mum.edu", true);
-            User supplier = new User("supplier", passwordEncoder.encode("supplier"), Role.SUPPLIER, "", "Supplier's FirstName", "Supplier's LastName", "ssdd@mum.edu", true);
+            User user = new User("user", passwordEncoder.encode("user"), Role.CUSTOMER, "", "User's FirstName", "User's LastName", "sdblg@yahoo.com", true);
+            User admin = new User("admin", passwordEncoder.encode("admin"), Role.ADMIN, "", "Admin's FirstName", "Admin's LastName", "sshirmen@mum.edu", true);
+            User supplier = new User("supplier", passwordEncoder.encode("supplier"), Role.SUPPLIER, "", "Supplier's FirstName", "Supplier's LastName", "shirmen.sodbileg@gmail.com", true);
 
             this.userRepository.saveAll(Arrays.asList(user, admin, supplier));
         }

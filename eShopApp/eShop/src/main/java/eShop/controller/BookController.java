@@ -1,6 +1,8 @@
 package eShop.controller;
 
 
+import eShop.email.EmailCfg;
+import eShop.model.DeliveryRequest;
 import eShop.repository.BookRepository;
 import eShop.model.Book;
 import eShop.service.AuthorService;
@@ -27,6 +29,9 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
+    @Autowired
+    private  DeliveryRequestController deliveryRequestController;
+
 
 
     @GetMapping(value = {"book/"})
@@ -40,7 +45,7 @@ public class BookController {
     public ModelAndView searchStudent(@RequestParam String search, Model model) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.addObject("books", bookService.getAllBooksQuickSearch(search));
-        modelAndView.setViewName("book/list");
+        modelAndView.setViewName("book/list1");
         return modelAndView;
     }
 
@@ -57,7 +62,18 @@ public class BookController {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "Book/new";
         }
-        bookService.saveBook(book);
+        Book savedBook = bookService.saveBook(book);
+
+       // EmailCfg emailCfg = new EmailCfg();
+        DeliveryRequest deliveryRequest = new DeliveryRequest();
+        deliveryRequest.setEmail("ouremail@email.com");
+        deliveryRequest.setName("supplier");
+        deliveryRequest.setRequestContent("The Book" + savedBook.getTitle() );
+
+
+
+
+        deliveryRequestController.sendDeliveryRequest(deliveryRequest);
         return "redirect:/listBook";
     }
 
@@ -70,7 +86,7 @@ public class BookController {
         ModelAndView modelAndView = new ModelAndView();
         Iterable<Book> listOfBooks = bookService.getAllBooks();
         modelAndView.addObject("books", bookService.getAllBooks());
-        modelAndView.setViewName("book/list");
+        modelAndView.setViewName("book/list1");
         return modelAndView;
     }
     // show Registration Form

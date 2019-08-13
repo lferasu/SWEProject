@@ -29,6 +29,7 @@ public class UserPrincipal implements UserDetails {
             authorities.add(authority);
         });
 
+
         return authorities;
     }
 
