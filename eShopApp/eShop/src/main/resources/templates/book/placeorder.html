@@ -7,7 +7,7 @@
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top" />
 
-//displays the book and its price
+<!--displays the book and its price-->
 <div style="font-size: 1em" class="container">
     <table class="table table-striped">
         <thead>
@@ -31,19 +31,16 @@
             <td th:text="${totalPrice}"></td>
 
         </tr>
-        <tr th:if="${booksCount < 1}">
-            <td colspan="8" th:align="center">No books found</td>
-        </tr>
         </tbody>
     </table>
 </div>
 
-//displays billing info/form
+<!--displays billing info/form-->
 <div class="container">
 
 </div>
 
-//displays shipping address from
+<!--displays shipping address from-->
 <div class="container">
 
 </div>
