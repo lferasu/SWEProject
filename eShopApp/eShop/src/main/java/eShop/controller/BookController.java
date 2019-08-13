@@ -99,6 +99,12 @@ public class BookController {
         return "book/new";
     }
 
+    //accept place order
+    @GetMapping("book/placeorder")
+    public String showPlaceOrder(){
+        return "book/placeorder";
+    }
+
     //place order
     @PostMapping(value = {"/book/placeorder"})
     public String placeOrder(
@@ -118,6 +124,7 @@ public class BookController {
         Address shippingAddress = new Address();
 
         model.addAttribute("books", cart.getBooks());
+
         model.addAttribute("totalPrice", totalPrice);
         model.addAttribute("billingAddresses", billingAddresses);
         model.addAttribute("shippingAddress", shippingAddress);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
 <head th:replace="layouts/master-layout :: header">
 
     <title>eshop: place order</title>
@@ -7,5 +7,47 @@
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top" />
 
+//displays the book and its price
+<div style="font-size: 1em" class="container">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Book Title</th>
+            <th scope="col">Book Price</th>
+            <th scope="col">Tax</th>
+            <th scope="col">Delivery Price</th>
+            <th scope="col">Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="book,iterStat : ${books}">
+            <!--th:onclick="@{document.location='/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}" -->
+            <th scope="row" th:text="${iterStat.count}"></th>
+            <td th:text="${book.title}"></td>
+            <td th:text="${book.price}"></td>
+            <td th:text="${book.price}*0.01"></td>
+            <td th:text="${book.price}*0.1"></td>
+            <td th:text="${totalPrice}"></td>
+
+        </tr>
+        <tr th:if="${booksCount < 1}">
+            <td colspan="8" th:align="center">No books found</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+
+//displays billing info/form
+<div class="container">
+
+</div>
+
+//displays shipping address from
+<div class="container">
+
+</div>
+
+<div th:replace="layouts/master-layout :: footer"></div>
 </body>
 </html>
