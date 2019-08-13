@@ -15,6 +15,20 @@ public class CartController {
        return "cart/addToCart";
     }
 
+//    @PostMapping(value={"/addToCart"})
+
+
+
+
+//    // ADD-NEW Use-Case
+//    @PostMapping(value = { "/emarket/product/save" })
+//    public String addNewProduct(@Valid @ModelAttribute("student") Product product, BindingResult bindingResult) {
+//        if (bindingResult.hasErrors()) {
+//            return "/eRegistrar/product/edit";
+//        }
+//        product = productService.save(product);
+//        return "redirect:/emarket/product/list";
+//    }
 
 
 }
