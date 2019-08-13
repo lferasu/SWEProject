@@ -15,7 +15,7 @@ Group 1 (Must have):
 Group 2 (Nice to have):
 Notify Delivery Information
 Send Delivery Information
-Update Book information
+Update Book information....(Note: This is to be done by the manager) 
 Approve Book
 Generate Report
 Send Summary Sales Report
