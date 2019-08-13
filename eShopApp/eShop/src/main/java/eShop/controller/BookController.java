@@ -23,7 +23,6 @@ public class BookController {
 
     @Autowired
     private BookService bookService;
-
     
     // SEARCH Use-Case
     @GetMapping(value = { "eshop/book/search" })
@@ -60,6 +59,4 @@ public class BookController {
         model.addAttribute("now", LocalDate.now());
         return "book/new";
     }
-
-
 }
