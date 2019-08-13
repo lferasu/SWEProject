@@ -114,12 +114,13 @@ public class BookController {
             }
 
         Double totalPrice = bookService.calculateTotalPrice(cart.getBooks());
-        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
+//        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
+        Address billingAddress = new Address();
         Address shippingAddress = new Address();
 
         model.addAttribute("books", cart.getBooks());
         model.addAttribute("totalPrice", totalPrice);
-        model.addAttribute("billingAddresses", billingAddresses);
+        model.addAttribute("billingAddress", billingAddress);
         model.addAttribute("shippingAddress", shippingAddress);
         return "book/placeorder";
     }

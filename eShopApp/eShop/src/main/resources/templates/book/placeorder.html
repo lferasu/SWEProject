@@ -36,7 +36,90 @@
 </div>
 
 <!--displays billing info/form-->
+<h3>Your Billing Information:</h3>
+<hr>
 <div class="container">
+    <form id="BillingInformationForm" method="post" action="/book/payment" th:object="${billingAddress}">
+        <fieldset >
+            <input type="hidden" name="id" th:value="${billingAddress.id}"/>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="cardNumber">Card Number</label>
+                        <span th:if="${#fields.hasErrors('cardNumber')}" th:errors="*{cardNumber}"
+                              class="alert alert-danger"></span>
+                        <input id="cardNumber" name="cardNumber" type="text" class="form-control"
+                               aria-describedby="cardNumberHelp" required="required" placeholder="1111-1111-1111-1111"
+                               th:value="${billingAddress.cardNumber}">
+<!--                        <small id="cgpaHelp" class="form-text text-muted">Enter like this (1111-1111-1111-1111)</small>-->
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="holderFullName">Card Holder Name</label>
+                        <span th:if="${#fields.hasErrors('holderFullName')}" th:errors="*{holderFullName}"
+                              class="alert alert-danger"></span>
+                        <input id="holderFullName" name="holderFullName" type="text" required="required" class="form-control"
+                               th:value="${billingAddress.holderFullName}">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="expireDate">Expiration Date</label>
+                        <span th:if="${#fields.hasErrors('expireDate')}" th:errors="*{expireDate}"
+                              class="alert alert-danger"></span>
+                        <input id="expireDate" name="expireDate" type="date" class="form-control"
+                               th:value="${billingAddress.expireDate}">
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="securityDigits">Security Digits</label>
+                        <span th:if="${#fields.hasErrors('securityDigits')}" th:errors="*{securityDigits}"
+                              class="alert alert-danger"></span>
+                        <input id="securityDigits" name="securityDigits" type="text" required="required" class="form-control"
+                               th:value="${billingAddress.securityDigits}">
+                        <small id="cgpaHelp" class="form-text text-muted">Enter only 3 digits</small>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="dateOfBirth">Date Of Birth</label>
+                        <span th:if="${#fields.hasErrors('dateOfBirth')}" th:errors="*{dateOfBirth}"
+                              class="alert alert-danger"></span>
+                        <input id="dateOfBirth" name="dateOfBirth" type="date" required="required" class="form-control"
+                               th:value="${billingAddress.dateOfBirth}">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="yearlyIncome">Yearly Income</label>
+                        <span th:if="${#fields.hasErrors('yearlyIncome')}" th:errors="*{yearlyIncome}"
+                              class="alert alert-danger"></span>
+                        <input id="yearlyIncome" name="yearlyIncome" type="number" required="required" class="form-control"
+                               th:value="${billingAddress.yearlyIncome}">
+                    </div>
+                </div>
+
+            </div>
+
+            <div style="float:left;">
+                <a th:href="@{/citizen/list}" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+
+                <input type="submit" id="btnSubmit" class="btn btn-outline-success" th:value="Save">
+
+            </div>
+        </fieldset>
+    </form>
 
 </div>
 
