@@ -3,12 +3,7 @@ package eShop.model.user;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 import eShop.model.BillingInfo;
 import eShop.model.Subscription;
@@ -17,8 +12,10 @@ import eShop.model.Subscription;
 public class Customer extends User{
 	@Id@GeneratedValue
 	private Integer id;
-	private String billingAddress;
-	private String shippingAddress;
+	@OneToOne
+	private Address billingAddress;
+	@OneToOne
+	private Address shippingAddress;
 	
 	@OneToMany
 	@JoinColumn(name="fk_customer")
@@ -31,7 +28,7 @@ public class Customer extends User{
 	public Customer() {
 		super();
 	}
-	public Customer(String billingAddress, String shippingAddress, List<BillingInfo> billingInfos,
+	public Customer(Address billingAddress, Address shippingAddress, List<BillingInfo> billingInfos,
 			List<Subscription> subscriptions) {
 		super();
 		this.billingAddress = billingAddress;
@@ -45,16 +42,16 @@ public class Customer extends User{
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getBillingAddress() {
+	public Address getBillingAddress() {
 		return billingAddress;
 	}
-	public void setBillingAddress(String billingAddress) {
+	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress;
 	}
-	public String getShippingAddress() {
+	public Address getShippingAddress() {
 		return shippingAddress;
 	}
-	public void setShippingAddress(String shippingAddress) {
+	public void setShippingAddress(Address shippingAddress) {
 		this.shippingAddress = shippingAddress;
 	}
 	public List<BillingInfo> getBillingInfos() {

@@ -3,10 +3,17 @@ package eShop.controller;
 
 import eShop.email.EmailCfg;
 import eShop.model.DeliveryRequest;
+import eShop.model.user.Supplier;
+import eShop.model.user.User;
 import eShop.repository.BookRepository;
 import eShop.model.Book;
+import eShop.security.UserPrincipal;
 import eShop.service.AuthorService;
 import eShop.service.BookService;
+import eShop.service.UserService;
+import eShop.utils.Util;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.validation.BindingResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,7 +40,7 @@ public class BookController {
     private BookService bookService;
 
     @Autowired
-    private  DeliveryRequestController deliveryRequestController;
+    private  UserService userService;
 
 
     @GetMapping(value = {"book/"})
@@ -63,18 +70,18 @@ public class BookController {
             model.addAttribute("errors", bindingResult.getAllErrors());
             return "Book/new";
         }
+
+        User activeUser = getActiveUser();
+        Supplier supplier = new Supplier();
+
+        supplier.setId(activeUser.getId());
+        supplier.setEmail(activeUser.getEmail());
+
+        book.setSupplier(supplier);
         Book savedBook = bookService.saveBook(book);
 
-       // EmailCfg emailCfg = new EmailCfg();
-        DeliveryRequest deliveryRequest = new DeliveryRequest();
-        deliveryRequest.setEmail("ouremail@email.com");
-        deliveryRequest.setName("supplier");
-        deliveryRequest.setRequestContent("The Book" + savedBook.getTitle() );
+        // Send Delivery Request ... to be removed
 
-
-
-
-        deliveryRequestController.sendDeliveryRequest(deliveryRequest);
         return "redirect:/listBook";
     }
 
@@ -98,6 +105,23 @@ public class BookController {
          model.addAttribute("authors", authorService.getAllAuthors() );
         model.addAttribute("now", LocalDate.now());
         return "book/new";
+    }
+
+    public User getActiveUser()
+    {
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        String username;
+        if(principal instanceof UserDetails)
+        {
+            username =((UserDetails) principal).getUsername();
+        }
+        else
+        {
+            username = principal.toString();
+        }
+        System.out.println("hello");
+        return userService.findByUsername(username);
     }
 
 
