@@ -3,6 +3,7 @@ package eShop.security;
 import eShop.model.user.Role;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.annotation.Order;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -31,10 +32,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
+                .antMatchers("/register", "/confirm").permitAll()
                 .antMatchers("/home/**").permitAll()
                 .antMatchers("/profile/**").authenticated()
                 .antMatchers("/admin/**").hasRole(Role.ADMIN.toString())
-                .antMatchers("/management/**").hasAnyRole(Role.ADMIN.toString(), Role.SUPPLIER.toString())
+                .antMatchers("/Book/new").hasAnyRole(Role.ADMIN.toString(), Role.SUPPLIER.toString())
                 .and()
                 .formLogin()
                 .loginProcessingUrl("/signin")
@@ -44,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and()
-                .rememberMe().tokenValiditySeconds(2592000).key("mySecret!").rememberMeParameter("checkRememberMe");
+                .rememberMe().key("mySecret!").userDetailsService(userPrincipalDetailsService).rememberMeParameter("checkRememberMe");
     }
 
 
