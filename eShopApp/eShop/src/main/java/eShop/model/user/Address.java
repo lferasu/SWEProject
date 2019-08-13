@@ -1,8 +1,11 @@
 package eShop.model.user;
 
+import eShop.model.BillingInfo;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Address {
@@ -13,12 +16,12 @@ public class Address {
 	private String city;
 	private String zip;
 	private String state;
+
 	public Address() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public Address(String street, String city, String zip, String state) {
-		super();
+
 		this.street = street;
 		this.city = city;
 		this.zip = zip;

@@ -7,7 +7,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
 
 import eShop.model.user.Customer;
 import eShop.model.user.Supplier;
@@ -34,12 +33,11 @@ public class DeliveryInfo {
 	private Order order;	
 	
 	public DeliveryInfo() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public DeliveryInfo(Supplier supplier, Customer customer, Order order, Integer trackingNumber,
 			LocalDate expectedArrival, LocalDate orderedDate) {
-		super();
+
 		this.supplier = supplier;
 		this.customer = customer;
 		this.order = order;

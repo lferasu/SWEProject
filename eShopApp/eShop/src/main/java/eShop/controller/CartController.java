@@ -24,11 +24,6 @@ import java.util.List;
 public class CartController {
     @Autowired
     private UserService userService;
-//    @GetMapping(value = {"/", "/eshop", "/eshop/cart"})
-//    public String showAddtoCartPage(){
-//       return "cart/addToCart";
-//    }
-
     @PostMapping(value={"/addToCart"})
     public ModelAndView addBookToCart(@ModelAttribute("book") Book book,  BindingResult bindingResult, Model model){
 

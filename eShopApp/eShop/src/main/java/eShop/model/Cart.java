@@ -25,12 +25,11 @@ public class Cart {
 	private List<Book> books;
 
 	public Cart() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public Cart(Customer customer, List<Book> books) {
-		super();
+
 		this.customer = customer;
 		this.books = books;
 	}
