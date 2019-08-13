@@ -3,9 +3,12 @@ package eShop.model;
 import java.time.LocalDate;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import eShop.model.user.Address;
 import eShop.model.user.Customer;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class BillingInfo {
@@ -13,7 +16,11 @@ public class BillingInfo {
 	private Integer id;
 	private Integer cardNumber;
 	private String holderFullName;
+	@NotNull
+	@NotNull(message = "* Expiration Date is required")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate expireDate;
+	@Size(max = 3)
 	private Integer securityDigits;
 	
 	@OneToOne //uni
@@ -70,7 +77,16 @@ public class BillingInfo {
 	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress;
 	}
-	@Override
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    @Override
 	public String toString() {
 		return "BillingInfo [id=" + id + ", cardNumber=" + cardNumber + ", holderFullName=" + holderFullName
 				+ ", expireDate=" + expireDate + ", securityDigits=" + securityDigits + ", billingAddress="
