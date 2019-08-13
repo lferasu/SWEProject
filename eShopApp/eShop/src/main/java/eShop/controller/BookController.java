@@ -3,6 +3,7 @@ package eShop.controller;
 
 import eShop.repository.BookRepository;
 import eShop.model.Book;
+import eShop.service.AuthorService;
 import eShop.service.BookService;
 import org.springframework.validation.BindingResult;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +16,25 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.List;
 
 
 @Controller
 public class BookController {
-
+    @Autowired
+    AuthorService authorService;
 
     @Autowired
     private BookService bookService;
-    
+
+
+
+    @GetMapping(value = {"book/"})
+    public String home() {
+        return "book/index";
+    }
+
+
     // SEARCH Use-Case
     @GetMapping(value = { "eshop/book/search" })
     public ModelAndView searchStudent(@RequestParam String search, Model model) {
@@ -34,8 +45,8 @@ public class BookController {
     }
 
     // Actually Register a Book
-    @PostMapping(value = {"/registerBook"})
-    public String registerNewCustomer(
+    @PostMapping(value = "/registerBook")
+    public String registerNewBook(
             @Valid
             @ModelAttribute("book")
                     Book book,
@@ -47,15 +58,26 @@ public class BookController {
             return "Book/new";
         }
         bookService.saveBook(book);
-        return "redirect:/listProduct";
+        return "redirect:/listBook";
     }
 
-
+    @GetMapping(value = { "/listBook" })
+    public ModelAndView showAllBooks( @Valid
+                                          @ModelAttribute("book")
+                                                  Book book,
+                                      BindingResult bindingResult,
+                                      Model model) {
+        ModelAndView modelAndView = new ModelAndView();
+        Iterable<Book> listOfBooks = bookService.getAllBooks();
+        modelAndView.addObject("books", bookService.getAllBooks());
+        modelAndView.setViewName("book/list");
+        return modelAndView;
+    }
     // show Registration Form
     @GetMapping(value={"/showBookForm"})
     public String newCustomerForm(Model model) {
         model.addAttribute("book", new Book());
-        // model.addAttribute("suppliers", supplierService.getAllSuppliers());
+         model.addAttribute("authors", authorService.getAllAuthors() );
         model.addAttribute("now", LocalDate.now());
         return "book/new";
     }
