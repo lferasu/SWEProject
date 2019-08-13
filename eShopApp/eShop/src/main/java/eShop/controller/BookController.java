@@ -25,8 +25,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.List;
 
+import java.util.List;
 @Controller
 public class BookController {
     private String noCover = "https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg";
@@ -50,7 +50,6 @@ public class BookController {
     public String home() {
         return "book/index";
     }
-
     // SEARCH Use-Case
     @GetMapping(value = { "eshop/book/search" })
     public ModelAndView searchStudent(@RequestParam String search, Model model) {
