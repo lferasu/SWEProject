@@ -48,12 +48,11 @@ public class PaymentRecord {
 	
 	
 	public PaymentRecord() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public PaymentRecord(Customer customer, Supplier supplier, LocalDate paymentDate, BillingInfo billInfo,
 			List<Book> books, Order order, Double amount) {
-		super();
+
 		this.customer = customer;
 		this.supplier = supplier;
 		this.paymentDate = paymentDate;

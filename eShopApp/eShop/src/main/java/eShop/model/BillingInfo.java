@@ -2,13 +2,10 @@ package eShop.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 import eShop.model.user.Address;
+import eShop.model.user.Customer;
 
 @Entity
 public class BillingInfo {
@@ -22,14 +19,15 @@ public class BillingInfo {
 	@OneToOne //uni
 	@JoinColumn(name="bill_address_id")  //FK
 	private Address billingAddress;
+	@ManyToOne
+	private Customer customer;
 	
 	public BillingInfo() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public BillingInfo(Integer cardNumber, String holderFullName, LocalDate expireDate, Integer securityDigits,
 			Address billingAddress) {
-		super();
+
 		this.cardNumber = cardNumber;
 		this.holderFullName = holderFullName;
 		this.expireDate = expireDate;

@@ -18,7 +18,8 @@ public class BookServiceImpl implements BookService {
     private BookRepository bookRepository;
     @Override
     public Iterable<Book> getAllBooks() {
-        return null;
+
+        return bookRepository.findAll();
     }
     @Override
     public Page<Book> getAllBooksPaged(int pageNo) {
@@ -44,6 +45,15 @@ public class BookServiceImpl implements BookService {
     public List<Book> getAllBooksQuickSearch(String searchString) {
         return bookRepository.findAllByIsbnContainsOrTitleContainsOrderByTitle(searchString, searchString);
 
+    }
+    public double calculateTotalPrice(List<Book> books){
+        double price = 0.0;
+        for(Book book: books){
+            double tax = book.getPrice()*0.01;
+            double deliveryCost = book.getPrice()*0.1;
+            price += book.getPrice() + tax + deliveryCost;
+        }
+        return price;
     }
 
 

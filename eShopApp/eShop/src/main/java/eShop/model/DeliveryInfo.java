@@ -34,12 +34,11 @@ public class DeliveryInfo {
 	private Order order;	
 	
 	public DeliveryInfo() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public DeliveryInfo(Supplier supplier, Customer customer, Order order, Integer trackingNumber,
 			LocalDate expectedArrival, LocalDate orderedDate) {
-		super();
+
 		this.supplier = supplier;
 		this.customer = customer;
 		this.order = order;

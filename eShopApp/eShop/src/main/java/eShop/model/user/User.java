@@ -5,9 +5,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public abstract class User {
+public class User {
 	
-	@Id@GeneratedValue
+	@Id
+	@GeneratedValue
 	private Integer id;
 	
 	private String username;
@@ -18,11 +19,10 @@ public abstract class User {
 	private String email;
 	private Boolean isValid;
 	public User() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 	public User(String username, String password, String firstName, String lastName, String email, Boolean isValid) {
-		super();
+
 		this.username = username;
 		this.password = password;
 		this.firstName = firstName;
