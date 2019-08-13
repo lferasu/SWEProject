@@ -337,4 +337,9 @@ img {
     color: #fff;
     font-weight: normal;
 }
+
+.img-wrap{
+    width: 500px;
+    height: 500px;
+}
 /* end of footer */

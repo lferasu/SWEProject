@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/master-layout :: header" >
+    <link rel="stylesheet" href="../../static/css/layouts/master-layout.css">
+</head>
+
+<nav th:replace="layouts/master-layout :: navbar-top" />
+<div th:replace="layouts/master-layout :: search" />
+<!-- End of Navigation bar -->
+<div class="container">
+    <div style="padding-top: 1em;" class="container">
+    </div>
+    <p>&nbsp;</p>
+        <div class="row">
+            <div class="col-md-4" th:each="book,iterStat : ${books}">
+                <figure class="card" >
+                    <div class="img-wrap"><img th:src="@{${book.image}}" style="width: 300px; alignment: center "/></div>
+                    <figcaption class="info-wrap" th:text="${book.title}">
+                    </figcaption>
+                    <div class="bottom-wrap">
+                        <a href="" class="btn btn-sm btn-primary float-right">Add to Cart</a>
+                        <div class="price-wrap h5">
+                            <span class="price-new" th:text="${book.price}"></span>
+                        </div> <!-- price-wrap.// -->
+                    </div> <!-- bottom-wrap.// -->
+                </figure>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+<div th:replace="layouts/master-layout :: footer"></div>
+</body>
+</html>
