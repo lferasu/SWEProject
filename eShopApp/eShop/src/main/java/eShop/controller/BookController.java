@@ -4,6 +4,7 @@ package eShop.controller;
 import eShop.model.BillingInfo;
 import eShop.model.Book;
 import eShop.model.Cart;
+import eShop.model.DeliveryRequest;
 import eShop.model.user.Address;
 import eShop.model.user.Supplier;
 import eShop.model.user.User;
@@ -29,8 +30,13 @@ import java.util.List;
 
 @Controller
 public class BookController {
+    private String noCover = "https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg";
+
     @Autowired
     AuthorService authorService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     private BookService bookService;
@@ -38,9 +44,8 @@ public class BookController {
     private BillingInfoService billingInfoService;
 
     @Autowired
+    private static DeliveryRequestController deliveryRequestController;
 
-
-    private  UserService userService;
 
     @GetMapping(value = {"book/"})
     public String home() {
@@ -69,14 +74,19 @@ public class BookController {
             return "Book/new";
         }
 
+        if(book.getImage()==null || book.getImage().trim()=="")
+        {
+            book.setImage(noCover);
+        }
+
         User activeUser = getActiveUser();
         Supplier supplier = new Supplier();
-
         supplier.setId(activeUser.getId());
         supplier.setEmail(activeUser.getEmail());
 
         book.setSupplier(supplier);
         Book savedBook = bookService.saveBook(book);
+
 
         return "redirect:/listBook";
     }
@@ -114,7 +124,6 @@ public class BookController {
         {
             username = principal.toString();
         }
-        System.out.println("hello");
         return userService.findByUsername(username);
     }
 
@@ -148,4 +157,5 @@ public class BookController {
         model.addAttribute("shippingAddress", shippingAddress);
         return "book/placeorder";
     }
+
 }

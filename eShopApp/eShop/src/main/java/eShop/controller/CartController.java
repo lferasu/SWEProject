@@ -24,25 +24,25 @@ import java.util.List;
 public class CartController {
     @Autowired
     private UserService userService;
-    @PostMapping(value={"/addToCart"})
-    public ModelAndView addBookToCart(@ModelAttribute("book") Book book,  BindingResult bindingResult, Model model){
 
-Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    @PostMapping(value = {"/addToCart"})
+    public ModelAndView addBookToCart(@ModelAttribute("book") Book book, BindingResult bindingResult, Model model) {
 
-String userName;
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-if(principal instanceof UserDetails){
-    userName=((UserDetails)principal).getUsername();
-}
-else{
-    userName=principal.toString();
-}
-        User myUser=userService.findByUsername(userName);
+        String userName;
+
+        if (principal instanceof UserDetails) {
+            userName = ((UserDetails) principal).getUsername();
+        } else {
+            userName = principal.toString();
+        }
+        User myUser = userService.findByUsername(userName);
         Cart cart = new Cart();
-        Customer customer=(Customer)myUser;
+        Customer customer = (Customer) myUser;
         cart.setCustomer(customer);
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("cart",cart);
+        modelAndView.addObject("cart", cart);
         modelAndView.setViewName("book/placeorder");
         return modelAndView;
     }
