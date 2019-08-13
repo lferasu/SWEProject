@@ -24,8 +24,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.List;
 
+import java.util.List;
 @Controller
 public class BookController {
     @Autowired
@@ -45,7 +45,6 @@ public class BookController {
     public String home() {
         return "book/index";
     }
-
     // SEARCH Use-Case
     @GetMapping(value = { "eshop/book/search" })
     public ModelAndView searchStudent(@RequestParam String search, Model model) {

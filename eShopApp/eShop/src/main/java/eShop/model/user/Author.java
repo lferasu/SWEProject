@@ -12,7 +12,6 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Author {
-	
 	@Id@GeneratedValue
 	private Integer id;
 	private String firstName;

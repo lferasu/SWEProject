@@ -45,8 +45,7 @@ public class BookServiceImpl implements BookService {
 
     @Override
     public List<Book> getAllBooksQuickSearch(String searchString) {
-        return bookRepository.findAllByIsbnContainsOrTitleContainsOrderByTitle(searchString, searchString);
-
+        return bookRepository.findAllByIsbnContainsOrTitleContainsOrderByTitle(searchString,searchString,searchString);
     }
     public double calculateTotalPrice(List<Book> books){
         double price = 0.0;
