@@ -12,8 +12,6 @@ import java.util.List;
 
 @Service
 public class CartServiceImpl  implements CartService {
-
-
     @Autowired
     private CartRepository cartRepository;
    private Customer customer= new Customer();
