@@ -77,7 +77,16 @@ public class BillingInfo {
 	public void setBillingAddress(Address billingAddress) {
 		this.billingAddress = billingAddress;
 	}
-	@Override
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    @Override
 	public String toString() {
 		return "BillingInfo [id=" + id + ", cardNumber=" + cardNumber + ", holderFullName=" + holderFullName
 				+ ", expireDate=" + expireDate + ", securityDigits=" + securityDigits + ", billingAddress="
