@@ -1,6 +1,5 @@
 package eShop.model;
 
-
 import java.time.LocalDate;
 import java.util.List;
 

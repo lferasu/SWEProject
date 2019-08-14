@@ -13,10 +13,21 @@
     <div style="padding-top: 1em;" class="container">
     </div>
     <p>&nbsp;</p>
+    <li>
+        <div  th:fragment="Cart" class="container">
+            <form class="form-inline mr-auto" method="post"
+                  th:action="@{/registerBook}"
+                  th:object="${cart}">
+                <input tabindex="2" id="productName" name="productName" type="text" class="form-control" th:value="${cart.numberOfBooks}"/>
+                <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 btn-dark"
+                        type="submit">Cart</button>
+            </form>
+        </div>
+    </li>
         <div class="row">
             <div class="col-md-4" th:each="book,iterStat : ${books}">
                 <figure class="card" >
-                    <div class="img-wrap"><img th:src="@{${book.image}}" style="width: 300px; height: 300px; alignment: center "/></div>
+                    <div class="img-wrap"><img th:src="@{${book.image}}" style="width: 116%; height: 100%; alignment: center "/></div>
                     <figcaption class="info-wrap" th:text="${book.title}">
                     </figcaption>
                     <div class="bottom-wrap">
