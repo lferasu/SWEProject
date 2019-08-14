@@ -29,7 +29,7 @@ public class Book {
 
 	@OneToOne //uni
 	@JoinColumn(name = "book_supplier_id")
-	private Supplier supplier;
+	private User supplier;
 	
 
 	@ManyToMany
@@ -50,7 +50,7 @@ public class Book {
 	}
 
 	public Book(String title, String description, String isbn, Double price, Integer copiesNumber, Boolean isApproved,
-				String image, LocalDate datePublished, Supplier supplier, List<Author> authors, List<Category> categories) {
+				String image, LocalDate datePublished, User supplier, List<Author> authors, List<Category> categories) {
 		super();
 		this.title = title;
 		this.description = description;
@@ -133,7 +133,7 @@ public class Book {
 		return supplier;
 	}
 
-	public void setSupplier(Supplier supplier) {
+	public void setSupplier(User supplier) {
 		this.supplier = supplier;
 	}
 
