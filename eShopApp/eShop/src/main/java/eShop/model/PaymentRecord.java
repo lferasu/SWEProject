@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import eShop.model.user.User;
 
 @Entity
 public class PaymentRecord {
@@ -24,11 +25,11 @@ public class PaymentRecord {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private User customer;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "supplier_id")
-	private Supplier supplier;
+	private User supplier;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "billInfo_id")
@@ -45,12 +46,11 @@ public class PaymentRecord {
 	
 	
 	public PaymentRecord() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
-	public PaymentRecord(Customer customer, Supplier supplier, LocalDate paymentDate, BillingInfo billInfo,
-			List<Book> books, Order order, Double amount) {
-		super();
+	public PaymentRecord(User customer, User supplier, LocalDate paymentDate, BillingInfo billInfo,
+						 List<Book> books, Order order, Double amount) {
+
 		this.customer = customer;
 		this.supplier = supplier;
 		this.paymentDate = paymentDate;
@@ -65,16 +65,16 @@ public class PaymentRecord {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Customer getCustomer() {
+	public User getCustomer() {
 		return customer;
 	}
-	public void setCustomer(Customer customer) {
+	public void setCustomer(User customer) {
 		this.customer = customer;
 	}
-	public Supplier getSupplier() {
+	public User getSupplier() {
 		return supplier;
 	}
-	public void setSupplier(Supplier supplier) {
+	public void setSupplier(User supplier) {
 		this.supplier = supplier;
 	}
 	public LocalDate getPaymentDate() {
@@ -92,7 +92,7 @@ public class PaymentRecord {
 	public List<Book> getBooks() {
 		return books;
 	}
-	public void setBooks(List<Book> books) {
+	public void setBooks(List<Book> book) {
 		this.books = books;
 	}
 	public Order getOrder() {

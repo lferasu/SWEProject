@@ -339,7 +339,27 @@ img {
 }
 
 .img-wrap{
-    width: 500px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
 }
+
+#form-cont
+{
+    width: 70%;
+    border: 5px;
+    border: #1c1c1b;
+    margin: auto;
+}
+
+#photo {
+    float: left;
+    width: 100px;
+}
+
+
+
+
+/*#bookRegistrationForm {*/
+/*    float: left; width: 60%;*/
+/*}*/
 /* end of footer */

@@ -1,134 +1,173 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th = "http://www.thymeleaf.org">
-<head th:replace="layouts/master-layout :: header" />
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/master-layout :: header">
+<style >
+
+</style>
+</head>
 <body>
-<nav th:replace="layouts/master-layout :: navbar-top" />
+<nav th:replace="layouts/master-layout :: navbar-top"/>
 <div class="container">
-    <form  id="bookRegistrationForm" method="post" action="/registerBook" th:action="@{/registerBook}" th:object="${book}">
-        <fieldset>
-            <legend class="text-center header">Book Registration Form</legend>
-            <!--                       Title -->
-            <div class="row">
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="title">Title:</label>
-                        <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
-                              class="alert alert-danger"></span>
-                        <input tabindex="2" id="title" name="title" type="text" class="form-control" th:value="${book.title}"/>
+    <div id="form-cont">
+
+        <form id="bookRegistrationForm" method="post" action="/registerBook" th:action="@{/registerBook}"
+              th:object="${book}">
+            <fieldset>
+                <legend class="text-center header">Book Registration Form</legend>
+                <!--                       Title -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="title">Title:</label>
+                            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                                  class="alert alert-danger"></span>
+                            <input tabindex="2" id="title" name="title" type="text" class="form-control"
+                                   th:value="${book.title}"/>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <!--   Product Name -->
+
+                        <div class="form-group">
+                            <label for="isbn">ISBN:</label>
+                            <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"
+                                  class="alert alert-danger"></span>
+                            <input tabindex="2" id="isbn" name="isbn" type="text" class="form-control"
+                                   th:value="${book.isbn}"/>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <!--Unice Price-->
+
+                        <div class="form-group">
+                            <label for="price">Unit Price:</label>
+                            <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
+                                  class="alert alert-danger"></span>
+                            <input tabindex="2" id="price" name="price" type="text" class="form-control"
+                                   th:value="${book.price}"/>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <!-- Number of Copies-->
+
+                        <div class="form-group">
+                            <label for="numberOfCopies">Number of Copies:</label>
+                            <span th:if="${#fields.hasErrors('numberOfCopies')}" th:errors="*{numberOfCopies}"
+                                  class="alert alert-danger"></span>
+                            <input tabindex="2" id="numberOfCopies" name="numberOfCopies" type="text"
+                                   class="form-control" th:value="${book.numberOfCopies}"/>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-4">
+
+                        <!--Date published-->
+                        <div class="form-group">
+                            <label for="datePublished">Date Published:</label>
+                            <span th:if="${#fields.hasErrors('datePublished')}" th:errors="*{datePublished}"
+                                  class="alert alert-danger"></span>
+                            <input tabindex="2" id="datePublished" name="datePublished" type="date" class="form-control"
+                                   th:value="${book.datePublished}"/>
+                        </div>
+
                     </div>
                 </div>
 
-                <!--   Product Name -->
-                <div class="col-md-5">
-                    <div class="form-group">
-                        <label for="isbn">ISBN:</label>
-                        <span th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}"
-                              class="alert alert-danger"></span>
-                        <input tabindex="2" id="isbn" name="isbn" type="text" class="form-control" th:value="${book.isbn}"/>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
+                                  class="alert alert-danger"></span>
+                            <!--                        <input tabindex="2" id="description" name="description" type= "textarea" rows="2" class="form-control" th:value="${book.description}"/>-->
+                            <textarea rows="4" id="description" name="description" class="form-control">
+                        </textarea>
+
+                        </div>
                     </div>
+                    <div class="col-md 6">
+                        <div class="form-group">
+                            <label for="category">Category:</label>
+                            <select id="category" name="category" multiple="multiple" class="form-control">
+                                <option th:each="category : ${categories}" th:value="${category.id}"
+                                        th:text="${category.name}"></option>
+                            </select>
+                        </div>
+                    </div>
+
                 </div>
 
-                <!--Unice Price-->
-                <div class="col-md-2">
-                    <div class="form-group">
-                        <label for="price">Unit Price:</label>
-                        <span th:if="${#fields.hasErrors('price')}" th:errors="*{price}"
-                              class="alert alert-danger"></span>
-                        <input tabindex="2" id="price" name="price" type="text" class="form-control" th:value="${book.price}"/>
-                    </div>
-                </div>
-            </div>
 
-                <!-- First row is over-->
-            <div class="row">
-                <!-- Number of Copies-->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="numberOfCopies">Number of Copies:</label>
-                        <span th:if="${#fields.hasErrors('numberOfCopies')}" th:errors="*{numberOfCopies}"
-                              class="alert alert-danger"></span>
-                        <input tabindex="2" id="numberOfCopies" name="numberOfCopies" type="text" class="form-control" th:value="${book.numberOfCopies}"/>
-                    </div>
-                </div>
-
-                <!--Date published-->
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <label for="datePublished">Date Published:</label>
-                        <span th:if="${#fields.hasErrors('datePublished')}" th:errors="*{datePublished}"
-                              class="alert alert-danger"></span>
-                        <input tabindex="2" id="datePublished" name="datePublished" type="date" class="form-control" th:value="${book.datePublished}"/>
-                    </div>
-                </div>
-
-                <!-- Image-->
-                <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label for="author">Authors</label>
                             <!--                        <span th:if="${#fields.hasErrors('author')}" th:errors="*{author}"-->
                             <!--                              class="alert alert-danger"></span>-->
-                            <select name="author" id="author" class="form-control" required="required">
-                                <option value="">Select Author</option>
-                                <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.firstName}"></option>
+                            <select id="author" name="author" multiple="multiple" class="form-control">
+                                <option th:each="author : ${authors}" th:value="${author.id}"
+                                        th:text="${author.firstName}"></option>
                             </select>
                         </div>
                     </div>
-            </div>
 
+                    <div class="col-md-6">
+                        <div class="form-group" id="benyam">
+                            <label for="image">Link to Image:</label>
+                            <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"
+                                  class="alert alert-danger"></span>
 
-                    <!-- Second Row is over-->
-            <div class="row">
-                    <!--Author-->
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="image">Link to Image:</label>
-                    <span th:if="${#fields.hasErrors('image')}" th:errors="*{image}"
-                          class="alert alert-danger"></span>
+                            <form action="#" method="post">
+                                <input tabindex="2" id="image" name="image" type="text" class="form-control"
+                                       th:value="${book.image}"/>
+                                <!--                            <input type="url" name="imglink" id="imglink"  placeholder="Insert image URL here" /><br>-->
+                                <input type="button" value="Show Image" id="btn1"/>
+                            </form>
 
-                    <form action="#" method="post">
-                        <input tabindex="2" id="image" name="image" type="text" class="form-control" th:value="${book.image}"/>
-                        <!--                            <input type="url" name="imglink" id="imglink"  placeholder="Insert image URL here" /><br>-->
-                        <input type="button" value="Show Image" id="btn1" />
-                    </form>
-                    <div id="photo"></div>
-                    <script>
-                        document.getElementById('btn1').addEventListener('click', function(){
-                            document.getElementById('photo').innerHTML = '<img src="'+ document.getElementById('image').value +'" alt="Image" />';
-                        });
-                    </script>
+                            <script>
+                                document.getElementById('btn1').addEventListener('click', function () {
+                                    document.getElementById('photo').innerHTML = '<img src="' + document.getElementById('image').value + '" alt="Image" height="100px" width="80px" />';
+                                });
+                            </script>
 
-                </div>
-                </div>
-
-                    <!--Description-->
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label for="description">Description:</label>
-                        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
-                              class="alert alert-danger"></span>
-<!--                        <input tabindex="2" id="description" name="description" type= "textarea" rows="2" class="form-control" th:value="${book.description}"/>-->
-                        <textarea rows="4" id="description" name="description"  class="form-control">
-                        </textarea>
+                        </div>
 
                     </div>
+
                 </div>
-            </div>
-                            <!--Button-->
-            <div class="row">
-                <div class="col-md-6">
-                    <div>&nbsp;</div>
-                </div>
-                <div class="col-md-6">
-                    <div style="text-align: right;">
-                        <button tabindex="8" id="btnReset" type="reset" class="btn btn-outline-info" style="margin-right: 2em;">Reset</button>
-                        <a tabindex="9" href="product/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
-                        <button tabindex="10" id="btnSubmit" type="submit" class="btn btn-outline-primary">Register product</button>
+                <!--Button-->
+                <div class="row">
+                    <div class="col-md-6">
+                        <div>&nbsp;</div>
+                    </div>
+                    <div class="col-md-6">
+                        <div style="text-align: right;">
+                            <button tabindex="8" id="btnReset" type="reset" class="btn btn-outline-info"
+                                    style="margin-right: 2em;">Reset
+                            </button>
+                            <a tabindex="9" href="product/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                            <button tabindex="10" id="btnSubmit" type="submit" class="btn btn-outline-primary">Register
+                                product
+                            </button>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </fieldset>
-    </form>
+            </fieldset>
+        </form>
+    </div>
+    <div id="photo"></div>
 </div>
+
 <div th:replace="layouts/master-layout :: footer"></div>
 </body>
 </html>

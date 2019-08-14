@@ -7,24 +7,26 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
-public class Supplier extends User{
+public class Supplier1 extends User{
 	
 	@Id@GeneratedValue
 	private Integer id;
 	private String companyName;
-	
+
 	@OneToOne
 	@JoinColumn(name = "supplier_address_id")
 	private Address address;
 
-	public Supplier() {
+	public Supplier1() {
 	}
 
-	public Supplier(String companyName, Address address) {
+	public Supplier1(String companyName, Address address) {
 		super();
 		this.companyName = companyName;
 		this.address = address;
 	}
+
+
 
 	public Integer getId() {
 		return id;
@@ -52,10 +54,7 @@ public class Supplier extends User{
 
 	@Override
 	public String toString() {
-		return "Supplier [id=" + id + ", companyName=" + companyName + ", address=" + address + "]";
+		return "Supplier [companyName=" + companyName + ", address=" + address + "]";
 	}
-	
-	
-	
-
 }
+

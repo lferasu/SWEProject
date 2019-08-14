@@ -9,6 +9,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
+import eShop.model.user.Customer1;
+import eShop.model.user.User;
+
 @Entity
 public class Subscription {
 	@Id@GeneratedValue
@@ -16,7 +19,7 @@ public class Subscription {
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private User customer;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "category_id")
@@ -27,7 +30,7 @@ public class Subscription {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Subscription(Customer customer, Category category) {
+	public Subscription(Customer1 customer, Category category) {
 		super();
 		this.customer = customer;
 		this.category = category;
@@ -38,10 +41,10 @@ public class Subscription {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Customer getCustomer() {
+	public User getCustomer() {
 		return customer;
 	}
-	public void setCustomer(Customer customer) {
+	public void setCustomer(User customer) {
 		this.customer = customer;
 	}
 	public Category getCategory() {

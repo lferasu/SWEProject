@@ -2,13 +2,12 @@ package eShop.model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
-import eShop.model.user.Address;
+import eShop.model.user.Customer1;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class BillingInfo {
@@ -16,25 +15,27 @@ public class BillingInfo {
 	private Integer id;
 	private Integer cardNumber;
 	private String holderFullName;
+	@NotNull
+	@NotNull(message = "* Expiration Date is required")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate expireDate;
+	@Size(max = 3)
 	private Integer securityDigits;
-	
-	@OneToOne //uni
-	@JoinColumn(name="bill_address_id")  //FK
-	private Address billingAddress;
+
+	@ManyToOne
+	private Customer1 customer;
 	
 	public BillingInfo() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
-	public BillingInfo(Integer cardNumber, String holderFullName, LocalDate expireDate, Integer securityDigits,
-			Address billingAddress) {
-		super();
+	public BillingInfo(Integer cardNumber, String holderFullName, LocalDate expireDate, Integer securityDigits
+			) {
+
 		this.cardNumber = cardNumber;
 		this.holderFullName = holderFullName;
 		this.expireDate = expireDate;
 		this.securityDigits = securityDigits;
-		this.billingAddress = billingAddress;
+//		this.billingAddress = billingAddress;
 	}
 	public Integer getId() {
 		return id;
@@ -66,19 +67,25 @@ public class BillingInfo {
 	public void setSecurityDigits(Integer securityDigits) {
 		this.securityDigits = securityDigits;
 	}
-	public Address getBillingAddress() {
-		return billingAddress;
-	}
-	public void setBillingAddress(Address billingAddress) {
-		this.billingAddress = billingAddress;
-	}
+
+    public void setCustomer(Customer1 customer) {
+        this.customer = customer;
+    }
+
+    public Customer1 getCustomer() {
+        return customer;
+    }
+
 	@Override
 	public String toString() {
-		return "BillingInfo [id=" + id + ", cardNumber=" + cardNumber + ", holderFullName=" + holderFullName
-				+ ", expireDate=" + expireDate + ", securityDigits=" + securityDigits + ", billingAddress="
-				+ billingAddress + "]";
+		return "BillingInfo{" +
+				"id=" + id +
+				", cardNumber=" + cardNumber +
+				", holderFullName='" + holderFullName + '\'' +
+				", expireDate=" + expireDate +
+				", securityDigits=" + securityDigits +
+				", customer=" + customer +
+				'}';
 	}
-	
-	
 
 }

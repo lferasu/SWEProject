@@ -1,7 +1,6 @@
 package eShop.model;
 
-import eShop.model.user.Customer;
-
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import eShop.model.user.User;
 
 @Entity
 public class Cart {
@@ -18,51 +18,61 @@ public class Cart {
 	
 	@OneToOne //uni
 	@JoinColumn(name = "cart_customer_id")
-	private Customer customer;
+	private User customer;
 	@OneToMany
 	@JoinColumn(name="fk_book")
-	private List<Book> books;
+	private List<Book> books = new ArrayList<>();
+	private Double totalPrice;
 
 	public Cart() {
-		super();
-		// TODO Auto-generated constructor stub
+
 	}
 
-	public Cart(Customer customer, List<Book> books) {
-		super();
+	public Cart(User customer, List<Book> books, Double totalPrice) {
 		this.customer = customer;
 		this.books = books;
-	}
-	public Integer getId() {
-		return id;
+		this.totalPrice = totalPrice;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
-	public void setCustomer(Customer customer) {
+	public void setCustomer(User customer) {
 		this.customer = customer;
-	}
-
-	public List<Book> getBooks() {
-		return books;
 	}
 
 	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public User getCustomer() {
+		return customer;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+
 	@Override
 	public String toString() {
-		return "Cart [id=" + id + ", customer=" + customer + ", books=" + books + "]";
+		return "Cart{" +
+				"id=" + id +
+				", customer=" + customer +
+				", books=" + books +
+				", totalPrice=" + totalPrice +
+				'}';
 	}
-	
-	
-	
-
 }

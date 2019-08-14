@@ -16,9 +16,10 @@ public interface BookService {
 
 	    public abstract List<Book> getAllBooksQuickSearch(String searchString);
 	   // public abstract Page<Book> getSearchedBooks(int pageNo, Book book);
-
-
 	    //public abstract Page<Book> getQuickSearchBooks(int pageNo, String text);
+
+	//calculate the total price in the cart
+	public abstract double calculateTotalPrice(List<Book> books);
 
 
 }

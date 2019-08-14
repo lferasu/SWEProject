@@ -1,9 +1,9 @@
 package eShop.repository;
 
-import eShop.model.user.Author;
+import eShop.model.PaymentRecord;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AuthorRepository extends JpaRepository<Author, Integer> {
+public interface PaymentRecordRepository extends JpaRepository<PaymentRecord, Integer> {
 }
