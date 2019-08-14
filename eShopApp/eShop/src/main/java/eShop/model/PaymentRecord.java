@@ -1,7 +1,6 @@
 package eShop.model;
 
-import eShop.model.user.Customer;
-import eShop.model.user.Supplier;
+
 
 import java.time.LocalDate;
 import java.util.List;

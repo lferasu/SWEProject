@@ -24,8 +24,8 @@ public class PaymentController {
     @Autowired
     private DeliveryInfoService deliveryInfoService;
 
-    @PostMapping(value = {"/book/pay"})
-    public String placeOrder(
+    @PostMapping(value = {"/payment"})
+    public String placeOrderConfirmationDidplay(
             @Valid
             @ModelAttribute("cart")
                     Cart cart,

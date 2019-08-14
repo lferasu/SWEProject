@@ -1,6 +1,5 @@
 package eShop.model;
 
-import eShop.model.user.Customer;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
