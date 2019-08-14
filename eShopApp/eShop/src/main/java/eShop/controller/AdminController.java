@@ -44,26 +44,39 @@ public class AdminController {
             model.addAttribute("user", user);
             return "admin/edit";
         }
-        return "redirect:admin/index?search=";
+        return "redirect:index?search=" + user.getFirstName();
 }
 
     @PostMapping(value = {"edit"})
     public String edit(@Valid @ModelAttribute("user") User user,
                        BindingResult bindingResult, Model model) {
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("errors", bindingResult.getAllErrors());
-            return "admin/edit";
+
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute("errors", bindingResult.getAllErrors());
+//            System.out.println(bindingResult.getAllErrors());
+//            System.out.println(user);
+//            return "admin/edit";
+//        }
+        //model.addAttribute("roles", Arrays.asList("ADMIN", "SUPPLIER", "CUSTOMER"));
+        System.out.println("selected user: " + user);
+        User tempUser = userService.findById(user.getId());
+        System.out.println("*******************************"+ tempUser +"************************************************");
+        Boolean flag = false;
+        if(user.getFirstName() != tempUser.getFirstName()){
+            tempUser.setFirstName(user.getFirstName()); flag=true;}
+        if(user.getLastName() != tempUser.getLastName()){
+            tempUser.setLastName(user.getLastName()); flag=true;}
+        if(user.getRole() != tempUser.getRole() && user.getRole() != null){
+            tempUser.setRole(user.getRole()); flag=true;}
+        if (flag){
+
+            try {
+                userService.saveUser(tempUser);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
         }
-        model.addAttribute("roles", Arrays.asList("ADMIN", "SUPPLIER", "CUSTOMER"));
-        System.out.println("*******************************"+Role.CUSTOMER.toString()+"************************************************");
-        if(!user.getRole().toString().equalsIgnoreCase("")) {
-//            try {
-                userService.saveUser(user);
-//            } catch (Exception e) {
-//                System.out.println(e);
-//            }
-        }
-        return "redirect:admin/index?search=";
+        return "redirect:index?search=" + tempUser.getFirstName();
     }
 
 //    @GetMapping(value = {"/admin/delete/{id}"})
