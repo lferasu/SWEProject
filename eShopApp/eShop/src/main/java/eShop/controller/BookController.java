@@ -90,10 +90,8 @@ public class BookController {
     }
 
     @GetMapping(value = { "/listBook" })
-    public ModelAndView showAllBooks( @Valid  @ModelAttribute("book")
-                                                  Book book,
-                                      BindingResult bindingResult,
-                                      Model model) {
+    public ModelAndView showAllBooks() {
+
         ModelAndView modelAndView = new ModelAndView();
         Iterable<Book> listOfBooks = bookService.getAllBooks();
         modelAndView.addObject("books", bookService.getAllBooks());

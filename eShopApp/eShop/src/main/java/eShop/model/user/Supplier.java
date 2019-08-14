@@ -9,8 +9,8 @@ import javax.persistence.OneToOne;
 @Entity
 public class Supplier extends User{
 	
-//	@Id@GeneratedValue
-//	private Integer id;
+	@Id@GeneratedValue
+	private Integer id;
 	private String companyName;
 	
 	@OneToOne
@@ -28,13 +28,13 @@ public class Supplier extends User{
 
 
 
-//	public Integer getId() {
-//		return id;
-//	}
-//
-//	public void setId(Integer id) {
-//		this.id = id;
-//	}
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
 
 	public String getCompanyName() {
 		return companyName;
