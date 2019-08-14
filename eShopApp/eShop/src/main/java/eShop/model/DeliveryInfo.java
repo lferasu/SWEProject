@@ -1,5 +1,8 @@
 package eShop.model;
 
+import eShop.model.user.Customer;
+import eShop.model.user.Supplier;
+
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
@@ -7,10 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.PrimaryKeyJoinColumn;
-
-import eShop.model.user.Customer;
-import eShop.model.user.Supplier;
 
 @Entity
 public class DeliveryInfo {

@@ -7,8 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="User account registration" />
-    <meta name="author" content="Amir Boroumand" />
-    <link rel="icon" href="favicon.ico" />
 
     <title>Registration Page</title>
 
@@ -22,22 +20,20 @@
 </head>
 
 <body class="gray-bg">
+  <div class="container">
+    <div style="width:600px;margin-left: auto;margin-right: auto;margin-top:24px;padding: 24px;">
 
-<div class="middle-box text-center loginscreen animated fadeInDown">
-    <div>
+        <div class="card">
+            <div class="card-header">
+                <i class="fa fa-user"></i> New User Register</div>
 
-        <h4>New User Registration</h4>
-
-        <form autocomplete="off" action="#" th:action="@{/register}"
+            <div class="middle-box text-center loginscreen animated fadeInDown">
+                <div>
+                    <form autocomplete="off" action="#" th:action="@{/register}"
               th:object="${user}" method="post" class="m-t" role="form"
               data-toggle="validator">
 
-            <div th:if="${confirmationMessage}" class="alert alert-success"
-                 role="alert" th:text=${confirmationMessage}></div>
 
-            <div th:if="${errorMessage}"
-                 class="alert alert-danger" role="alert"
-                 th:text="${errorMessage}"></div>
 
 
             <div th:if="${#fields.hasErrors('firstName')}"
@@ -54,30 +50,29 @@
             <div class="form-group input-group has-feedback">
                 <label th:if="${#fields.hasErrors('firstName')}"
                        th:errors="*{firstName}" class="validation-message"></label>
-                <span class="input-group-addon">
-            <span class="glyphicon glyphicon-user"></span>
-          </span>
-
-                <input type="text" th:field="*{firstName}"
-                       placeholder="First Name" class="form-control" required />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-user"></span>
+                  </span>
+                    <input type="text" th:field="*{firstName}"
+                           placeholder="First Name" class="form-control" required />
                 <span class="glyphicon form-control-feedback"
                       aria-hidden="true"></span>
             </div>
 
             <div class="form-group input-group has-feedback">
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-user"></span>
-          </span>
-                <input type="text" th:field="*{lastName}"
-                       placeholder="Last Name" class="form-control" required />
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-user"></span>
+                  </span>
+                    <input type="text" th:field="*{lastName}"
+                           placeholder="Last Name" class="form-control" required />
                 <span class="glyphicon form-control-feedback"
                       aria-hidden="true"></span>
             </div>
 
             <div class="form-group input-group has-feedback">
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-user"></span>
-          </span>
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-user"></span>
+              </span>
                 <input type="text" th:field="*{username}"
                        placeholder="Username" class="form-control" required />
                 <span class="glyphicon form-control-feedback"
@@ -85,16 +80,14 @@
             </div>
 
             <div class="form-group input-group has-feedback">
-          <span class="input-group-addon">
-            <span class="glyphicon glyphicon-lock"></span>
-          </span>
+                  <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-lock"></span>
+                  </span>
                 <input type="password" th:field="*{password}"
-                       placeholder="Password" class="form-control" required />
+                       placeholder="Password" class="form-control" />
                 <span class="glyphicon form-control-feedback"
                       aria-hidden="true"></span>
             </div>
-
-
 
             <div class="form-group input-group has-feedback">
           <span class="input-group-addon">
@@ -108,27 +101,43 @@
 
             </div>
 
+            <div th:if="${confirmationMessage}" class="alert alert-success"
+                 role="alert" th:text=${confirmationMessage}></div>
+
+            <div th:if="${alreadyRegisteredMessage}"
+                 class="alert alert-danger" role="alert"
+                 th:text="${alreadyRegisteredMessage}">
+
+            </div>
+                        <div th:if="${alreadyRegisteredUsername}"
+                             class="alert alert-danger" role="alert"
+                             th:text="${alreadyRegisteredUsername}">
+                        </div>
+
+
             <button type="submit"
                     class="btn btn-primary block full-width m-b">Register</button>
 
         </form>
 
     </div>
-</div>
+    </div>
 
-<!-- jQuery-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- jQuery-->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 
-<!-- Bootstrap -->
-<script
+    <!-- Bootstrap -->
+    <script
         src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
         integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
         crossorigin="anonymous"></script>
 
-<!-- Bootstrap Validator plugin -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
+    <!-- Bootstrap Validator plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.9/validator.min.js"></script>
 
-
+    </div>
+    </div>
+    </div>
 </body>
 
 </html>

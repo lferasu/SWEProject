@@ -1,0 +1,67 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:insert="/layouts/master-layout :: header" />
+
+<body>
+<nav th:replace="layouts/master-layout :: navbar-top" />
+<div style="padding-top:1em;" class="container">
+
+    <div style="padding-top:1em;" class="container">
+        <div style="margin-bottom: 1em;">
+            <span style="font-size: 2em; color: #32a5e7;">Edit User: [[${user.username}]]</span>
+        </div>
+
+        <form id="edit" method="post" action="/admin/edit" th:object="${user}">
+            <fieldset>
+                <input type="hidden" name="id" th:value="${user.id}"/>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="firstName">First Name</label>
+                            <input id="firstName" name="firstName" type="text" class="form-control"
+                                   th:value="${user.firstName}">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="lastName">Last Name</label>
+                            <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+                                  class="alert alert-danger"></span>
+                            <input id="lastName" name="lastName" type="text" class="form-control" th:value="${user.lastName}">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="role">Role</label>
+                            <span th:if="${#fields.hasErrors('role')}" th:errors="*{role}"
+                                  class="alert alert-danger"></span>
+
+                            <select name="role" id="role" class="form-control" autofocus>
+                                <option value="">Select a role</option>
+                                <option th:each="role : ${roles}" th:value="${user.role}"
+                                        th:text="${role}" ></option>
+
+                            </select>
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+
+                <div style="float:right;">
+                    <a href="/admin/index" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                    <button id="btnSubmit" type="submit" class="btn btn-outline-success">Save</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+</div>
+</body>
+
+<div th:replace="layouts/master-layout :: footer"></div>
+</html>
