@@ -7,7 +7,6 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.*;
-import java.util.stream.Collectors;
 
 @Entity
 public class User {
@@ -20,7 +19,7 @@ public class User {
 	@NotEmpty(message = "Please provide your username")
 	private String username;
 
-	@Column(nullable = false)
+
 	private String password;
 
 	@Enumerated(EnumType.STRING)
@@ -34,7 +33,7 @@ public class User {
 	@NotEmpty(message = "Please provide your last name")
 	private String lastName;
 
-	@Column(name = "email", nullable = false, unique = true)
+	@Column(name = "email", nullable = false)
 	@Email(message = "Please provide a valid email")
 	@NotEmpty(message = "Please provide an email")
 	private String email;

@@ -3,6 +3,7 @@ package eShop.controller;
 import eShop.model.BillingInfo;
 import eShop.model.Book;
 import eShop.model.Cart;
+import eShop.model.user.Address;
 import eShop.model.user.User;
 import eShop.service.BookService;
 import eShop.service.UserService;
@@ -27,7 +28,7 @@ public class CartController {
     private BookService bookService;
 
 
-    @GetMapping(value= {"/addToCart/{id}"})
+    @GetMapping(value= {"/addToCart/{id}", })
             public ModelAndView addBookToCart(@PathVariable Integer id, Model model){
 
             Book book = bookService.getBookById(id);
@@ -46,6 +47,12 @@ public class CartController {
             User myUser=userService.findByUsername(userName);
             Cart cart=new Cart();
             User customer=(User) myUser;
+            Address billingAddress = new Address();
+            Address shippingAddress = new Address();
+
+            customer.setBillingAddress(billingAddress);
+            customer.setShippingAddress(shippingAddress);
+            
             cart.setCustomer(customer);
             cart.setBooks(Arrays.asList(book));
             ModelAndView modelAndView = new ModelAndView();
@@ -53,7 +60,6 @@ public class CartController {
             cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBooks()));
             BillingInfo billingInfo = new BillingInfo();
             cart.getCustomer().getBillingInfos().add(billingInfo);
-
 
             modelAndView.addObject("cart", cart);
 

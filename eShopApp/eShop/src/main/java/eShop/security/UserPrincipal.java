@@ -30,8 +30,12 @@ public class UserPrincipal implements UserDetails {
             authorities.add(authority);
         });
 
-
         return authorities;
+    }
+
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     @Override
@@ -42,11 +46,6 @@ public class UserPrincipal implements UserDetails {
     @Override
     public String getUsername() {
         return this.user.getUsername();
-    }
-
-    public User getUser()
-    {
-        return this.user;
     }
 
     @Override

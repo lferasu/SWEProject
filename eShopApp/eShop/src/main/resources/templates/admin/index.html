@@ -4,12 +4,44 @@
 
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top" />
-<!--<div th:replace="layouts/master-layout :: search" />-->
-<div class="container">
-    <p class="alert">Admin is logged in. </p>
-    <span class="container" style="align-content: center">
-        Here, Admin Home Page
-    </span>
+<div style="padding-top:1em;" class="container">
+
+    <form th:align="center" action="#" th:action="@{/admin/index}" th:object="${search}">
+        <div class="form-group" th:align="right">
+        <label for="search_input">Quick search by users</label>
+        <input name="search" id="search" placeholder="Search Text" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+
+
+        <div class="form-group" th:if="${not #lists.isEmpty(search)}">
+            <div class="form-group">
+                <span style="font-size: 2em; color: #32a5e7;">Search Results</span>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">&nbsp;</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="search : ${search}">
+                    <td th:text="${search.firstName}">Text ...</td>
+                    <td th:text="${search.lastName}">Text...</td>
+                    <td th:text="${search.email}">Text ...</td>
+                    <td th:text="${search.role}">Text ...</td>
+                    <td><a th:href="@{'/admin/edit/{userId}'(userId=${search.id})}">Edit</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </form>
+
 </div>
 </body>
 

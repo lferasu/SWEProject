@@ -2,13 +2,12 @@ package eShop.controller;
 
 import com.nulabinc.zxcvbn.Strength;
 import com.nulabinc.zxcvbn.Zxcvbn;
+import eShop.model.user.Role;
 import eShop.model.user.User;
 import eShop.service.impl.EmailServiceImpl;
 import eShop.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -50,24 +49,35 @@ public class UserRegisterController {
         User userExists = userService.findByEmail(user.getEmail());
         System.out.println(userExists);
 
+
         if (userExists != null) {
             modelAndView.addObject("alreadyRegisteredMessage", "Oops!  There is already a user registered with the email provided.");
             modelAndView.setViewName("register");
             bindingResult.reject("email");
-        }
 
+            if(userService.findByUsername(userExists.getUsername()).getUsername().equalsIgnoreCase(user.getUsername())) {
+                modelAndView.addObject("alreadyRegisteredUsername", "Oops!  There is already a user registered with the username provided.");
+                modelAndView.setViewName("register");
+                bindingResult.reject("username");
+            }
+        }
         if (bindingResult.hasErrors()) {
             modelAndView.setViewName("register");
         } else { // new user so we create user and send confirmation e-mail
 
             // Disable user until they click on confirmation link in email
             user.setActive(false);
+            user.setPermissions("");
 
             // Generate random 36-character string token for confirmation link
             user.setConfirmationToken(UUID.randomUUID().toString());
 
-            userService.saveUser(user);
-            System.out.println(user);
+            if (user.getRole() == null)  user.setRole(Role.CUSTOMER); //default user while did not set Role
+            try {
+                userService.saveUser(user);
+                }catch (Exception e){
+                    System.out.println(e);
+                }
 
             String appUrl = request.getScheme() + "://" + request.getServerName();
 
@@ -96,6 +106,7 @@ public class UserRegisterController {
         if (user == null) { // No token found in DB
             modelAndView.addObject("invalidToken", "Oops!  This is an invalid confirmation link.");
         } else { // Token found
+
             modelAndView.addObject("confirmationToken", user.getConfirmationToken());
         }
 
@@ -131,6 +142,9 @@ public class UserRegisterController {
 
         // Set user to enabled
         user.setActive(true);
+
+        // update Token to confirmed
+        user.setConfirmationToken("confirmed");
 
         // Save user
         userService.saveUser(user);

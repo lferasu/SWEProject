@@ -32,7 +32,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/register", "/confirm").permitAll()
+                .antMatchers("/register", "/confirm", "/signin").permitAll()
                 .antMatchers("/home/**").permitAll()
                 .antMatchers("/profile/**").authenticated()
                 .antMatchers("/admin/**").hasRole(Role.ADMIN.toString())
@@ -47,6 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and()
                 .rememberMe().key("mySecret!").userDetailsService(userPrincipalDetailsService).rememberMeParameter("checkRememberMe");
+        http.csrf().disable();
     }
 
 

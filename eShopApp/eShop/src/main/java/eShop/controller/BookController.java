@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
+import java.util.Arrays;
 
 @Controller
 public class BookController {
@@ -124,11 +125,11 @@ public class BookController {
         return userService.findByUsername(username);
     }
 
-//    //accept place order
-//    @GetMapping("book/placeorder")
-//    public String showPlaceOrder(){
-//        return "book/placeorder";
-//    }
+    //accept place order
+    @GetMapping("book/placeorder")
+    public String showPlaceOrder(){
+        return "book/placeorder";
+    }
 
     //place order
 
@@ -148,12 +149,16 @@ public class BookController {
         Double totalPrice = bookService.calculateTotalPrice(cart.getBooks());
 //        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
         BillingInfo billingInfo = new BillingInfo();
-        Address billingAddress = new Address();
-        Address shippingAddress = new Address();
+        billingInfo.setCustomer(cart.getCustomer());
+        cart.getCustomer().setBillingInfos(Arrays.asList(billingInfo));
+//        Address billingAddress = new Address();
+//        Address shippingAddress = new Address();
+//        cart.getCustomer().setBillingAddress(billingAddress);
+//        cart.getCustomer().setShippingAddress(shippingAddress);
 
         model.addAttribute("books", cart.getBooks());
         model.addAttribute("totalPrice", totalPrice);
-        model.addAttribute("billingInfo", billingInfo);
+//        model.addAttribute("billingInfo", billingInfo);
 //        model.addAttribute("billingAddress", billingAddress);
 //        model.addAttribute("shippingAddress", shippingAddress);
         return "book/placeorder";
