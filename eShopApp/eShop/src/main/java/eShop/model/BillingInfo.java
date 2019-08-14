@@ -29,6 +29,15 @@ public class BillingInfo {
 	public BillingInfo() {
 
 	}
+
+	public BillingInfo(Integer cardNumber, String holderFullName, @NotNull @NotNull(message = "* Expiration Date is required") LocalDate expireDate, @Size(max = 3) Integer securityDigits, User customer) {
+		this.cardNumber = cardNumber;
+		this.holderFullName = holderFullName;
+		this.expireDate = expireDate;
+		this.securityDigits = securityDigits;
+		this.customer = customer;
+	}
+
 	public BillingInfo(Integer cardNumber, String holderFullName, LocalDate expireDate, Integer securityDigits
 			) {
 
