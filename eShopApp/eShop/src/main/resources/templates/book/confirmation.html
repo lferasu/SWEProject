@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="layouts/master-layout :: header" />
+
+<body>
+<nav th:replace="layouts/master-layout :: navbar-top">
+
+</nav>
+<!--<div th:replace="layouts/master-layout::search">-->
+<!--    <p>Abebe Beso Bela</p>-->
+<!--</div>-->
+
+<div class="container">
+
+    <div  id="templatemo_header" >
+        <div id="headerbgimage">
+            <h3>Your order is ready to be delivered:</h3>
+            <h3>Click to get delivery infromation</h3>
+
+            <h3 th:text="${delivery}"></h3>
+
+        </div>
+    </div>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="layouts/master-layout :: footer"></div>
+
+
+</body>
+</html>

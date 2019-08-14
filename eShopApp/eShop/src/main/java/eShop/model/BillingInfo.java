@@ -23,9 +23,9 @@ public class BillingInfo {
 	@Size(max = 3)
 	private Integer securityDigits;
 	
-	@OneToOne //uni
-	@JoinColumn(name="bill_address_id")  //FK
-	private Address billingAddress;
+//	@OneToOne //uni
+//	@JoinColumn(name="bill_address_id")  //FK
+//	private Address billingAddress;
 	@ManyToOne
 	private Customer customer;
 	
@@ -39,7 +39,7 @@ public class BillingInfo {
 		this.holderFullName = holderFullName;
 		this.expireDate = expireDate;
 		this.securityDigits = securityDigits;
-		this.billingAddress = billingAddress;
+//		this.billingAddress = billingAddress;
 	}
 	public Integer getId() {
 		return id;
@@ -71,12 +71,12 @@ public class BillingInfo {
 	public void setSecurityDigits(Integer securityDigits) {
 		this.securityDigits = securityDigits;
 	}
-	public Address getBillingAddress() {
-		return billingAddress;
-	}
-	public void setBillingAddress(Address billingAddress) {
-		this.billingAddress = billingAddress;
-	}
+//	public Address getBillingAddress() {
+//		return billingAddress;
+//	}
+//	public void setBillingAddress(Address billingAddress) {
+//		this.billingAddress = billingAddress;
+//	}
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
@@ -90,7 +90,7 @@ public class BillingInfo {
 	public String toString() {
 		return "BillingInfo [id=" + id + ", cardNumber=" + cardNumber + ", holderFullName=" + holderFullName
 				+ ", expireDate=" + expireDate + ", securityDigits=" + securityDigits + ", billingAddress="
-				+ billingAddress + "]";
+				+ "]";
 	}
 	
 	

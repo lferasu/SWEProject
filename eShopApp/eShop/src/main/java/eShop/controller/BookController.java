@@ -117,37 +117,37 @@ public class BookController {
         return userService.findByUsername(username);
     }
 
-    //accept place order
-    @GetMapping("book/placeorder")
-    public String showPlaceOrder(){
-        return "book/placeorder";
-    }
+//    //accept place order
+//    @GetMapping("book/placeorder")
+//    public String showPlaceOrder(){
+//        return "book/placeorder";
+//    }
 
     //place order
-    @PostMapping(value = {"/book/placeorder"})
-    public String placeOrder(
-        @Valid
-        @ModelAttribute("cart")
-                Cart cart,
-        BindingResult bindingResult,
-        Model model
-    ) {
-            if (bindingResult.hasErrors()) {
-                model.addAttribute("errors", bindingResult.getAllErrors());
-                return "book/placeorder";
-            }
-
-        Double totalPrice = bookService.calculateTotalPrice(cart.getBooks());
-//        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
-        BillingInfo billingInfo = new BillingInfo();
-        Address billingAddress = new Address();
-        Address shippingAddress = new Address();
-
-        model.addAttribute("books", cart.getBooks());
-        model.addAttribute("totalPrice", totalPrice);
-        model.addAttribute("billingInfo", billingInfo);
-//        model.addAttribute("billingAddress", billingAddress);
-//        model.addAttribute("shippingAddress", shippingAddress);
-        return "book/placeorder";
-    }
+//    @PostMapping(value = {"/book/placeorder"})
+//    public String placeOrder(
+//        @Valid
+//        @ModelAttribute("cart")
+//                Cart cart,
+//        BindingResult bindingResult,
+//        Model model
+//    ) {
+//            if (bindingResult.hasErrors()) {
+//                model.addAttribute("errors", bindingResult.getAllErrors());
+//                return "book/placeorder";
+//            }
+//
+//        Double totalPrice = bookService.calculateTotalPrice(cart.getBooks());
+////        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
+//        BillingInfo billingInfo = new BillingInfo();
+//        Address billingAddress = new Address();
+//        Address shippingAddress = new Address();
+//
+//        model.addAttribute("books", cart.getBooks());
+//        model.addAttribute("totalPrice", totalPrice);
+//        model.addAttribute("billingInfo", billingInfo);
+////        model.addAttribute("billingAddress", billingAddress);
+////        model.addAttribute("shippingAddress", shippingAddress);
+//        return "book/placeorder";
+//    }
 }

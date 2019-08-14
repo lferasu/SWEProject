@@ -1,13 +1,41 @@
-<!--<!DOCTYPE html>-->
-<!--<html xmlns:th="http://www.thymeleaf.org">-->
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="layouts/master-layout :: header" />
 
-<!--<head th:replace="layouts/master-layout :: header" />-->
-<!--<body>-->
-<!--<nav th:replace="layouts/master-layout :: navbar-top" />-->
-<!--<h1>-->
-<!--    ADD to Cart page-->
+<body>
+<nav th:replace="layouts/master-layout :: navbar-top">
 
-<!--</h1>-->
+</nav>
+<!--<div th:replace="layouts/master-layout::search">-->
+<!--    <p>Abebe Beso Bela</p>-->
+<!--</div>-->
 
-<!--</body>-->
-<!--</html>-->
+<div class="container">
+
+        <form id="BillingInformationForm" method="post" action="/book/addToCart" th:object="${book}">
+            <fieldset>
+                <legend>Billing Information:</legend>
+                <input type="hidden" name="id" th:value="${book.id}"/>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="title">Book Title</label>
+                            <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"
+                                  class="alert alert-danger"></span>
+                            <input id="title" name="title" type="text" class="form-control"
+                                   aria-describedby="titleHelp" required="required"
+                                   th:value="${book.title}">
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+
+</div>
+<!-- /.container -->
+
+<div th:replace="layouts/master-layout :: footer"></div>
+
+
+</body>
+</html>

@@ -29,7 +29,7 @@ public class Book {
 
 	@OneToOne //uni
 	@JoinColumn(name = "book_supplier_id")
-	private User supplier;
+	private Supplier supplier;
 	
 
 	@ManyToMany
@@ -131,7 +131,7 @@ public class Book {
 		return supplier;
 	}
 
-	public void setSupplier(User supplier) {
+	public void setSupplier(Supplier supplier) {
 		this.supplier = supplier;
 	}
 

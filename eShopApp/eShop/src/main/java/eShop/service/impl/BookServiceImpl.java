@@ -48,13 +48,16 @@ public class BookServiceImpl implements BookService {
         return bookRepository.findAllByIsbnContainsOrTitleContainsOrderByTitle(searchString, searchString);
 
     }
-    public double calculateTotalPrice(List<Book> books){
+    public double calculateTotalPrice(Book book){
         double price = 0.0;
-        for(Book book: books){
-            double tax = book.getPrice()*0.01;
+//        for(Book book: books){
+//            double tax = book.getPrice()*0.01;
+//            double deliveryCost = book.getPrice()*0.1;
+//            price += book.getPrice() + tax + deliveryCost;
+//        }
+        double tax = book.getPrice()*0.01;
             double deliveryCost = book.getPrice()*0.1;
             price += book.getPrice() + tax + deliveryCost;
-        }
         return price;
     }
 

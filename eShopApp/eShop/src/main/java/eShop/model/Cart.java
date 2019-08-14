@@ -22,17 +22,21 @@ public class Cart {
 	private Customer customer;
 	@OneToMany
 	@JoinColumn(name="fk_book")
-	private List<Book> books;
+	private Book book;
+	private Double totalPrice;
+	private BillingInfo billingInfo;
 
 	public Cart() {
 
 	}
 
-	public Cart(Customer customer, List<Book> books) {
-
+	public Cart(Customer customer, Book book, Double totalPrice, BillingInfo billingInfo) {
 		this.customer = customer;
-		this.books = books;
+		this.book = book;
+		this.totalPrice = totalPrice;
+		this.billingInfo = billingInfo;
 	}
+
 	public Integer getId() {
 		return id;
 	}
@@ -49,20 +53,38 @@ public class Cart {
 		this.customer = customer;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public Book getBook() {
+		return book;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setBook(Book book) {
+		this.book = book;
+	}
+
+	public void setTotalPrice(Double totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Double getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setBillingInfo(BillingInfo billingInfo) {
+		this.billingInfo = billingInfo;
+	}
+
+	public BillingInfo getBillingInfo() {
+		return billingInfo;
 	}
 
 	@Override
 	public String toString() {
-		return "Cart [id=" + id + ", customer=" + customer + ", books=" + books + "]";
+		return "Cart{" +
+				"id=" + id +
+				", customer=" + customer +
+				", books=" + book +
+				", totalPrice=" + totalPrice +
+				", billingInfo=" + billingInfo +
+				'}';
 	}
-	
-	
-	
-
 }
