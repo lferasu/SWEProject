@@ -47,6 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/login")
                 .and()
                 .rememberMe().key("mySecret!").userDetailsService(userPrincipalDetailsService).rememberMeParameter("checkRememberMe");
+        http.csrf().disable();
     }
 
 
