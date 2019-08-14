@@ -38,9 +38,11 @@ public class Book {
 			inverseJoinColumns = { @JoinColumn(name = "author_id") })
 	private List<Author> authors = new ArrayList<Author>();
 
-	@OneToMany
-	@JoinColumn(name="catagories_id")
-	private List<Category> categories = new ArrayList<Category>();
+	@ManyToMany
+	@JoinTable(name = "book_category",
+			joinColumns = { @JoinColumn(name = "book_id") },
+			inverseJoinColumns = { @JoinColumn(name = "category_id") })
+	private List<Category> categories = new ArrayList<>();
 
 	public Book() {
 		super();
@@ -143,7 +145,7 @@ public class Book {
 		this.authors = authors;
 	}
 
-	public List<Category> getCategories() {
+	public List<Category>  getCategories() {
 		return categories;
 	}
 
@@ -180,10 +182,15 @@ public class Book {
 		this.datePublished = datePublished;
 	}
 
+	public void setCategory(Category catagory)
+	{
+		this.categories.add(catagory);
+	}
+
 	@Override
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", isbn=" + isbn + ", price=" + price + ", copiesNumber="
-				+ numberOfCopies + ", isApproved=" + isApproved + ", supplier=" + supplier + ", categories=" + categories + "]";
+				+ numberOfCopies + ", isApproved=" + isApproved + ", supplier=" + supplier + "]";
 	}
 
 }

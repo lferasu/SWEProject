@@ -7,10 +7,7 @@ import eShop.model.DeliveryRequest;
 import eShop.model.user.Address;
 import eShop.model.user.Supplier;
 import eShop.model.user.User;
-import eShop.service.AuthorService;
-import eShop.service.BillingInfoService;
-import eShop.service.BookService;
-import eShop.service.UserService;
+import eShop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -41,6 +38,9 @@ public class BookController {
     private BookService bookService;
     @Autowired
     private BillingInfoService billingInfoService;
+
+    @Autowired
+    private CategoryService categoryService;
 
     @Autowired
     private static DeliveryRequestController deliveryRequestController;
@@ -105,6 +105,7 @@ public class BookController {
     public String newCustomerForm(Model model) {
         model.addAttribute("book", new Book());
          model.addAttribute("authors", authorService.getAllAuthors() );
+         model.addAttribute("categories", categoryService.getAllCategories());
         model.addAttribute("now", LocalDate.now());
         return "book/new";
     }
