@@ -1,9 +1,4 @@
 package eShop.model;
-
-<<<<<<< HEAD
-
-=======
->>>>>>> 887a9b0c2a90cc5a3e74ade0f3a29f15325095dd
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
