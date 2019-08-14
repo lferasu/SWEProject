@@ -24,6 +24,8 @@ public class Cart {
 	private List<Book> books = new ArrayList<>();
 	private Double totalPrice;
 
+	private int numberOfBooks=0;
+
 	public Cart() {
 
 	}
@@ -34,6 +36,14 @@ public class Cart {
 		this.totalPrice = totalPrice;
 	}
 
+	public int getNumberOfBooks() {
+		return numberOfBooks;
+	}
+
+	public void setNumberOfBooks(int numberOfBooks) {
+		this.numberOfBooks = numberOfBooks;
+	}
+
 	public void setId(Integer id) {
 		this.id = id;
 	}
@@ -42,7 +52,9 @@ public class Cart {
 		this.customer = customer;
 	}
 
-	public void setBooks(List<Book> books) {
+	public void setBooks(List<Book> books)
+	{
+		numberOfBooks += books.size();
 		this.books = books;
 	}
 

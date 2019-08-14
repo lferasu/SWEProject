@@ -26,6 +26,7 @@
                     <th scope="col">Last Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
+                    <th scope="col">Active status</th>
                     <th scope="col">&nbsp;</th>
                 </tr>
                 </thead>
@@ -35,6 +36,7 @@
                     <td th:text="${search.lastName}">Text...</td>
                     <td th:text="${search.email}">Text ...</td>
                     <td th:text="${search.role}">Text ...</td>
+                    <td th:text="${search.active}">Text ...</td>
                     <td><a th:href="@{'/admin/edit/{userId}'(userId=${search.id})}">Edit</a></td>
                 </tr>
                 </tbody>

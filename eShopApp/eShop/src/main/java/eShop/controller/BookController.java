@@ -93,6 +93,8 @@ public class BookController {
 
         ModelAndView modelAndView = new ModelAndView();
         Iterable<Book> listOfBooks = bookService.getAllBooks();
+        Cart cart = new Cart();
+        modelAndView.addObject("cart",cart);
         modelAndView.addObject("books", bookService.getAllBooks());
         modelAndView.setViewName("book/list1");
         return modelAndView;

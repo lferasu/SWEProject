@@ -39,7 +39,11 @@
         <div id="templatemo_menu" class = "container">
             <ul>
                 <li><a th:href="@{/home}" class="current">Home</a></li>
-                <li><a th:href="@{/showBookForm}">Books</a></li>
+                <li><a th:href="@{/listBook}">Browse</a></li>
+                <li sec:authorize="hasAnyRole('ROLE_SUPPLIER')" class="nav-item">
+                    <a class="nav-link" th:href="@{/showBookForm}" >Register Books</a>
+                </li>
+
                 <li><a th:href="@{/home}">Categories</a></li>
                 <li><a th:href="@{/home}">New Releases</a></li>
                 <li sec:authorize="isAuthenticated()" class="nav-item">

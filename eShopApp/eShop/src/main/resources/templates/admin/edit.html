@@ -38,15 +38,12 @@
                             <select name="role" id="role" class="form-control" autofocus>
                                 <option value="">Select a Role</option>
                                 <option th:each="role : ${T(eShop.model.user.Role).values()}" th:value="${role}" th:text="${role}"></option>
-                                <!--
-                                <option value="">Select a role</option>
-                                <option th:value="${user.role.CUSTOMER}"
-                                        th:text="${user.role.CUSTOMER.toString()}"></option>
-                                <option th:value="${user.role.SUPPLIER}"
-                                        th:text="${user.role.SUPPLIER.toString()}"></option>
-                                <option th:value="${user.role.ADMIN}"
-                                        th:text="${user.role.ADMIN.toString()}"></option>
-                                        -->
+                            </select>
+
+                            <select th:field="${user.active}" class="form-control" autofocus>
+                                <option value="">Select a status</option>
+                                <option th:value="true">True</option>
+                                <option th:value="false">False</option>
                             </select>
 
                         </div>

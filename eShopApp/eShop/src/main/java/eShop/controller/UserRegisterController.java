@@ -8,6 +8,7 @@ import eShop.service.impl.EmailServiceImpl;
 import eShop.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -100,8 +101,12 @@ public class UserRegisterController {
     // Process confirmation link
     @GetMapping(value="/confirm")
     public ModelAndView showConfirmationPage(ModelAndView modelAndView, @RequestParam("token") String token) {
-
-        User user = userService.findByConfirmationToken(token);
+        User user;
+        if(token == null || token.equals("")) {
+            user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        }
+        else
+            user = userService.findByConfirmationToken(token);
 
         if (user == null) { // No token found in DB
             modelAndView.addObject("invalidToken", "Oops!  This is an invalid confirmation link.");
@@ -144,7 +149,7 @@ public class UserRegisterController {
         user.setActive(true);
 
         // update Token to confirmed
-        user.setConfirmationToken("confirmed");
+       // user.setConfirmationToken("confirmed");
 
         // Save user
         userService.saveUser(user);
