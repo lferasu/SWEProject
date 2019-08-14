@@ -2,7 +2,7 @@ package eShop.service.impl;
 
 import eShop.model.DeliveryInfo;
 import eShop.model.Order;
-import eShop.model.user.Supplier;
+import eShop.model.user.Supplier1;
 import eShop.repository.DeliveryInfoRepository;
 import eShop.service.DeliveryInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class DeliveryInfoServiceImpl implements DeliveryInfoService {
         deliveryInfo.setOrder(order);
         deliveryInfo.setCustomer(order.getCustomer());
         deliveryInfo.setOrderedDate(order.getDate());
-        deliveryInfo.setSupplier((Supplier) order.getCart().getBooks().get(0).getSupplier());
+        deliveryInfo.setSupplier((Supplier1) order.getCart().getBooks().get(0).getSupplier());
         deliveryInfo.setExpectedArrival(order.getDate().plusDays(5));
 
         //Generating tracking number

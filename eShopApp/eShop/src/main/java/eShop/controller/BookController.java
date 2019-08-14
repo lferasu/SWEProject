@@ -3,9 +3,8 @@ package eShop.controller;
 import eShop.model.BillingInfo;
 import eShop.model.Book;
 import eShop.model.Cart;
-import eShop.model.DeliveryRequest;
 import eShop.model.user.Address;
-import eShop.model.user.Supplier;
+import eShop.model.user.Supplier1;
 import eShop.model.user.User;
 import eShop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.validation.Valid;
 import java.time.LocalDate;
 
-import java.util.List;
 @Controller
 public class BookController {
     private String noCover = "https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg";
@@ -78,7 +76,7 @@ public class BookController {
         }
 
         User activeUser = getActiveUser();
-        Supplier supplier = new Supplier();
+        Supplier1 supplier = new Supplier1();
         supplier.setId(activeUser.getId());
         supplier.setEmail(activeUser.getEmail());
 

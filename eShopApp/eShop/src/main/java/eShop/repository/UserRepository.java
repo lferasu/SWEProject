@@ -1,7 +1,5 @@
 package eShop.repository;
 
-import eShop.model.user.Address;
-import eShop.model.user.Supplier;
 import eShop.model.user.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

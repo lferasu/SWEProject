@@ -6,11 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
-
-import eShop.model.user.Customer;
+import eShop.model.user.User;
 
 @Entity
 public class Cart {
@@ -20,7 +18,7 @@ public class Cart {
 	
 	@OneToOne //uni
 	@JoinColumn(name = "cart_customer_id")
-	private Customer customer;
+	private User customer;
 	@OneToMany
 	@JoinColumn(name="fk_book")
 	private List<Book> books = new ArrayList<>();
@@ -30,7 +28,7 @@ public class Cart {
 
 	}
 
-	public Cart(Customer customer, List<Book> books, Double totalPrice) {
+	public Cart(User customer, List<Book> books, Double totalPrice) {
 		this.customer = customer;
 		this.books = books;
 		this.totalPrice = totalPrice;
@@ -40,7 +38,7 @@ public class Cart {
 		this.id = id;
 	}
 
-	public void setCustomer(Customer customer) {
+	public void setCustomer(User customer) {
 		this.customer = customer;
 	}
 
@@ -56,7 +54,7 @@ public class Cart {
 		return id;
 	}
 
-	public Customer getCustomer() {
+	public User getCustomer() {
 		return customer;
 	}
 

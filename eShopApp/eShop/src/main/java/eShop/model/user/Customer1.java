@@ -9,7 +9,7 @@ import eShop.model.BillingInfo;
 import eShop.model.Subscription;
 
 @Entity
-public class Customer extends User{
+public class Customer1 extends User{
 	@Id@GeneratedValue
 	private Integer id;
 	@OneToOne
@@ -25,12 +25,12 @@ public class Customer extends User{
 	@JoinColumn(name="fk_customer")
 	private List<Subscription> subscriptions = new ArrayList<Subscription>();
 
-	public Customer() {
+	public Customer1() {
 		super();
 	}
 
-	public Customer(Address billingAddress, Address shippingAddress, List<BillingInfo> billingInfos,
-			List<Subscription> subscriptions) {
+	public Customer1(Address billingAddress, Address shippingAddress, List<BillingInfo> billingInfos,
+					 List<Subscription> subscriptions) {
 		super();
 		this.billingAddress = billingAddress;
 		this.shippingAddress = shippingAddress;

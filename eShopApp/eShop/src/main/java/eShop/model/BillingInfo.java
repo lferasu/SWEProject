@@ -6,8 +6,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import eShop.model.user.Address;
-import eShop.model.user.Customer;
+import eShop.model.user.Customer1;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -24,7 +23,7 @@ public class BillingInfo {
 	private Integer securityDigits;
 
 	@ManyToOne
-	private Customer customer;
+	private Customer1 customer;
 	
 	public BillingInfo() {
 
@@ -69,11 +68,11 @@ public class BillingInfo {
 		this.securityDigits = securityDigits;
 	}
 
-    public void setCustomer(Customer customer) {
+    public void setCustomer(Customer1 customer) {
         this.customer = customer;
     }
 
-    public Customer getCustomer() {
+    public Customer1 getCustomer() {
         return customer;
     }
 

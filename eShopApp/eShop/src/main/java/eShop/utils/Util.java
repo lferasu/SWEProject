@@ -3,13 +3,11 @@ package eShop.utils;
 import eShop.controller.DeliveryRequestController;
 import eShop.model.Book;
 import eShop.model.DeliveryRequest;
-import eShop.model.user.Customer;
 import eShop.model.user.User;
 import eShop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 
 @Controller

@@ -1,12 +1,6 @@
 package eShop.service.impl;
-import eShop.model.Book;
-import eShop.model.user.Customer;
-import eShop.repository.CartRepository;
 import eShop.service.CartService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class CartServiceImpl  implements CartService {

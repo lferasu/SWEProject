@@ -8,8 +8,9 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-import eShop.model.user.Customer;
-import eShop.model.user.Supplier;
+import eShop.model.user.Customer1;
+import eShop.model.user.Supplier1;
+import eShop.model.user.User;
 
 @Entity
 public class DeliveryInfo {
@@ -22,11 +23,11 @@ public class DeliveryInfo {
 	
 	@OneToOne //uni
 	@JoinColumn(name = "supplier_id")
-	private Supplier supplier;
+	private User supplier;
 	
 	@OneToOne //uni
 	@JoinColumn(name = "customer_id")
-	private Customer customer;
+	private User customer;
 	
 	@OneToOne //uni
 	@JoinColumn(name = "order_id")
@@ -35,8 +36,8 @@ public class DeliveryInfo {
 	public DeliveryInfo() {
 
 	}
-	public DeliveryInfo(Supplier supplier, Customer customer, Order order, Integer trackingNumber,
-			LocalDate expectedArrival, LocalDate orderedDate) {
+	public DeliveryInfo(User supplier, User customer, Order order, Integer trackingNumber,
+						LocalDate expectedArrival, LocalDate orderedDate) {
 
 		this.supplier = supplier;
 		this.customer = customer;
@@ -51,16 +52,16 @@ public class DeliveryInfo {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Supplier getSupplier() {
+	public User getSupplier() {
 		return supplier;
 	}
-	public void setSupplier(Supplier supplier) {
+	public void setSupplier(User supplier) {
 		this.supplier = supplier;
 	}
-	public Customer getCustomer() {
+	public User getCustomer() {
 		return customer;
 	}
-	public void setCustomer(Customer customer) {
+	public void setCustomer(User customer) {
 		this.customer = customer;
 	}
 	public Order getOrder() {

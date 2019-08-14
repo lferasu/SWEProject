@@ -1,8 +1,8 @@
 package eShop.service;
 
-import eShop.model.user.Customer;
+import eShop.model.user.Customer1;
 
 public interface CustomerService {
 
-    public abstract Customer getCustomerById(Integer id);
+    public abstract Customer1 getCustomerById(Integer id);
 }

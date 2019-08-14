@@ -20,7 +20,7 @@
                     <figcaption class="info-wrap" th:text="${book.title}">
                     </figcaption>
                     <div class="bottom-wrap">
-                        <a href="@{'/addToCart/{id}'(id=${book.id})}" class="btn btn-sm btn-primary float-right">Add to Cart</a>
+                        <a th:href="@{'/addToCart/{id}'(id=${book.id})}" class="btn btn-sm btn-primary float-right">Add to Cart</a>
                         <div class="price-wrap h5">
                             <span class="price-new" th:text="${book.price}"></span>
                         </div> <!-- price-wrap.// -->

@@ -10,7 +10,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import eShop.model.user.Address;
-import eShop.model.user.Customer;
+import eShop.model.user.Customer1;
+import eShop.model.user.User;
 
 @Entity
 @Table(name = "orders")
@@ -24,7 +25,7 @@ public class Order {
 	
     @OneToOne
     @JoinColumn(name = "fk_customer")	
-	private Customer customer;
+	private User customer;
     
     @OneToOne
     @JoinColumn(name = "fk_cart")
@@ -38,8 +39,8 @@ public class Order {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Order(String orderNumber, Customer customer, Cart cart, LocalDate date, Address shippingAddress,
-			Double amount) {
+	public Order(String orderNumber, User customer, Cart cart, LocalDate date, Address shippingAddress,
+                 Double amount) {
 		super();
 		this.orderNumber = orderNumber;
 		this.customer = customer;
@@ -60,10 +61,10 @@ public class Order {
 	public void setOrderNumber(String orderNumber) {
 		this.orderNumber = orderNumber;
 	}
-	public Customer getCustomer() {
+	public User getCustomer() {
 		return customer;
 	}
-	public void setCustomer(Customer customer) {
+	public void setCustomer(User customer) {
 		this.customer = customer;
 	}
 	public Cart getCart() {

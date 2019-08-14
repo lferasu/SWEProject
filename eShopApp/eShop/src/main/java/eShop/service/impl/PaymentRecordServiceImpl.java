@@ -1,9 +1,8 @@
 package eShop.service.impl;
 
-import eShop.model.Cart;
 import eShop.model.Order;
 import eShop.model.PaymentRecord;
-import eShop.model.user.Supplier;
+import eShop.model.user.Supplier1;
 import eShop.repository.PaymentRecordRepository;
 import eShop.service.PaymentRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +19,7 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
             PaymentRecord paymentRecord = new PaymentRecord();
 
             paymentRecord.setOrder(order);
-            paymentRecord.setSupplier((Supplier) order.getCart().getBooks().get(0).getSupplier());
+            paymentRecord.setSupplier((Supplier1) order.getCart().getBooks().get(0).getSupplier());
             paymentRecord.setAmount(order.getCart().getTotalPrice());
             paymentRecord.setPaymentDate(LocalDate.now());
             paymentRecord.setBillInfo(order.getCart().getCustomer().getBillingInfos().get(0));

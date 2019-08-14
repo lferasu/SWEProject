@@ -7,7 +7,6 @@ import java.util.List;
 import javax.persistence.*;
 
 import eShop.model.user.Author;
-import eShop.model.user.Supplier;
 import eShop.model.user.User;
 import org.springframework.format.annotation.DateTimeFormat;
 
