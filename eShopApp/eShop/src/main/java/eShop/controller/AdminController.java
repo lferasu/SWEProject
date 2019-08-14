@@ -68,6 +68,8 @@ public class AdminController {
             tempUser.setLastName(user.getLastName()); flag=true;}
         if(user.getRole() != tempUser.getRole() && user.getRole() != null){
             tempUser.setRole(user.getRole()); flag=true;}
+        if(user.getActive() != tempUser.getActive() && user.getActive() != null){
+            tempUser.setActive(user.getActive()); flag=true;}
         if (flag){
 
             try {
