@@ -350,4 +350,16 @@ img {
     border: #1c1c1b;
     margin: auto;
 }
+
+#photo {
+    float: left;
+    width: 100px;
+}
+
+
+
+
+/*#bookRegistrationForm {*/
+/*    float: left; width: 60%;*/
+/*}*/
 /* end of footer */
