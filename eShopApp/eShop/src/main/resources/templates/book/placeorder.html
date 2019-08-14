@@ -39,7 +39,7 @@
 <h3>Your Billing Information:</h3>
 <hr>
 <div class="container">
-    <form id="BillingInformationForm" method="post" action="/book/pay" th:object="${cart.billingInfo}">
+    <form id="BillingInformationForm" method="post" action="/book/pay" th:object="${cart.cusomer.billingInfo}">
         <fieldset>
             <legend>Billing Information:</legend>
             <input type="hidden" name="id" th:value="${billingInfo.id}"/>
