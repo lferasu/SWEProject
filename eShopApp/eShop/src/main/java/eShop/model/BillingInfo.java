@@ -68,12 +68,6 @@ public class BillingInfo {
 	public void setSecurityDigits(Integer securityDigits) {
 		this.securityDigits = securityDigits;
 	}
-//	public Address getBillingAddress() {
-//		return billingAddress;
-//	}
-//	public void setBillingAddress(Address billingAddress) {
-//		this.billingAddress = billingAddress;
-//	}
 
     public void setCustomer(Customer customer) {
         this.customer = customer;

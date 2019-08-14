@@ -25,40 +25,26 @@ public class Cart {
 	@JoinColumn(name="fk_book")
 	private List<Book> books = new ArrayList<>();
 	private Double totalPrice;
-	private BillingInfo billingInfo;
 
 	public Cart() {
 
 	}
 
-	public Cart(Customer customer, List<Book> books, Double totalPrice, BillingInfo billingInfo) {
+	public Cart(Customer customer, List<Book> books, Double totalPrice) {
 		this.customer = customer;
 		this.books = books;
 		this.totalPrice = totalPrice;
-		this.billingInfo = billingInfo;
-	}
-
-	public Integer getId() {
-		return id;
 	}
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-	public Customer getCustomer() {
-		return customer;
-	}
-
 	public void setCustomer(Customer customer) {
 		this.customer = customer;
 	}
 
-	public List<Book> getBooks() {
-		return books;
-	}
-
-	public void setBook(List<Book> books) {
+	public void setBooks(List<Book> books) {
 		this.books = books;
 	}
 
@@ -66,16 +52,20 @@ public class Cart {
 		this.totalPrice = totalPrice;
 	}
 
+	public Integer getId() {
+		return id;
+	}
+
+	public Customer getCustomer() {
+		return customer;
+	}
+
+	public List<Book> getBooks() {
+		return books;
+	}
+
 	public Double getTotalPrice() {
 		return totalPrice;
-	}
-
-	public void setBillingInfo(BillingInfo billingInfo) {
-		this.billingInfo = billingInfo;
-	}
-
-	public BillingInfo getBillingInfo() {
-		return billingInfo;
 	}
 
 	@Override
@@ -85,7 +75,6 @@ public class Cart {
 				", customer=" + customer +
 				", books=" + books +
 				", totalPrice=" + totalPrice +
-				", billingInfo=" + billingInfo +
 				'}';
 	}
 }

@@ -63,7 +63,8 @@ public class CartController {
                 //Getaneh added the following
                 cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBooks()));
                 BillingInfo billingInfo = new BillingInfo();
-                cart.setBillingInfo(billingInfo);
+                cart.getCustomer().getBillingInfos().add(billingInfo);
+
 
                 modelAndView.addObject("cart",cart);
 
