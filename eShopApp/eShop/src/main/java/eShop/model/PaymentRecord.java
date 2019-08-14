@@ -40,7 +40,7 @@ public class PaymentRecord {
 	
 	@OneToMany
 	@JoinColumn(name="fk_book")
-	private Book book;
+	private List<Book> books;
 	
 	
 	
@@ -48,13 +48,13 @@ public class PaymentRecord {
 
 	}
 	public PaymentRecord(Customer customer, Supplier supplier, LocalDate paymentDate, BillingInfo billInfo,
-			Book book, Order order, Double amount) {
+						 List<Book> books, Order order, Double amount) {
 
 		this.customer = customer;
 		this.supplier = supplier;
 		this.paymentDate = paymentDate;
 		this.billInfo = billInfo;
-		this.book = book;
+		this.books = books;
 		this.order = order;
 		this.amount = amount;
 	}
@@ -88,11 +88,11 @@ public class PaymentRecord {
 	public void setBillInfo(BillingInfo billInfo) {
 		this.billInfo = billInfo;
 	}
-	public Book getBook() {
-		return book;
+	public List<Book> getBooks() {
+		return books;
 	}
-	public void setBook(Book book) {
-		this.book = book;
+	public void setBooks(List<Book> book) {
+		this.books = books;
 	}
 	public Order getOrder() {
 		return order;
@@ -109,7 +109,7 @@ public class PaymentRecord {
 	@Override
 	public String toString() {
 		return "PaymentRecord [id=" + id + ", customer=" + customer + ", supplier=" + supplier + ", paymentDate="
-				+ paymentDate + ", billInfo=" + billInfo + ", books=" + book + ", order=" + order + ", amount="
+				+ paymentDate + ", billInfo=" + billInfo + ", books=" + books + ", order=" + order + ", amount="
 				+ amount + "]";
 	}
 	

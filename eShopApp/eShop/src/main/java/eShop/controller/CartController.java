@@ -28,6 +28,7 @@ import java.util.List;
 public class CartController {
     @Autowired
     private UserService userService;
+
     @Autowired
     private BookService bookService;
 
@@ -41,9 +42,11 @@ public class CartController {
     @GetMapping(value={"/addToCart"})
     public ModelAndView addBookToCart(@ModelAttribute("book") Book book,  BindingResult bindingResult, Model model){
 
+
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
         String userName;
+
 
         if(principal instanceof UserDetails){
             userName=((UserDetails)principal).getUsername();
@@ -55,26 +58,20 @@ public class CartController {
                 Cart cart = new Cart();
                 Customer customer=(Customer)myUser;
                 cart.setCustomer(customer);
+                cart.getBooks().add(book);
                 ModelAndView modelAndView = new ModelAndView();
                 //Getaneh added the following
-                cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBook()));
+                cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBooks()));
                 BillingInfo billingInfo = new BillingInfo();
                 cart.setBillingInfo(billingInfo);
 
                 modelAndView.addObject("cart",cart);
 
-            //Getaneh added the following
-////        cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBooks()));
-////        BillingInfo billingInfo = new BillingInfo();
-////        billingInfo.setCustomer(cart.getCustomer());
-//        modelAndView.addObject("books", cart.getBooks());
-//        //modelAndView.addObject("totalPrice", totalPrice);
-//        modelAndView.addObject("billingInfo", billingInfo);
-
             //Getaneh additions end here
 
                 modelAndView.setViewName("book/placeorder");
                 return modelAndView;
+
     }
 
 //    //accept place order

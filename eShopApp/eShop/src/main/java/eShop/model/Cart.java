@@ -1,5 +1,6 @@
 package eShop.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -22,7 +23,7 @@ public class Cart {
 	private Customer customer;
 	@OneToMany
 	@JoinColumn(name="fk_book")
-	private Book book;
+	private List<Book> books = new ArrayList<>();
 	private Double totalPrice;
 	private BillingInfo billingInfo;
 
@@ -30,9 +31,9 @@ public class Cart {
 
 	}
 
-	public Cart(Customer customer, Book book, Double totalPrice, BillingInfo billingInfo) {
+	public Cart(Customer customer, List<Book> books, Double totalPrice, BillingInfo billingInfo) {
 		this.customer = customer;
-		this.book = book;
+		this.books = books;
 		this.totalPrice = totalPrice;
 		this.billingInfo = billingInfo;
 	}
@@ -53,12 +54,12 @@ public class Cart {
 		this.customer = customer;
 	}
 
-	public Book getBook() {
-		return book;
+	public List<Book> getBooks() {
+		return books;
 	}
 
-	public void setBook(Book book) {
-		this.book = book;
+	public void setBook(List<Book> books) {
+		this.books = books;
 	}
 
 	public void setTotalPrice(Double totalPrice) {
@@ -82,7 +83,7 @@ public class Cart {
 		return "Cart{" +
 				"id=" + id +
 				", customer=" + customer +
-				", books=" + book +
+				", books=" + books +
 				", totalPrice=" + totalPrice +
 				", billingInfo=" + billingInfo +
 				'}';

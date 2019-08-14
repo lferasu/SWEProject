@@ -11,6 +11,20 @@
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="/css/layouts/master-layout.css" rel="stylesheet" type="text/css" />
+
+    <link href="/css/sol.css" rel="stylesheet" type="text/css" />
+
+    <script src="/js/jQuery.min.js"></script>
+    <script type="text/javascript" src="/js/sol.js"></script>
+    <script>
+        $(function() {
+            // initialize sol
+            $('#author').searchableOptionList();
+        });
+    </script>
+<!--
+    <link href="/css/sol.css" rel="stylesheet" type="text/css" />
+-->
     <title>eShop Book Store</title>
 </head>
 <body>
@@ -55,15 +69,7 @@
         </div>
     </div>
 </nav>
-<!--<div  th:fragment="search" class="container">-->
-<!--    <form class="form-inline mr-auto" method="get"-->
-<!--          action="/eshop/book/search">-->
-<!--        <input class="form-control" type="text" placeholder="Search"-->
-<!--               name="search" aria-label="Search">-->
-<!--        <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2"-->
-<!--                type="submit">Search Books</button>-->
-<!--    </form>-->
-<!--</div>-->
+
 <div th:fragment="footer" class="container" >
     <div class="row">
         <div id="footerbgimage" class="col-md-6">

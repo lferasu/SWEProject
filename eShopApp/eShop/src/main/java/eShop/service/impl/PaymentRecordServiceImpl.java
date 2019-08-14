@@ -20,11 +20,11 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
             PaymentRecord paymentRecord = new PaymentRecord();
 
             paymentRecord.setOrder(order);
-            paymentRecord.setSupplier((Supplier) order.getCart().getBook().getSupplier());
+            paymentRecord.setSupplier((Supplier) order.getCart().getBooks().get(0).getSupplier());
             paymentRecord.setAmount(order.getCart().getTotalPrice());
             paymentRecord.setPaymentDate(LocalDate.now());
             paymentRecord.setBillInfo(order.getCart().getBillingInfo());
-            paymentRecord.setBook(order.getCart().getBook());
+            paymentRecord.setBooks(order.getCart().getBooks());
             paymentRecord.setCustomer(order.getCart().getCustomer());
 
         return paymentRecordRepository.save(paymentRecord);

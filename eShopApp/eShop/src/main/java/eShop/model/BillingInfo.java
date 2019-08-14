@@ -22,18 +22,15 @@ public class BillingInfo {
 	private LocalDate expireDate;
 	@Size(max = 3)
 	private Integer securityDigits;
-	
-//	@OneToOne //uni
-//	@JoinColumn(name="bill_address_id")  //FK
-//	private Address billingAddress;
+
 	@ManyToOne
 	private Customer customer;
 	
 	public BillingInfo() {
 
 	}
-	public BillingInfo(Integer cardNumber, String holderFullName, LocalDate expireDate, Integer securityDigits,
-			Address billingAddress) {
+	public BillingInfo(Integer cardNumber, String holderFullName, LocalDate expireDate, Integer securityDigits
+			) {
 
 		this.cardNumber = cardNumber;
 		this.holderFullName = holderFullName;
@@ -86,13 +83,16 @@ public class BillingInfo {
         return customer;
     }
 
-    @Override
+	@Override
 	public String toString() {
-		return "BillingInfo [id=" + id + ", cardNumber=" + cardNumber + ", holderFullName=" + holderFullName
-				+ ", expireDate=" + expireDate + ", securityDigits=" + securityDigits + ", billingAddress="
-				+ "]";
+		return "BillingInfo{" +
+				"id=" + id +
+				", cardNumber=" + cardNumber +
+				", holderFullName='" + holderFullName + '\'' +
+				", expireDate=" + expireDate +
+				", securityDigits=" + securityDigits +
+				", customer=" + customer +
+				'}';
 	}
-	
-	
 
 }

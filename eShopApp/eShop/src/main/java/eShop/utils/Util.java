@@ -14,7 +14,6 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class Util {
-
     @Autowired
     private static UserService userService;
 

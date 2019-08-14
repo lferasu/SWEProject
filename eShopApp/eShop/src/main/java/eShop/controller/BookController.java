@@ -3,6 +3,7 @@ package eShop.controller;
 import eShop.model.BillingInfo;
 import eShop.model.Book;
 import eShop.model.Cart;
+import eShop.model.DeliveryRequest;
 import eShop.model.user.Address;
 import eShop.model.user.Supplier;
 import eShop.model.user.User;
@@ -24,12 +25,17 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
-import java.util.List;
 
+import java.util.List;
 @Controller
 public class BookController {
+    private String noCover = "https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg";
+
     @Autowired
     AuthorService authorService;
+
+    @Autowired
+    UserService userService;
 
     @Autowired
     private BookService bookService;
@@ -37,15 +43,13 @@ public class BookController {
     private BillingInfoService billingInfoService;
 
     @Autowired
+    private static DeliveryRequestController deliveryRequestController;
 
-
-    private  UserService userService;
 
     @GetMapping(value = {"book/"})
     public String home() {
         return "book/index";
     }
-
     // SEARCH Use-Case
     @GetMapping(value = { "eshop/book/search" })
     public ModelAndView searchStudent(@RequestParam String search, Model model) {
@@ -68,14 +72,19 @@ public class BookController {
             return "Book/new";
         }
 
+        if(book.getImage()==null || book.getImage().trim()=="")
+        {
+            book.setImage(noCover);
+        }
+
         User activeUser = getActiveUser();
         Supplier supplier = new Supplier();
-
         supplier.setId(activeUser.getId());
         supplier.setEmail(activeUser.getEmail());
 
         book.setSupplier(supplier);
         Book savedBook = bookService.saveBook(book);
+
 
         return "redirect:/listBook";
     }
@@ -113,7 +122,6 @@ public class BookController {
         {
             username = principal.toString();
         }
-        System.out.println("hello");
         return userService.findByUsername(username);
     }
 
@@ -124,30 +132,32 @@ public class BookController {
 //    }
 
     //place order
-//    @PostMapping(value = {"/book/placeorder"})
-//    public String placeOrder(
-//        @Valid
-//        @ModelAttribute("cart")
-//                Cart cart,
-//        BindingResult bindingResult,
-//        Model model
-//    ) {
-//            if (bindingResult.hasErrors()) {
-//                model.addAttribute("errors", bindingResult.getAllErrors());
-//                return "book/placeorder";
-//            }
-//
-//        Double totalPrice = bookService.calculateTotalPrice(cart.getBooks());
-////        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
-//        BillingInfo billingInfo = new BillingInfo();
-//        Address billingAddress = new Address();
-//        Address shippingAddress = new Address();
-//
-//        model.addAttribute("books", cart.getBooks());
-//        model.addAttribute("totalPrice", totalPrice);
-//        model.addAttribute("billingInfo", billingInfo);
-////        model.addAttribute("billingAddress", billingAddress);
-////        model.addAttribute("shippingAddress", shippingAddress);
-//        return "book/placeorder";
-//    }
+
+    @PostMapping(value = {"/book/placeorder"})
+    public String placeOrder(
+        @Valid
+        @ModelAttribute("cart")
+                Cart cart,
+        BindingResult bindingResult,
+        Model model
+    ) {
+            if (bindingResult.hasErrors()) {
+                model.addAttribute("errors", bindingResult.getAllErrors());
+                return "book/placeorder";
+            }
+
+        Double totalPrice = bookService.calculateTotalPrice(cart.getBooks());
+//        List<BillingInfo> billingAddresses = billingInfoService.getAllBillingAddresses(cart.getCustomer());
+        BillingInfo billingInfo = new BillingInfo();
+        Address billingAddress = new Address();
+        Address shippingAddress = new Address();
+
+        model.addAttribute("books", cart.getBooks());
+        model.addAttribute("totalPrice", totalPrice);
+        model.addAttribute("billingInfo", billingInfo);
+//        model.addAttribute("billingAddress", billingAddress);
+//        model.addAttribute("shippingAddress", shippingAddress);
+        return "book/placeorder";
+    }
+
 }
