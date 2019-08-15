@@ -384,12 +384,32 @@ img {
     opacity: 0.8;
     filter: alpha(opacity=60);
 }
-form label, form input {
+form label, form input{
     color: #000000;
     font-size: medium;
     font-weight: bold;
-    border: 2px solid red;
 }
+form input[type=text], form input[type=select], form textarea, form input[type=date],
+    form input[type=number], form select, select{
+    color: #000000;
+    font-size: medium;
+    font-weight: bold;
+    border: 1px solid #111111;
+}
+form input[type=button], button[type=submit] {
+    background-color: #880016;
+    border: none;
+    color: white;
+    padding: 16px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.forloginbuttom {
+    float: right;
+}
+
 
 
 
