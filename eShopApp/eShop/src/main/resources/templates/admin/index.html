@@ -4,7 +4,7 @@
 
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top" />
-<div style="padding-top:1em;" class="container">
+<div style="padding-top:1em;" class="container bookregister">
 
     <form th:align="center" action="#" th:action="@{/admin/index}" th:object="${search}">
         <div class="form-group" th:align="right">
@@ -37,7 +37,7 @@
                     <td th:text="${search.email}">Text ...</td>
                     <td th:text="${search.role}">Text ...</td>
                     <td th:text="${search.active}">Text ...</td>
-                    <td><a th:href="@{'/admin/edit/{userId}'(userId=${search.id})}">Edit</a></td>
+                    <td class="btn btn-danger"><a th:href="@{'/admin/edit/{userId}'(userId=${search.id})}">Edit</a></td>
                 </tr>
                 </tbody>
             </table>
