@@ -12,10 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
@@ -51,10 +48,10 @@ public class CartController {
 
             UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User loggedInUser = principal.getUser();
-            User myUser = loggedInUser;
+            User customer = loggedInUser;
 
             cart.setBooks(books);
-            User customer=(User) myUser;
+            //User customer=(User) myUser;
             //checking the address in the database
 
             if(customer.getBillingAddress() == null) {
@@ -67,10 +64,11 @@ public class CartController {
 
             
             cart.setCustomer(customer);
+            System.out.println("***************in the cart:************* " + cart.getCustomer());
             ModelAndView modelAndView = new ModelAndView();
             //Getaneh added the following
             cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBooks()));
-            BillingInfo billingInfo = new BillingInfo();
+ //           BillingInfo billingInfo = new BillingInfo();
             customer.setBillingInfos(Arrays.asList(new BillingInfo(1234, "dggh", LocalDate.now(), 123, customer)));
 //            customer.getBillingInfos().add(billingInfo);
 
@@ -78,7 +76,7 @@ public class CartController {
 
     //Getaneh additions end here
 
-                modelAndView.setViewName("book/placeorder");
+                modelAndView.setViewName("Book/placeorder");
                 return modelAndView;
 
 }
@@ -88,25 +86,26 @@ public class CartController {
     public String placeOrderConfirmationDisplay(
             @Valid
             @ModelAttribute("cart")
-                    Cart cart,
+            @RequestBody Cart cart,
             BindingResult bindingResult,
             Model model
     ) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "book/placeorder";
+            return "Book/placeorder";
         }
 
         UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User loggedInUser = principal.getUser();
         System.out.println(loggedInUser.toString());
-        System.out.println(cart);
+
+        //cart.setCustomer(loggedInUser);
+        System.out.println(cart.getCustomer().getShippingAddress() + "+++++++++++++++++++++++++++++++++++++++++++++");
         loggedInUser.setShippingAddress(cart.getCustomer().getShippingAddress());
         loggedInUser.setBillingAddress(cart.getCustomer().getBillingAddress());
 
         userService.saveUser(loggedInUser);
-
         Order order = orderService.saveOrder(cart);
         PaymentRecord paymentRecord = paymentRecordService.savePaymentRecord(order);
         DeliveryInfo deliveryInfo = deliveryInfoService.saveDeliveryInfo(order);
@@ -118,10 +117,10 @@ public class CartController {
 //                            + " Thank you for choosing us!";
 //        model.addAttribute("delivery", delivery);
 
-        return "redirect:/book/confirmation";
+        return "redirect:/Book/confirmation";
     }
 
-    @GetMapping(value = {"/book/confirmation"})
+    @GetMapping(value = {"/Book/confirmation"})
     public String showConfirmation(Model model) {
 
 
