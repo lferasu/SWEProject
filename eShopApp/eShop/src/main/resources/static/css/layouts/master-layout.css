@@ -6,7 +6,8 @@ body {
     font-family: Verdana, Arial, san-serif;
     font-size: 11px;
     color: #000000;
-    background: #575757;
+    /*background: #575757;*/
+    background: url(images/sitebg.jpeg);
 }
 
 a:link, a:visited { color: #e6e154; text-decoration: none; font-weight: bold;}
@@ -132,8 +133,8 @@ img {
     font-size:44px;
     text-align: center;
     color: #fcf88e;
-    margin-top: 95px;
-    margin-left: 150px;
+    margin-top: 60px;
+    margin-left: 200px;
     width: 180px;
 }
 
@@ -145,8 +146,8 @@ img {
     float: left;
     font-size: 14px;
     color: #fcf88e;
-    margin-top: 95px;
-    margin-left: 290px;
+    margin-top: 60px;
+    margin-left: 250px;
     width: 180px;
 }
 
@@ -157,6 +158,22 @@ img {
 #templatemo_special_offers  p {
     margin: 0 0 20px 0;
 }
+
+#newarrival1 {
+    width: 150px;
+    height: 175px;
+    margin-top: 0px;
+    margin-bottom: 0;
+    background: url(images/book1.jpg);
+}
+#newarrival2 {
+    width: 150px;
+    height: 175px;
+    margin-top: 0px;
+    margin-bottom: 0;
+    background: url(images/book2.jpg);
+}
+
 #templatemo_special_offers p span {
     font-size: 18px;
 }
@@ -351,6 +368,30 @@ img {
     float: left;
     width: 100px;
 }
+
+.bookregister {
+    /*width: 800px;*/
+    /*height: 600px;*/
+    /*margin-top: 30px;*/
+    /*margin-bottom: 0;*/
+    /*background: url(images/addbookbg.jpg);*/
+    /*background-color: #eeeee4;*/
+    padding-top: 20px;
+    padding-bottom: 20px;
+    /*margin: 30px;*/
+    background-color: #ffffff;
+    border: 1px solid black;
+    opacity: 0.8;
+    filter: alpha(opacity=60);
+}
+form label, form input {
+    color: #000000;
+    font-size: medium;
+    font-weight: bold;
+    border: 2px solid red;
+}
+
+
 
 
 

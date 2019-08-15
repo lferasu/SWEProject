@@ -1,29 +1,28 @@
 <!DOCTYPE html>
-<html>
-
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layouts/master-layout :: header" >
     <link rel="stylesheet" href="../../static/css/layouts/master-layout.css">
 </head>
 
+<body>
+
 <nav th:replace="layouts/master-layout :: navbar-top" />
-<div th:replace="layouts/master-layout :: search" />
+<!--<div th:replace="layouts/master-layout :: search" />-->
 <!-- End of Navigation bar -->
 <div class="container">
     <div style="padding-top: 1em;" class="container">
     </div>
-    <p>&nbsp;</p>
-    <li>
-        <div  th:fragment="Cart" class="container">
-            <form class="form-inline mr-auto" method="post"
-                  th:action="@{/registerBook}"
-                  th:object="${cart}">
-                <input tabindex="2" id="productName" name="productName" type="text" class="form-control" th:value="${cart.numberOfBooks}"/>
-                <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 btn-dark"
-                        type="submit">Cart</button>
-            </form>
-        </div>
-    </li>
+<!--    <li>-->
+<!--        <div  th:fragment="Cart" class="container">-->
+<!--            <form class="form-inline mr-auto" method="post"-->
+<!--                  th:action="@{/registerBook}"-->
+<!--                  th:object="${cart}">-->
+<!--                <input tabindex="2" id="productName" name="productName" type="text" class="form-control" th:value="${cart.numberOfBooks}"/>-->
+<!--                <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 btn-dark"-->
+<!--                        type="submit">Cart</button>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </li>-->
         <div class="row">
             <div class="col-md-4" th:each="book,iterStat : ${books}">
                 <figure class="card" >

@@ -8,12 +8,13 @@
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top"/>
 <div class="container">
+    <div class="bookregister">
     <div id="form-cont">
 
         <form id="bookRegistrationForm" method="post" action="/registerBook" th:action="@{/registerBook}"
               th:object="${book}">
             <fieldset>
-                <legend class="text-center header">Book Registration Form</legend>
+                <legend class="text-center header" >Book Registration Form</legend>
                 <!--                       Title -->
                 <div class="row">
                     <div class="col-md-6">
@@ -165,7 +166,8 @@
             </fieldset>
         </form>
     </div>
-    <div id="photo"></div>
+    </div>
+
 </div>
 
 <div th:replace="layouts/master-layout :: footer"></div>

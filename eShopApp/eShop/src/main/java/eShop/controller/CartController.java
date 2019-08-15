@@ -31,7 +31,6 @@ public class CartController {
     private UserService userService;
     @Autowired
     private BookService bookService;
-
     @Autowired
     private PaymentRecordService paymentRecordService;
     @Autowired
@@ -41,85 +40,171 @@ public class CartController {
 
 
 
-    @GetMapping(value= {"/addToCart/{id}" })
-            public ModelAndView addBookToCart(@PathVariable Integer id, Model model){
-
-            Cart cart=new Cart();
-            Book book = bookService.getBookById(id);
-            List<Book> books = new ArrayList<>();
-            books.add(book);
-
-            UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-            User loggedInUser = principal.getUser();
-            User myUser = loggedInUser;
-
-            cart.setBooks(books);
-            User customer=(User) myUser;
-            //checking the address in the database
-
-            if(customer.getBillingAddress() == null) {
-
-                Address billingAddress = new Address();
-                Address shippingAddress = new Address();
-                customer.setBillingAddress(billingAddress);
-                customer.setShippingAddress(shippingAddress);
-            }
-
-            
-            cart.setCustomer(customer);
-            ModelAndView modelAndView = new ModelAndView();
-            //Getaneh added the following
-            cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBooks()));
-            BillingInfo billingInfo = new BillingInfo();
-            customer.setBillingInfos(Arrays.asList(new BillingInfo(1234, "dggh", LocalDate.now(), 123, customer)));
-//            customer.getBillingInfos().add(billingInfo);
-
-            modelAndView.addObject("cart", cart);
-
-    //Getaneh additions end here
-
-                modelAndView.setViewName("book/placeorder");
-                return modelAndView;
-
-}
+//    @GetMapping(value= {"/addToCart/{id}" })
+//            public ModelAndView addBookToCart(@PathVariable Integer id, Model model){
+//
+//            Cart cart=new Cart();
+//            Book book = bookService.getBookById(id);
+//            List<Book> books = new ArrayList<>();
+//            books.add(book);
+//
+//            UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//            User loggedInUser = principal.getUser();
+//            User myUser = loggedInUser;
+//
+//            cart.setBooks(books);
+//            User customer=(User) myUser;
+//            //checking the address in the database
+//
+//            if(customer.getBillingAddress() == null) {
+//
+//                Address billingAddress = new Address();
+//                Address shippingAddress = new Address();
+//                customer.setBillingAddress(billingAddress);
+//                customer.setShippingAddress(shippingAddress);
+//            }
+//
+//
+//            cart.setCustomer(customer);
+//            ModelAndView modelAndView = new ModelAndView();
+//            //Getaneh added the following
+//            cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBooks()));
+//            BillingInfo billingInfo = new BillingInfo();
+//            customer.setBillingInfos(Arrays.asList(new BillingInfo(1234, "dggh", LocalDate.now(), 123, customer)));
+////            customer.getBillingInfos().add(billingInfo);
+//
+//            modelAndView.addObject("cart", cart);
+//
+//    //Getaneh additions end here
+//
+//                modelAndView.setViewName("book/placeorder");
+//                return modelAndView;
+//
+//}
 //codes from payment controller
+
+//    @PostMapping(value = {"/addToCart"})
+//    public String placeOrderConfirmationDisplay(
+//            @Valid
+//            @ModelAttribute("cart")
+//                    Cart cart,
+//            BindingResult bindingResult,
+//            Model model
+//    ) {
+//
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute("errors", bindingResult.getAllErrors());
+//            return "book/placeorder";
+//        }
+//
+//        UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User loggedInUser = principal.getUser();
+//        System.out.println(loggedInUser.toString());
+//        System.out.println(cart);
+//        loggedInUser.setShippingAddress(cart.getCustomer().getShippingAddress());
+//        loggedInUser.setBillingAddress(cart.getCustomer().getBillingAddress());
+//
+//        userService.saveUser(loggedInUser);
+//
+//        Order order = orderService.saveOrder(cart);
+//        PaymentRecord paymentRecord = paymentRecordService.savePaymentRecord(order);
+//        DeliveryInfo deliveryInfo = deliveryInfoService.saveDeliveryInfo(order);
+//
+////        String delivery = "Your order: " + cart.getBook().getTitle() + " will be delivered on "
+////                            + deliveryInfo.getExpectedArrival() + " (Customer Information"
+////                            + cart.getCustomer().getFirstName() + " " + cart.getCustomer().getLastName() + ")"
+////                            + " /n"
+////                            + " Thank you for choosing us!";
+////        model.addAttribute("delivery", delivery);
+//
+//        return "redirect:/book/confirmation";
+//    }
+//
+//    @GetMapping(value = {"/book/confirmation"})
+//    public String showConfirmation(Model model) {
+//
+//
+//
+//        return "book/confirmation";
+//    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @GetMapping(value= {"/addToCart/{id}" })
+    public ModelAndView addBookToCartSecond(@PathVariable Integer id, Model model){
+
+        Book book = bookService.getBookById(id);
+        List<Book> books = new ArrayList<>();
+        books.add(book);
+
+        UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User loggedInUser = principal.getUser();
+        User myUser = loggedInUser;
+
+        User customer=(User) myUser;
+
+//            Address billingAddress = new Address();
+//            Address shippingAddress = new Address();
+//            customer.setBillingAddress(billingAddress);
+//            customer.setShippingAddress(shippingAddress);
+            BillingInfo billingInfo = new BillingInfo();
+            customer.setBillingInfos(Arrays.asList(billingInfo));
+        Double totalPrice = bookService.calculateTotalPrice(books);
+
+        ModelAndView modelAndView = new ModelAndView();
+
+        modelAndView.addObject("billingInfo", billingInfo);
+        modelAndView.addObject("books", books);
+        modelAndView.addObject("totalPrice", totalPrice);
+
+        //Getaneh additions end here
+
+        modelAndView.setViewName("book/placeordernew");
+        return modelAndView;
+
+    }
 
     @PostMapping(value = {"/addToCart"})
     public String placeOrderConfirmationDisplay(
             @Valid
-            @ModelAttribute("cart")
-                    Cart cart,
+            @ModelAttribute("billingInfo")
+                    BillingInfo billingInfo,
             BindingResult bindingResult,
             Model model
     ) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "book/placeorder";
+            return "book/placeordernew";
         }
 
         UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User loggedInUser = principal.getUser();
-        System.out.println(loggedInUser.toString());
-        System.out.println(cart);
-        loggedInUser.setShippingAddress(cart.getCustomer().getShippingAddress());
-        loggedInUser.setBillingAddress(cart.getCustomer().getBillingAddress());
+        User myUser = loggedInUser;
+        User customer=(User) myUser;
+        List<BillingInfo> billingInfos = new ArrayList<>();
 
-        userService.saveUser(loggedInUser);
 
-        Order order = orderService.saveOrder(cart);
-        PaymentRecord paymentRecord = paymentRecordService.savePaymentRecord(order);
-        DeliveryInfo deliveryInfo = deliveryInfoService.saveDeliveryInfo(order);
 
-//        String delivery = "Your order: " + cart.getBook().getTitle() + " will be delivered on "
-//                            + deliveryInfo.getExpectedArrival() + " (Customer Information"
-//                            + cart.getCustomer().getFirstName() + " " + cart.getCustomer().getLastName() + ")"
-//                            + " /n"
-//                            + " Thank you for choosing us!";
-//        model.addAttribute("delivery", delivery);
-
-        return "redirect:/book/confirmation";
+        return "redirect:/book/billingAddress";
     }
+
+    @PostMapping(value = {"/address"})
+    public String placeOrderConfirmationDisplay(
+            @Valid
+            @ModelAttribute("customer")
+                    User user,
+            BindingResult bindingResult,
+            Model model
+    ) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", bindingResult.getAllErrors());
+            return "book/placeordernew";
+        }
+
+        return "redirect:/book/billingAddress";
+    }
+
+
 
     @GetMapping(value = {"/book/confirmation"})
     public String showConfirmation(Model model) {

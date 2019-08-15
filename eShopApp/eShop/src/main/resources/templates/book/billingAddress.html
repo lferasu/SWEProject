@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head th:replace="layouts/master-layout :: header">
+
+    <title>eshop: place order</title>
+</head>
+<body>
+<nav th:replace="layouts/master-layout :: navbar-top" />
+
+<!--displays the book and its price-->
+<div id="form-cont">
+
+    <hr>
+    <div class="container">
+
+        <div id="form-cont">
+            <form id="BillingInformationForm" method="post" th:action="@{/address}" th:object="${customer}">
+
+                                <fieldset>
+                                    <legend>Biling Address:</legend>
+                                    <!--            <input type="hidden" name="id" th:value="${cart.customer.billingAddress.id}"/>-->
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="street">Street</label>
+                                                <!--                        <span th:if="${#fields.hasErrors('street')}" th:errors="*{customer.billingAddress.street}"-->
+                                                <!--                              class="alert alert-danger"></span>-->
+                                                <input id="billingstreet" name="street" type="text" class="form-control"
+                                                       aria-describedby="streetHelp" required="required"
+                                                       th:value="${customer.billingAddress.street}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="city">City</label>
+                                                <!--                        <span th:if="${#fields.hasErrors('city')}" th:errors="*{customer.billingAddress.city}"-->
+                                                <!--                              class="alert alert-danger"></span>-->
+                                                <input id="billingcity" name="city" type="text" required="required" class="form-control"
+                                                       th:value="${customer.billingAddress.city}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="zip">ZIP</label>
+                                                <!--                        <span th:if="${#fields.hasErrors('zip')}" th:errors="*{customer.billingAddress.zip}"-->
+                                                <!--                              class="alert alert-danger"></span>-->
+                                                <input id="billingzip" name="zip" type="text" class="form-control"
+                                                       th:value="${customer.billingAddress.zip}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="state">State</label>
+                                                <!--                        <span th:if="${#fields.hasErrors('state')}" th:errors="*{customer.billingAddress.state}"-->
+                                                <!--                              class="alert alert-danger"></span>-->
+                                                <input id="billingstate" name="state" type="text" required="required" class="form-control"
+                                                       th:value="${customer.billingAddress.state}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                                <fieldset>
+                                    <legend>Shipping Address:</legend>
+                                    <input type="hidden" name="id" th:value="${customer.shippingAddress.id}"/>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="street">Street</label>
+                                                <!--                        <span th:if="${#fields.hasErrors('street')}" th:errors="*{cart.customer.shippingAddress.street}"-->
+                                                <!--                              class="alert alert-danger"></span>-->
+                                                <input id="street" name="street" type="text" class="form-control"
+                                                       aria-describedby="streetHelp" required="required"
+                                                       th:value="${customer.shippingAddress.street}">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="city">City</label>
+                                                <!--                        <span th:if="${#fields.hasErrors('city')}" th:errors="*{cart.customer.billingAddress.city}"-->
+                                                <!--                              class="alert alert-danger"></span>-->
+                                                <input id="city" name="city" type="text" required="required" class="form-control"
+                                                       th:value="${customer.shippingAddress.city}">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="zip">ZIP</label>
+                                                <!--                        <span th:if="${#fields.hasErrors('zip')}" th:errors="*{cart.customer.billingAddress.zip}"-->
+                                                <!--                              class="alert alert-danger"></span>-->
+                                                <input id="zip" name="zip" type="text" class="form-control"
+                                                       th:value="${customer.shippingAddress.zip}">
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label for="state">State</label>
+                                                <!--                        <span th:if="${#fields.hasErrors('state')}" th:errors="*{cart.customer.billingAddress.state}"-->
+                                                <!--                              class="alert alert-danger"></span>-->
+                                                <input id="state" name="state" type="text" required="required" class="form-control"
+                                                       th:value="${customer.shippingAddress.state}">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
+                <div style="float:left;">
+                    <a th:href="@{/book/placeordernew}" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+
+                    <input type="submit" id="btnSubmit" class="btn btn-outline-success" th:value="Save">
+
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<hr>
+
+
+<div th:replace="layouts/master-layout :: footer" class="container"></div>
+</body>
+</html>

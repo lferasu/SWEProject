@@ -1,6 +1,7 @@
 package eShop.service.impl;
 
-import eShop.model.user.Customer1;
+
+import eShop.model.user.User;
 import eShop.repository.CustomerRepository;
 import eShop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +12,7 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepository customerRepository;
     @Override
-    public Customer1 getCustomerById(Integer id) {
+    public User getCustomerById(Integer id) {
        return customerRepository.findById(id).orElse(null);
     }
 }
