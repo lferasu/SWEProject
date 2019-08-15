@@ -7,12 +7,18 @@
 </head>
 <body>
 <nav th:replace="layouts/master-layout :: navbar-top"/>
+<div id="photo"></div>
 <div class="container">
+
+
+
     <div class="bookregister">
+
     <div id="form-cont">
 
         <form id="bookRegistrationForm" method="post" action="/registerBook" th:action="@{/registerBook}"
               th:object="${book}">
+
             <fieldset>
                 <legend class="text-center header" >Book Registration Form</legend>
                 <!--                       Title -->
@@ -137,7 +143,8 @@
 
                             <script>
                                 document.getElementById('btn1').addEventListener('click', function () {
-                                    document.getElementById('photo').innerHTML = '<img src="' + document.getElementById('image1').value + '" alt="Image" height="100px" width="80px" />';
+                                    document.getElementById('photo').innerHTML = '<img src="' + document.getElementById('image').value + '" alt="Image" height="250px" width="200px" />';
+
                                 });
                             </script>
 
@@ -156,7 +163,7 @@
                             <button tabindex="8" id="btnReset" type="reset" class="btn btn-outline-info"
                                     style="margin-right: 2em;">Reset
                             </button>
-                            <a tabindex="9" href="product/list" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
+                            <a tabindex="9" href="Book/listBook" class="btn btn-outline-warning">Cancel</a>&nbsp;&nbsp;&nbsp;
                             <button tabindex="10" id="btnSubmit" type="submit" class="btn btn-outline-primary">Register
                             </button>
                         </div>
@@ -165,8 +172,8 @@
             </fieldset>
         </form>
     </div>
-    </div>
 
+    </div>
 </div>
 
 <div th:replace="layouts/master-layout :: footer"></div>

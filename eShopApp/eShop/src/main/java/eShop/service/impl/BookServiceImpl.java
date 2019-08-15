@@ -48,16 +48,23 @@ public class BookServiceImpl implements BookService {
 
     }
     @Override
-    public List<Book> getAllBooksQuickSearch(String searchString) {
+    public Page<Book> getAllBooksQuickSearch(String searchString, int pageNo) {
+
         if(isMoney(searchString)&&containsDecimalPoint(searchString)){
-            return  bookRepository.findAllByPriceEquals(Double.parseDouble(searchString));
+            List<Book>  books =  bookRepository.findAllByPriceEquals(Double.parseDouble(searchString));
+            return new PageImpl<>(books);
         }
         else if(isDate(searchString))
         {
-            return  bookRepository.findAllByDatePublishedEquals(LocalDate.parse(searchString,DateTimeFormatter.ISO_DATE));
+            List<Book> books =  bookRepository.findAllByDatePublishedEquals(LocalDate.parse(searchString,DateTimeFormatter.ISO_DATE));
+            return new PageImpl<>(books);
         }
-       else
-           return bookRepository.findAllByIsbnContainsOrTitleContainsOrderByTitle(searchString, searchString);
+       else {
+            Pageable pageable = new PageRequest(pageNo, 10);
+            List<Book> books = bookRepository.findAllByIsbnContainsOrTitleContainsOrderByTitle(searchString, searchString, pageable);
+            return new PageImpl<>(books);
+        }
+
     }
     //==Beginning of getAllBooksQuickSearch(String searchString) helper methods==//
     private boolean isMoney(String searchString) {

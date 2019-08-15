@@ -366,8 +366,8 @@ img {
 }
 
 #photo {
-    float: left;
-    width: 100px;
+    float: right;
+    width: 50px;
 }
 
 .bookregister {
@@ -410,6 +410,8 @@ form input[type=button], button[type=submit], input[type=submit] {
 .forloginbuttom {
     float: right;
 }
+
+
 
 
 

@@ -52,9 +52,10 @@ public class BookController {
     }
     // SEARCH Use-Case
     @GetMapping(value = { "eshop/book/search" })
-    public ModelAndView searchStudent(@RequestParam String search, Model model) {
+    public ModelAndView searchStudent(@RequestParam (defaultValue = "0") int pageno, @RequestParam String search, Model model) {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.addObject("books", bookService.getAllBooksQuickSearch(search));
+        modelAndView.addObject("books", bookService.getAllBooksQuickSearch(search, pageno));
+        modelAndView.addObject("currentPageNo",pageno);
         modelAndView.setViewName("book/list1");
         return modelAndView;
     }
