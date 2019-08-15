@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
+import java.util.Map;
 
 @Service
 public class PaymentRecordServiceImpl implements PaymentRecordService {
@@ -27,5 +29,10 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
             paymentRecord.setCustomer(order.getCart().getCustomer());
 
         return paymentRecordRepository.save(paymentRecord);
+    }
+
+    @Override
+    public List<List<Map<Object, Object>>> getCanvasjsChartData() {
+        return null;
     }
 }

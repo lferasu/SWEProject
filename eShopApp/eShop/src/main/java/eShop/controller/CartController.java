@@ -68,7 +68,7 @@ public class CartController {
             String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
             cart.setSessionId(sessionId);
             cart.setBooks(books);
-            User customer=(User) myUser;
+            //User customer=(User) myUser;
             //checking the address in the database
 
             if(customer.getBillingAddress() == null) {
@@ -84,7 +84,7 @@ public class CartController {
            // ModelAndView modelAndView = new ModelAndView();
             //Getaneh added the following
             cart.setTotalPrice(bookService.calculateTotalPrice(cart.getBooks()));
-            BillingInfo billingInfo = new BillingInfo();
+ //           BillingInfo billingInfo = new BillingInfo();
             customer.setBillingInfos(Arrays.asList(new BillingInfo(1234, "dggh", LocalDate.now(), 123, customer)));
             Cart savedCart = cartService.saveCart(cart);
             model.addAttribute("cart", savedCart);
@@ -106,14 +106,14 @@ public class CartController {
     public String placeOrderConfirmationDisplay(
             @Valid
             @ModelAttribute("cart")
-                    Cart cart,
+            @RequestBody Cart cart,
             BindingResult bindingResult,
             Model model
     ) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
-            return "book/placeorder";
+            return "Book/placeorder";
         }
 
         String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
@@ -144,10 +144,10 @@ public class CartController {
         }
 
 
-        return "redirect:/book/confirmation";
+        return "redirect:/Book/confirmation";
     }
 
-    @GetMapping(value = {"/book/confirmation"})
+    @GetMapping(value = {"/Book/confirmation"})
     public String showConfirmation(Model model) {
 
 
