@@ -11,19 +11,14 @@
 <!-- End of Navigation bar -->
 <div class="container">
     <div style="padding-top: 1em;" class="container">
+
     </div>
-<!--    <li>-->
-<!--        <div  th:fragment="Cart" class="container">-->
-<!--            <form class="form-inline mr-auto" method="post"-->
-<!--                  th:action="@{/registerBook}"-->
-<!--                  th:object="${cart}">-->
-<!--                <input tabindex="2" id="productName" name="productName" type="text" class="form-control" th:value="${cart.numberOfBooks}"/>-->
-<!--                <button class="btn btn-mdb-color btn-rounded btn-sm my-0 ml-sm-2 btn-dark"-->
-<!--                        type="submit">Cart</button>-->
-<!--            </form>-->
-<!--        </div>-->
-<!--    </li>-->
+
+    <p>&nbsp;</p>
+
+
         <div class="row">
+            <tbody>
             <div class="col-md-4" th:each="book,iterStat : ${books}">
                 <figure class="card" >
                     <div class="img-wrap"><img th:src="@{${book.image}}" style="width: 116%; height: 100%; alignment: center "/></div>
@@ -31,14 +26,35 @@
                     </figcaption>
                     <div class="bottom-wrap">
                         <a th:href="@{'/addToCart/{id}'(id=${book.id})}" class="btn btn-sm btn-primary float-right">Add to Cart</a>
+                        <!--                        th:href="@{'/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}"-->
                         <div class="price-wrap h5">
                             <span class="price-new" th:text="${book.price}"></span>
                         </div> <!-- price-wrap.// -->
                     </div> <!-- bottom-wrap.// -->
                 </figure>
+
             </div>
+            </tbody>
         </div>
+
+
+
+
     </div>
+    <div>
+        <ul class="pagination">
+            <li class="page-item disabled">
+                <a class="page-link" href="#">Pages: </a>
+            </li>
+            <li th:each="i : ${#numbers.sequence(1, books.totalPages)}"
+                th:class="${currentPageNo}==${i-1}?'page-item active':'page-item'">
+                <a th:href="@{/listBook(pageno=${i-1})}"
+                   th:text="${i}" class = "page-link"></a>
+            </li>
+        </ul>
+    </div>
+    </div>
+
 </div>
 </div>
 <div th:replace="layouts/master-layout :: footer"></div>

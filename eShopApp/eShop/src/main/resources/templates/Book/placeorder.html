@@ -40,8 +40,8 @@
 <hr>
 <div class="container">
 
-    <div id="form-cont">
-    <form id="BillingInformationForm" method="post" th:action="@{/addToCart}" th:object="${cart}">
+    <div>
+    <form id="BillingInformationForm" method="post" th:action="@{/addToCart}"  th:object="${cart}">
         <fieldset>
             <legend>Billing Information:</legend>
             <input type="hidden" name="id" th:value="${cart.customer.billingInfos.get(0).id}"/>

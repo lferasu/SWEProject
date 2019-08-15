@@ -33,8 +33,6 @@ public class UserPrincipal implements UserDetails {
         return authorities;
     }
 
-
-
     public void setUser(User user) {
         this.user = user;
     }

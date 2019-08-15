@@ -8,6 +8,7 @@ import eShop.model.user.Supplier1;
 import eShop.model.user.User;
 import eShop.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
@@ -89,16 +90,17 @@ public class BookController {
     }
 
     @GetMapping(value = { "/listBook" })
-    public ModelAndView showAllBooks() {
+    public ModelAndView showAllBooks( @RequestParam (defaultValue = "0") int pageno) {
 
         ModelAndView modelAndView = new ModelAndView();
-        Iterable<Book> listOfBooks = bookService.getAllBooks();
         Cart cart = new Cart();
         modelAndView.addObject("cart",cart);
-        modelAndView.addObject("books", bookService.getAllBooks());
+        modelAndView.addObject("books",bookService.getAllBooksPaged(pageno));
+        modelAndView.addObject("currentPageNo",pageno);
         modelAndView.setViewName("book/list1");
         return modelAndView;
     }
+
     // show Registration Form
     @GetMapping(value={"/showBookForm"})
     public String newCustomerForm(Model model) {
