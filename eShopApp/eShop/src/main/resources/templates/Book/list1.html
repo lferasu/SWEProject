@@ -1,19 +1,23 @@
 <!DOCTYPE html>
-<html>
-
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layouts/master-layout :: header" >
     <link rel="stylesheet" href="../../static/css/layouts/master-layout.css">
 </head>
+
+<body>
 
 <nav th:replace="layouts/master-layout :: navbar-top" />
 <!--<div th:replace="layouts/master-layout :: search" />-->
 <!-- End of Navigation bar -->
 <div class="container">
     <div style="padding-top: 1em;" class="container">
+
+    </div>
+
     <p>&nbsp;</p>
     <li>
     </li>
+
         <div class="row">
             <tbody>
             <div class="col-md-4" th:each="book,iterStat : ${books}">
@@ -22,7 +26,7 @@
                     <figcaption class="info-wrap" th:text="${book.title}">
                     </figcaption>
                     <div class="bottom-wrap">
-                        <a th:href="@{'/addToCart/{id}'(id=${book.id})}" class="btn btn-sm btn-primary float-right">Add to Cart</a>
+                        <a th:href="@{'/addToCart/{id}'(id=${book.id})}" class="btn btn-sm btn-danger float-right">Add to Cart</a>
                         <!--                        th:href="@{'/elibrary/book/edit/{bookId}'(bookId=${book.bookId})}"-->
                         <div class="price-wrap h5">
                             <span class="price-new" th:text="${book.price}"></span>
@@ -38,7 +42,7 @@
 
 
     </div>
-    <div>
+    <div class="container">
         <ul class="pagination">
             <li class="page-item disabled">
                 <a class="page-link" href="#">Pages: </a>

@@ -20,7 +20,7 @@ public class BillingInfo {
 	@NotNull(message = "* Expiration Date is required")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate expireDate;
-	@Size(max = 3)
+//	@Size(max = 3)
 	private Integer securityDigits;
 
 	@ManyToOne

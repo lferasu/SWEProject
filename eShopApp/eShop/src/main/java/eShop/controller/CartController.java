@@ -31,7 +31,6 @@ public class CartController {
     private UserService userService;
     @Autowired
     private BookService bookService;
-
     @Autowired
     private PaymentRecordService paymentRecordService;
     @Autowired
@@ -48,9 +47,9 @@ public class CartController {
     @Autowired
     private EmailServiceImpl emailService;
 
-// this what displays the placeorder form
 
     @GetMapping(value= {"/addToCart/{id}" })
+
             public String addBookToCart(@PathVariable Integer id, Model model){
 
             Cart cart=new Cart();
@@ -61,11 +60,11 @@ public class CartController {
 
             UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User loggedInUser = principal.getUser();
-            User myUser = loggedInUser;
+            User customer = loggedInUser;
             String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
             cart.setSessionId(sessionId);
             cart.setBooks(books);
-            User customer=myUser;
+            //User customer=myUser;
             //checking the address in the database
 
             if(customer.getBillingAddress() == null) {
@@ -96,20 +95,24 @@ public class CartController {
 
             return "Book/placeorder";
 
-}
-//codes from payment controller
+
+
+    }
 
     @PostMapping(value = {"/addToCart"})
     public String placeOrderConfirmationDisplay(
             @Valid
+
             @ModelAttribute("cart")
             @RequestBody Cart cart,
+
             BindingResult bindingResult,
             Model model
     ) {
 
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getAllErrors());
+
             return "Book/placeorder";
         }
 
@@ -117,6 +120,7 @@ public class CartController {
         cart = cartService.findCartBySessionId(sessionId);
         UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         User loggedInUser = principal.getUser();
+
 
         loggedInUser.setShippingAddress(cart.getCustomer().getShippingAddress());
         loggedInUser.setBillingAddress(cart.getCustomer().getBillingAddress());
@@ -145,6 +149,7 @@ public class CartController {
     }
 
     @GetMapping(value = {"/Book/confirmation"})
+
     public String showConfirmation(Model model) {
 
 
@@ -152,16 +157,6 @@ public class CartController {
         return "book/confirmation";
     }
 
-    public void sendDeliveryRequest(Book book, User user, String message)
-    {
-        DeliveryRequest deliveryRequest = new DeliveryRequest();
-        deliveryRequest.setEmail(book.getSupplier().getEmail());
-        deliveryRequest.setName("eShope automatic email service");
-        deliveryRequest.setRequestContent("The Book : " + book.toString() + " has been orderd by "
-                + user.getFirstName() + " " + user.getLastName() +"\n" +
-                "Delivery Address is " + userService.getAddress(user.getId()));
-        deliveryRequestController.sendDeliveryRequest(deliveryRequest);
-    }
 
     public void sendEmail(Book book, User user, String message)
     {

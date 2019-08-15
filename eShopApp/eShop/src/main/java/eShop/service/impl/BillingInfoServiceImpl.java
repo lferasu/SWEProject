@@ -1,7 +1,8 @@
 package eShop.service.impl;
 
 import eShop.model.BillingInfo;
-import eShop.model.user.Customer1;
+
+import eShop.model.user.User;
 import eShop.repository.BillingInfoRepository;
 import eShop.service.BillingInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,7 +16,7 @@ public class BillingInfoServiceImpl implements BillingInfoService {
         @Autowired
         private BillingInfoRepository billingInfoRepository;
 
-        public List<BillingInfo> getAllBillingAddresses(Customer1 customer){
+        public List<BillingInfo> getAllBillingAddresses(User customer){
 
             return billingInfoRepository.findAllById(customer.getId());
     }
