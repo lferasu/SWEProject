@@ -43,6 +43,11 @@ public class Book {
 			inverseJoinColumns = { @JoinColumn(name = "category_id") })
 	private List<Category> categories = new ArrayList<>();
 
+
+    @ManyToOne
+	@JoinColumn(name = "cart_id")
+	private Cart cart;
+
 	public Book() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -64,6 +69,13 @@ public class Book {
 		this.categories = categories;
 	}
 
+	public Cart getCart() {
+		return cart;
+	}
+
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
 	public Integer getId() {
 		return id;
 	}

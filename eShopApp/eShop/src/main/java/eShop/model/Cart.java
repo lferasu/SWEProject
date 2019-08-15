@@ -2,12 +2,8 @@ package eShop.model;
 
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+
 import eShop.model.user.User;
 
 @Entity
@@ -19,21 +15,35 @@ public class Cart {
 	@OneToOne //uni
 	@JoinColumn(name = "cart_customer_id")
 	private User customer;
-	@OneToMany
-	@JoinColumn(name="fk_book")
+
+	@OneToMany(mappedBy = "cart", cascade = CascadeType.ALL)
 	private List<Book> books = new ArrayList<>();
+
 	private Double totalPrice;
 
 	private int numberOfBooks=0;
 
-	public Cart() {
 
+
+	private String sessionId;
+
+
+	public Cart() {
 	}
 
 	public Cart(User customer, List<Book> books, Double totalPrice) {
 		this.customer = customer;
 		this.books = books;
 		this.totalPrice = totalPrice;
+	}
+
+
+	public String getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 
 	public int getNumberOfBooks() {

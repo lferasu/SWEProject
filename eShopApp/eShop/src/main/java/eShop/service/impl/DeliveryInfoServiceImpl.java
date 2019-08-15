@@ -19,7 +19,7 @@ public class DeliveryInfoServiceImpl implements DeliveryInfoService {
         deliveryInfo.setOrder(order);
         deliveryInfo.setCustomer(order.getCustomer());
         deliveryInfo.setOrderedDate(order.getDate());
-        deliveryInfo.setSupplier((Supplier1) order.getCart().getBooks().get(0).getSupplier());
+        deliveryInfo.setSupplier(order.getCart().getBooks().get(0).getSupplier());
         deliveryInfo.setExpectedArrival(order.getDate().plusDays(5));
 
         //Generating tracking number
