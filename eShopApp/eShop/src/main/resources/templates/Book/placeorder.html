@@ -10,7 +10,7 @@
 <!--displays the book and its price-->
 <div id="form-cont">
 <div style="font-size: 1em" class="container">
-    <table class="table table-striped">
+    <table class="table table-striped bookregister">
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -38,9 +38,9 @@
 
 <!--displays billing info/form-->
 <hr>
-<div class="container">
+<div class="container bookregister">
 
-    <div>
+    <div class="bookregister" id="form-cont">
     <form id="BillingInformationForm" method="post" th:action="@{/addToCart}"  th:object="${cart}">
         <fieldset>
             <legend>Billing Information:</legend>
@@ -54,7 +54,7 @@
                         <input id="cardNumber" name="cardNumber" type="text" class="form-control"
                                aria-describedby="cardNumberHelp" required="required" placeholder="1111-1111"
                                th:value="${cart.customer.billingInfos.get(0).cardNumber}">
-<!--                        <small id="cgpaHelp" class="form-text text-muted">Enter like this (1111-1111-1111-1111)</small>-->
+<!--                        <small id="cgpaHelp" class="form-text text-muted">Enter like this (1111-1111)</small>-->
                     </div>
                 </div>
                 <div class="col-md-4">
