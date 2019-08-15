@@ -16,6 +16,8 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import static java.util.stream.Collectors.toMap;
+
 @Service
 public class PaymentRecordServiceImpl implements PaymentRecordService {
     @Autowired
@@ -43,10 +45,11 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
     }
 
     @Override
-    public Double amountOfSalesBySupplier(User supplier) {
+    public Double amountOfSalesBySupplier(User supplier, Integer monthAgo) {
         LocalDate today = LocalDate.now();
         List<PaymentRecord> recentThreeMonthPayment = paymentRecordRepository.
-                findAllByPaymentDateBetweenAndSupplier(today.minusMonths(1), today, supplier);
+                findAllByPaymentDateBetweenAndSupplier(today.minusMonths(monthAgo + 1).withDayOfMonth(1),
+                        today.minusMonths(monthAgo).withDayOfMonth(1), supplier);
         Double amountPerSupplier = 0.0;
         for(PaymentRecord paymentRecord: recentThreeMonthPayment){
             amountPerSupplier += paymentRecord.getAmount();
@@ -54,20 +57,32 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
         return amountPerSupplier;
     }
 
-    public HashMap<User, Double> topSupplierBySales(){
+    @Override
+    public LinkedHashMap<User, Double> topSupplierBySales(Integer monthAgo){
         List<User> allSuppliers = userRepository.findAll().stream()
                 .filter(s -> s.getRole() == Role.SUPPLIER)
                 .collect(Collectors.toList());
         HashMap<User, Double> mapSupplerAndAmount = new HashMap<>();
         for(User supplier: allSuppliers) {
-            mapSupplerAndAmount.put(supplier, amountOfSalesBySupplier(supplier));
+            mapSupplerAndAmount.put(supplier, amountOfSalesBySupplier(supplier, monthAgo));
         }
-        Map<User, Double> sortedByValueDesc = mapSupplerAndAmount.entrySet()
+        LinkedHashMap<User, Double> sortedByValueDesc = mapSupplerAndAmount.entrySet()
                 .stream()
-                .sorted(Map.Entry.<User, Double>.comparingByValue().reversed())
+                .sorted(Map.Entry.<User, Double>comparingByValue().reversed())
                 .collect(toMap(Map.Entry::getKey,
                         Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
-        return mapSupplerAndAmount;
+
+
+        return sortedByValueDesc;
+    }
+
+    @Override
+    public Double totalSalesAmount() {
+        List<PaymentRecord> allPayment = paymentRecordRepository.findAll();
+        Double total = 0.0;
+        for(PaymentRecord p: allPayment)
+            total += p.getAmount();
+        return total;
     }
 
 }
