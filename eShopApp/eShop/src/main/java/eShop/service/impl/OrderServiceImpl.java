@@ -2,6 +2,7 @@ package eShop.service.impl;
 
 import eShop.model.Cart;
 import eShop.model.Order;
+import eShop.model.user.User;
 import eShop.repository.OrderRepository;
 import eShop.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,4 +30,5 @@ public class OrderServiceImpl implements OrderService {
 
         return orderRepository.save(order);
     }
+
 }

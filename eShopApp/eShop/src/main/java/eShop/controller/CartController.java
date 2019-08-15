@@ -60,7 +60,7 @@ public class CartController {
 
             UserPrincipal principal= (UserPrincipal)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
             User loggedInUser = principal.getUser();
-            User myUser = loggedInUser;
+            User customer = loggedInUser;
             String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
             cart.setSessionId(sessionId);
             cart.setBooks(books);
@@ -157,16 +157,6 @@ public class CartController {
         return "book/confirmation";
     }
 
-    public void sendDeliveryRequest(Book book, User user, String message)
-    {
-        DeliveryRequest deliveryRequest = new DeliveryRequest();
-        deliveryRequest.setEmail(book.getSupplier().getEmail());
-        deliveryRequest.setName("eShope automatic email service");
-        deliveryRequest.setRequestContent("The Book : " + book.toString() + " has been orderd by "
-                + user.getFirstName() + " " + user.getLastName() +"\n" +
-                "Delivery Address is " + userService.getAddress(user.getId()));
-        deliveryRequestController.sendDeliveryRequest(deliveryRequest);
-    }
 
     public void sendEmail(Book book, User user, String message)
     {

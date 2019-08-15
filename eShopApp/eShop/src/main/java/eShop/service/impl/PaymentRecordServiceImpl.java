@@ -1,21 +1,27 @@
 package eShop.service.impl;
 
+import eShop.model.Category;
 import eShop.model.Order;
 import eShop.model.PaymentRecord;
+import eShop.model.user.Role;
 import eShop.model.user.Supplier1;
+import eShop.model.user.User;
 import eShop.repository.PaymentRecordRepository;
+import eShop.repository.UserRepository;
 import eShop.service.PaymentRecordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class PaymentRecordServiceImpl implements PaymentRecordService {
     @Autowired
     private PaymentRecordRepository paymentRecordRepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public PaymentRecord savePaymentRecord(Order order){
             PaymentRecord paymentRecord = new PaymentRecord();
@@ -32,7 +38,34 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
     }
 
     @Override
-    public List<List<Map<Object, Object>>> getCanvasjsChartData() {
+    public Integer numberOfBooksByCategorySold(Category category) {
         return null;
     }
+
+    @Override
+    public Double amountOfSalesBySupplier(User supplier) {
+        LocalDate today = LocalDate.now();
+        List<PaymentRecord> recentThreeMonthPayment = paymentRecordRepository.
+                findAllByPaymentDateBetweenAndSupplier(today.minusMonths(1), today, supplier);
+        Double amountPerSupplier = 0.0;
+        for(PaymentRecord paymentRecord: recentThreeMonthPayment){
+            amountPerSupplier += paymentRecord.getAmount();
+        }
+        return amountPerSupplier;
+    }
+
+    public HashMap<User, Double> topSupplierBySales(){
+        List<User> allSuppliers = userRepository.findAll().stream()
+                .filter(s -> s.getRole() == Role.SUPPLIER)
+                .collect(Collectors.toList());
+        List<Double> sumOfSalePerSuppler = new ArrayList<>();
+        HashMap<User, Double> mapSupplerAndAmount = new HashMap<>();
+        for(User supplier: allSuppliers) {
+            sumOfSalePerSuppler.add(amountOfSalesBySupplier(supplier));
+            mapSupplerAndAmount.put(supplier, amountOfSalesBySupplier(supplier));
+        }
+        //Collections.sort()
+        return null;
+    }
+
 }
