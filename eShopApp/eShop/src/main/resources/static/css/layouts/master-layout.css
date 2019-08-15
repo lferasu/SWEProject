@@ -8,6 +8,7 @@ body {
     color: #000000;
     /*background: #575757;*/
     background: url(images/sitebg.jpeg);
+
 }
 
 a:link, a:visited { color: #e6e154; text-decoration: none; font-weight: bold;}
@@ -396,7 +397,7 @@ form input[type=text], form input[type=select], form textarea, form input[type=d
     font-weight: bold;
     border: 1px solid #111111;
 }
-form input[type=button], button[type=submit] {
+form input[type=button], button[type=submit], input[type=submit] {
     background-color: #880016;
     border: none;
     color: white;
