@@ -29,7 +29,7 @@ public class BookServiceImpl implements BookService {
     }
     @Override
     public Page<Book> getAllBooksPaged(int pageNo) {
-        return null;
+        return bookRepository.findAll(PageRequest.of(pageNo, 3, Sort.by("title")));
     }
 
     @Override
