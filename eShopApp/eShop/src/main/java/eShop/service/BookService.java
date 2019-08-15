@@ -14,7 +14,7 @@ public interface BookService {
 	    public abstract Book getBookById(Integer bookId);
 	    public abstract void deleteBookById(Integer bookId);
 
-	    public abstract List<Book> getAllBooksQuickSearch(String searchString);
+	    public abstract Page<Book> getAllBooksQuickSearch(String searchString, int pageNo);
 	   // public abstract Page<Book> getSearchedBooks(int pageNo, Book book);
 	    //public abstract Page<Book> getQuickSearchBooks(int pageNo, String text);
 

@@ -348,9 +348,11 @@ img {
 }
 
 #photo {
-    float: left;
-    width: 100px;
+    float: right;
+    width: 50px;
 }
+
+
 
 
 
