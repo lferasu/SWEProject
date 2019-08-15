@@ -58,14 +58,16 @@ public class PaymentRecordServiceImpl implements PaymentRecordService {
         List<User> allSuppliers = userRepository.findAll().stream()
                 .filter(s -> s.getRole() == Role.SUPPLIER)
                 .collect(Collectors.toList());
-        List<Double> sumOfSalePerSuppler = new ArrayList<>();
         HashMap<User, Double> mapSupplerAndAmount = new HashMap<>();
         for(User supplier: allSuppliers) {
-            sumOfSalePerSuppler.add(amountOfSalesBySupplier(supplier));
             mapSupplerAndAmount.put(supplier, amountOfSalesBySupplier(supplier));
         }
-        //Collections.sort()
-        return null;
+        Map<User, Double> sortedByValueDesc = mapSupplerAndAmount.entrySet()
+                .stream()
+                .sorted(Map.Entry.<User, Double>.comparingByValue().reversed())
+                .collect(toMap(Map.Entry::getKey,
+                        Map.Entry::getValue, (e1, e2) -> e1, LinkedHashMap::new));
+        return mapSupplerAndAmount;
     }
 
 }

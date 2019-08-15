@@ -64,7 +64,7 @@ public class CartController {
             String sessionId = RequestContextHolder.currentRequestAttributes().getSessionId();
             cart.setSessionId(sessionId);
             cart.setBooks(books);
-            User customer=myUser;
+
             //checking the address in the database
 
             if(customer.getBillingAddress() == null) {
